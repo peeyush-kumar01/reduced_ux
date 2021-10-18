@@ -1,0 +1,8 @@
+
+.c-head {
+  opacity: 0.8;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  min-height: 4rem;
+  justify-content: space-between;
+}

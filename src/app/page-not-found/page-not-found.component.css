@@ -1,0 +1,23 @@
+
+.notfound{
+  padding-top: 5%;
+  padding-left: 30%;
+  color:steelblue;
+  font-size: larger;
+  font-weight: bolder;
+}
+.notfoundIcon{
+  padding-top: 10%;
+  padding-left: 40%;
+  color:steelblue;
+  font-size: larger;
+  font-weight: bolder;
+  animation-name: example;
+  animation-duration: 50s;
+}
+@keyframes example {
+  0%   {color: red;}
+  25%  {color: yellow;}
+  50%  {color: blue;}
+  100% {color: green;}
+}

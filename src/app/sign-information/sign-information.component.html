@@ -1,0 +1,22 @@
+
+<br />
+<a routerLink="../../profile">Back</a>
+<hr />
+<div class="container">
+  <table class="table table-responive table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>User</th>
+        <th>Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of ar">
+        <td>{{ r.date }}</td>
+        <td>{{ r["user"] }}</td>
+        <td>{{ r["detail"] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+
+#horzntl-custom-order{
+color:chocolate;
+width: 50%;
+height: 5px;
+}
+.custom-c{
+  color: chocolate;
+}
+.oid{
+  cursor:pointer;
+  color:burlywood;
+  width: max-content;
+}
+.oid:active{
+  color:blue;
+  transition: transform 125ms;
+  transform: scale(0.8);
+
+}

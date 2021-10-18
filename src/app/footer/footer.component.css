@@ -1,0 +1,28 @@
+
+.footer {
+  color: rgb(211, 247, 8);
+  font-size: larger;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position:  relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top:0.5rem;
+  padding-bottom: 0.5rem;
+  bottom: 0;  
+}
+
+.i-custom:hover {
+  transition: transform 125ms;
+  transform: scale(1.1);
+  color: rgb(247, 241, 241);
+  cursor: pointer;
+}
+a {
+  color: inherit;
+}
+.c-foot {
+  opacity: 0.7;
+}

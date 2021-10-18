@@ -1,0 +1,12 @@
+
+.app{
+  cursor: pointer;
+  color:blue;
+}
+.app:hover{
+  color:rgb(112, 112, 204);
+}
+.app:active{
+  transition: transform 125ms;
+  transform: scale(0.8);
+}

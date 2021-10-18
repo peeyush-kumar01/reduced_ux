@@ -1,0 +1,26 @@
+
+#horzntl-custom-inv {
+  width: 50%;
+  color: chocolate;
+  height: 5px;
+}
+.hov {
+  cursor: pointer;
+}
+.x-fit {
+  width: min-content;
+  height: min-content;
+}
+.card{
+  border: none;
+
+}
+.fit{
+  width: 4em;
+  transition: transform 125ms;
+  transform: scale(0.8);
+}
+.x-fit:active{
+  transition: transform 125ms;
+  transform: scale(0.8);
+}

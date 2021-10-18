@@ -1,0 +1,16 @@
+
+<br />
+<h4 class="custom-c">Documents</h4>
+<a routerLink="../../profile">Back</a>
+<hr id="horzntl-custom-inv" />
+<div class="container">
+  <div class="row row-cols-6">
+    <div class="col" *ngFor="let doc of docs">
+      <div class="card card-sm m-1">
+        <div class="card-img-top hov fit"><i class="fas fa-file-pdf x-fit"></i></div>
+        <div class="card-title">{{ doc["docName"] }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mb-5"></div>

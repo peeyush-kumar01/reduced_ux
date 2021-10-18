@@ -1,0 +1,42 @@
+<div class="fixed-bottom navbar-expand-sm navbar-dark  bg-dark flex-column flex-md-row footer c-foot">
+  <div id="contact" title="Contct" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"
+    class="me-4" (click)="setContactDetail()">
+    <i class="fas fa-id-card-alt i-custom" id="contact_ico"></i>
+  </div>
+  <div id="aboutUs" title="About Us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"
+    class="me-4" (click)="setAboutDetail()">
+    <i class="fas fa-info i-custom" id="aboutUs_ico"></i>
+  </div>
+  <div id="feedback" title="Write to us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+    aria-controls="offcanvas" class="me-4" (click)="setFeedbackDetail()">
+    <i class="fas fa-envelope i-custom" id="feedback_ico"></i>
+  </div>
+  <div class="me-4" id="copywrite" title="Copywrite" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+    aria-controls="offcanvas" (click)="setCopywriteDetail()">
+    <i class="fas fa-copyright i-custom" id="copywrite_ico"></i>
+  </div>
+  <div class="me-4" id="location" title="locate us on map">
+    <i class="fas fa-map-marker-alt i-custom"></i>
+  </div>
+  <div class="me-4" id="TnM"><b>T&C</b>
+  </div>
+  <div class="me-4" id="twitter"> <a href="https://twitter.com/" target="_blank"><i
+        class="fab fa-twitter i-custom me-4"></i></a></div>
+  <div class="me-4" id="linkedin">
+    <a href="https://www.linkedin.com/company/prasi-labs/" target="_blank">
+      <i class="fab fa-linkedin i-custom me-4"></i></a>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+      {{ sectionDetail.header }}
+    </h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      {{ sectionDetail.detail }}
+    </div>
+  </div>
+</div>

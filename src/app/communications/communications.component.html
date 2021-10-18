@@ -1,0 +1,46 @@
+
+<br />
+<h4 class="custom-c">Communication sent to you</h4>
+<hr id="horzntl-custom-comm" />
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-sm btn-dark m-1 rounded">All</button>
+    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Oldest first</button>
+    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Newest first</button>
+    <div class="input-group m-1 rounded">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Type date(MM-YYYY) to search"
+        aria-label="Type date(MM-YYYY) to search"
+        aria-describedby="btnGroupAddon"
+      />
+    </div>
+  </div>
+</div>
+<br />
+<div class="container mb-3" *ngFor="let val of textArea; let i = index">
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-toggle="collapse"
+    [attr.data-target]="'#' + i"
+    (click)="isCollapsed[i] = !isCollapsed[i]"
+    [attr.aria-expanded]="!isCollapsed[i] ? false : true"
+    [attr.aria-controls]="i"
+  >
+    {{ i }}
+  </button>
+  <div
+    class="collapse"
+    id="{{ i }}"
+    [ngbCollapse]="!isCollapsed[i] ? true : false"
+  >
+    <textarea class="form-control-plaintext" rows="3" readonly>
+  {{ val }}</textarea
+    >
+  </div>
+  <hr />
+</div>
+<br />
+<div class="mt-5"><br/></div>

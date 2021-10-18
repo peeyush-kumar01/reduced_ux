@@ -1,0 +1,85 @@
+<br />
+<h4 class="custom-c">Service Requests</h4>
+<hr id="horzntl-custom-inv" />
+<div class="container mt-2">
+  <div class="row row-cols-4 text-center text-uppercase mb-2">
+    <div class="col flex-sm-col border-bottom col-color shadow">SR#</div>
+    <div class="col d-table-cell border-bottom col-color shadow-sm">
+      Date created
+    </div>
+    <div class="col d-table-cell border-bottom col-color shadow">Status</div>
+    <div class="col d-table-cell border-bottom col-color shadow-sm">Action</div>
+  </div>
+  <div *ngFor="let val of SR; let i = index">
+    <div class="row row-cols-4 text-start text-dark">
+      <div
+        class="col d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        style="cursor: pointer; color:blue"
+      >
+        <u>{{ val.srno }}</u>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <p>{{ val.date }}</p>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <p>{{ val.status }}</p>
+      </div>
+      <div
+        class="col d-flex justify-content-evenly"
+        (mouseenter)="isHovered = true"
+        (mouseleave)="isHovered = false"
+      >
+        <div
+          class="btn btn-sm btn-secondary m-1"
+          id="srupdate{{ i }}"
+          (mouseenter)="getId($event)"
+          [ngStyle]="id == 'srupdate' + i ? getStyle() : {}"
+        >
+          Update
+        </div>
+        <div
+          class="btn btn-sm btn-success m-1"
+          id="srclose{{ i }}"
+          (mouseenter)="getId($event)"
+          [ngStyle]="id == 'srclose' + i ? getStyle() : {}"
+        >
+          Close
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">dfdsf
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-5"><br/></div>

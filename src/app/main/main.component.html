@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 c-l">
+      <div class="mt-1">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-primary" title="Search by name" (click)="getProductByName()">
+              <i class="fab fa-searchengin"></i>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Search by name" />
+        </div>
+        <hr />
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" title="Search by category" (click)="getProductByCatg()">
+              <i class=" fab fa-searchengin"></i>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Search by category" />
+        </div>
+        <hr />
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-warning" title="Search by CAS no" (click)="getProductByCASNo()">
+              <i class=" fab fa-searchengin"></i>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Search by CAS no" />
+        </div>
+        <hr />
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-info" title="Search by our partners" (click)="getProductByPtnr()"> 
+              <i class=" fab fa-searchengin"></i>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Search by our partners" />
+        </div>
+        <hr />
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-dark" title="Search by country" (click)="getProductByCntry()">
+              <i class=" fab fa-searchengin"></i>
+            </button>
+          </div>
+          <input class="form-control" type="text" placeholder="Search by country" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 c-m">
+      <input class="form-control mb-1" type="text" placeholder="Type to filter" />
+      <div class="row row-cols-3">
+        <div *ngFor="let i of products">
+          <div class="col">
+            <div class="card  m-1">
+              <div class="card-header d-flex justify-content-center">{{ i["Sl No"] }} {{ i["CAS No"] }}</div>
+              <div class="card-body d-flex justify-content-center"><i class="fas fa-atom fa-10x"></i></div>
+              <div class="card-footer">{{ i["Product Name"] }}
+                <hr />
+                <a href="" class="float-left">Order now</a>
+                <a href="" class="float-right">Add to cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div id="carouselExampleIndicators" class="carousel slide c-e" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/Untitled.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Untitled.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Untitled.png" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <hr class="border border-success" />
+      <div class="important">
+        This section is meant for important informtion.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-2"><br /></div>

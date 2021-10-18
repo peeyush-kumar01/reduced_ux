@@ -1,0 +1,14 @@
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.nav-link{
+  color:slategrey !important;
+}
+.nav-link:focus{
+  color:seagreen !important;
+}
+.cart-c{
+  color:brown;
+}
