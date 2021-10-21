@@ -18,12 +18,31 @@ export class FooterComponent implements OnInit {
 
   setContactDetail(): void {
     this.sectionDetail.header = 'Contact Detail';
-    this.sectionDetail.detail = '<p>This is my contact please mail</p>';
+    this.sectionDetail.detail = '<b>Registered Office:</b><br/>Prasi Labs Pvt Ltd \
+    <br/>Plot No : 4/2,Sector 1 RAM SVR, \
+    <br/>HUDA Techno Enclave, HITEC City, \
+    <br/>Madhapur, Telangana 500081 \
+    <br/>Bharat (India) \
+    <hr/> \
+    <b>Email:</b><br/> \
+    <a href="mailto:info@prasilabs.com?Subject=Enquirey%20'+Date.now()+'" target="_top">info@prasilabs.com</a>\
+    ';
   }
 
   setAboutDetail(): void {
     this.sectionDetail.header = 'About US';
-    this.sectionDetail.detail = '<p>This is my contact please mail</p>';
+    this.sectionDetail.detail = '<p>\
+    <b>We’ve made a unique Platform that will help you</b>\
+    <br/>Prasi Labs has been adjudged as High Growth Company at blooming stage,\
+    founded in 2020, with a holistic approach to sales and marketing combined\
+    with exemplified industry experience. Prasi Labs amplifies reach across \
+    several Pharma companies across the Globe. Prasi Labs with its streamlined \
+    business approach has been successful in accomplishing a reputed client \
+    list in a very short span of time.\
+    <br/><br/>Let Prasi Labs introduce you to a better, yet transparent way of conducting \
+    business.  We are here to bring value with new way of sourcing & development \
+    on our client’s requirement.\
+    </p>';
   }
 
   setFeedbackDetail(): void {
@@ -33,6 +52,7 @@ export class FooterComponent implements OnInit {
 
   setCopywriteDetail(): void {
     this.sectionDetail.header = 'Copywrite Information';
-    this.sectionDetail.detail = '<p>This is my contact please mail</p>';
+    this.sectionDetail.detail = 'Copyright © 2021 Prasi Labs Pvt ltd \
+    <br/><hr/><br/>ISO 9001:2015 Certified Company';
   }
 }

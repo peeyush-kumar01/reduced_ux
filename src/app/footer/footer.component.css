@@ -4,15 +4,16 @@
   font-size: larger;
   padding-left: 1rem;
   padding-right: 1rem;
-  position:  relative;
+  position:  fixed;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
   padding-top:0.5rem;
   padding-bottom: 0.5rem;
-  bottom: 0;  
-}
+  bottom: 0;
+  
+}                                                                                                                                     
 
 .i-custom:hover {
   transition: transform 125ms;
@@ -24,5 +25,9 @@ a {
   color: inherit;
 }
 .c-foot {
-  opacity: 0.7;
+  opacity: 0.8;
+}
+.se{
+  text-align: justify;
+  font-size: small ;
 }

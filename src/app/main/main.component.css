@@ -1,13 +1,56 @@
 .c-l{
-  background-color: whitesmoke;
+  background-color: thistle;
+  border-right-style: solid;
+  border-right-color: cadetblue;
+}
+.f{
+  margin-right: 0.4rem !important;
+  font-size: xx-small !important;
+}
+.a{
+  margin-left: 0.4rem !important;
 }
 .c-e{
-  min-height: 70px;
+  height: 250px !important;
+  width: 100% !important;
 }
-
-.card-header{
+.c-m{
+  height: 230px !important;
+}
+.card:hover {
+  transition: transform 125ms;
+  transform: scale(1.03);
+  border-color:darkgreen !important;
+}
+.card-body{
   background-color: white;
+}
+.card-header{
+  background-color: aliceblue;
+  color:darkslategray;
+}
+.card-body:hover{
+  cursor: pointer;
+  background-color: greenyellow;
 }
 .card-footer{
-  background-color: white;
+  background-color: whitesmoke;
+}
+.img-c{
+  align-items: center;
+  max-width: 15vw;
+  max-height: 15vh;
+}
+.t-c{
+  font-size: 0.75rem ;
+  font-family: monospace;
+  overflow-x: scroll;
+  color: black;
+  font-weight: bold;
+}
+.xx{
+  float: left;
+}
+.xy{
+  float: inline-end !important;
 }

@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { updateDecorator } from 'typescript';
 
 @Component({
   selector: 'app-main',
@@ -12,6 +13,9 @@ export class MainComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   products: any[] = [1];
+
+  CardProdObj: any={};
+
 
   getProduct(): any {
     const client = this.http.get<any>('http://localhost:3000/getoffering/all').toPromise();
@@ -44,9 +48,10 @@ export class MainComponent implements OnInit {
 
   }
 
-
-  ngOnInit(): void {
-    this.getProduct();
+  setCurObj(obj: any) {
+    this.CardProdObj=obj;
   }
 
+  ngOnInit(): void {
+    this.getProduct();}
 }
