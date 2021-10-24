@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit,Input } from '@angular/core';
-import { updateDecorator } from 'typescript';
+import { Component, OnInit, Input } from '@angular/core';
+import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-main',
@@ -12,17 +12,19 @@ export class MainComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  products: any[] = [1];
+  products: any[] = [];
+  filterTerm: any = '';
 
-  CardProdObj: any={};
+  CardProdObj: any = {};
+
+  //this.filterTerm = event.target.value;
 
 
   getProduct(): any {
-    const client = this.http.get<any>('http://localhost:3000/getoffering/all').toPromise();
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_ALL_PRODUCTS).toPromise();
     return client.then(
       (response: any) => {
         this.products = response;
-        console.log(response);
       }
     )
       .catch((error: any) => {
@@ -30,28 +32,74 @@ export class MainComponent implements OnInit {
       })
   }
 
-  getProductByName(): any {
-    console.log();
+  getProductByName(event :any): any { 
+    var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;                         
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_NAME_PRODUCTS + eValue).toPromise();
+    return client.then(
+      (response: any) => {
+        this.products = response;
+      }
+    )
+      .catch((error: any) => {
+        console.log(error);
+      })
   }
 
-  getProductByCASNo(): any {
-
+  getProductByCASNo(event :any): any {
+    var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CASNO_PRODUCTS + eValue).toPromise();
+    return client.then(
+      (response: any) => {
+        this.products = response;
+      }
+    )
+      .catch((error: any) => {
+        console.log(error);
+      })
   }
-  getProductByCatg(): any {
-
+  getProductByCatg(event :any): any {
+    var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CATG_PRODUCTS + eValue).toPromise();
+    return client.then(
+      (response: any) => {
+        this.products = response;
+      }
+    )
+      .catch((error: any) => {
+        console.log(error);
+      })
   }
-  getProductByCntry(): any {
-
+  getProductByCntry(event :any): any {
+    var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CNTRY_PRODUCTS+ eValue).toPromise();
+    return client.then(
+      (response: any) => {
+        this.products = response;
+      }
+    )
+      .catch((error: any) => {
+        console.log(error);
+      })
   }
 
-  getProductByPtnr(): any {
-
+  getProductByPtnr(event :any): any {
+    var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;
+    const client = this.http.get<any>(AppModule.URL + AppModule.GET_PTNR_PRODUCTS+ eValue).toPromise();
+    return client.then(
+      (response: any) => {
+        this.products = response;
+      }
+    )
+      .catch((error: any) => {
+        console.log(error);
+      })
   }
 
   setCurObj(obj: any) {
-    this.CardProdObj=obj;
+    this.CardProdObj = obj;
   }
 
   ngOnInit(): void {
-    this.getProduct();}
+    this.getProduct();
+  }
 }

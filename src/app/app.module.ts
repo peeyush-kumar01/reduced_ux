@@ -30,6 +30,7 @@ import { CartComponent } from './cart/cart.component';
 import { UserComponent } from './user/user.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     UserComponent,
     MainComponent,
     PageNotFoundComponent,
+    SearchFilterPipe,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule,HttpClientModule],
   providers: [AuthGuard, AppService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  static readonly URL='http://localhost:3000';
+  static readonly GET_ALL_PRODUCTS='/getoffering/all';
+  static readonly GET_NAME_PRODUCTS='/getoffering/name/';
+  static readonly GET_CASNO_PRODUCTS='/getoffering/casno/';
+  static readonly GET_CATG_PRODUCTS='/getoffering/category/';
+  static readonly GET_CNTRY_PRODUCTS='/getoffering/country/';
+  static readonly GET_PTNR_PRODUCTS='/getoffering/partner/';
+}

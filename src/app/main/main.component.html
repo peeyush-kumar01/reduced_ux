@@ -5,7 +5,7 @@
         <br/>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button class="btn btn-primary a" title="Search by name" (click)="getProductByName()">
+            <button class="btn btn-primary a" title="Search by name" (click)="getProductByName($event)">
               <i class="fab fa-searchengin"></i>
             </button>
           </div>
@@ -14,7 +14,7 @@
         <br/>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button class="btn btn-secondary a" title="Search by category" (click)="getProductByCatg()">
+            <button class="btn btn-secondary a" title="Search by category" (click)="getProductByCatg($event)">
               <i class=" fab fa-searchengin"></i>
             </button>
           </div>
@@ -23,7 +23,7 @@
         <br/>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button class="btn btn-warning a" title="Search by CAS no" (click)="getProductByCASNo()">
+            <button class="btn btn-warning a" title="Search by CAS no" (click)="getProductByCASNo($event)">
               <i class=" fab fa-searchengin"></i>
             </button>
           </div>
@@ -32,7 +32,7 @@
         <br/>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button class="btn btn-info a" title="Search by our partners" (click)="getProductByPtnr()">
+            <button class="btn btn-info a" title="Search by our partners" (click)="getProductByPtnr($event)">
               <i class=" fab fa-searchengin"></i>
             </button>
           </div>
@@ -41,7 +41,7 @@
         <br/>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button class="btn btn-dark a" title="Search by country" (click)="getProductByCntry()">
+            <button class="btn btn-dark a" title="Search by country" (click)="getProductByCntry($event)">
               <i class=" fab fa-searchengin"></i>
             </button>
           </div>
@@ -51,10 +51,9 @@
       </div>
     </div>
     <div class="col-sm-8 c-m">
-      <input class="form-control mb-1" type="text" placeholder="Type to filter" />
+      <input class="form-control mb-1" [(ngModel)]="filterTerm" type="text" placeholder="Type to filter" />
       <div class="row row-cols-3">
-        <div *ngFor="let i of products">
-
+        <div *ngFor="let i of products | searchFilter: filterTerm">
           <div class="col" >
             <div class="card  shadow-sm m-1 " (click)="setCurObj(i)">
               <div class="card-header d-flex justify-content-between">

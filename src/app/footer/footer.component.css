@@ -14,7 +14,9 @@
   bottom: 0;
   
 }                                                                                                                                     
-
+.map{
+  margin: 2em !important;
+}
 .i-custom:hover {
   transition: transform 125ms;
   transform: scale(1.1);

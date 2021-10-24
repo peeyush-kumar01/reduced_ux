@@ -12,6 +12,7 @@ h2, h3 {
 }
 body {
   margin: 2em;
+  background-color:khaki !important;
 }
 body, input[type="text"], button {
   color: #333;

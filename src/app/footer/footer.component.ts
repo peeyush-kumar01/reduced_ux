@@ -55,4 +55,9 @@ export class FooterComponent implements OnInit {
     this.sectionDetail.detail = 'Copyright © 2021 Prasi Labs Pvt ltd \
     <br/><hr/><br/>ISO 9001:2015 Certified Company';
   }
+
+  setMapDetail():void {
+    this.sectionDetail.header = 'Hyderabad India';
+    this.sectionDetail.detail = '<b>US</b>'
+  }
 }

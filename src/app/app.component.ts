@@ -8,6 +8,5 @@ import { Component, HostListener } from '@angular/core';
 })
 export class AppComponent {
   changeOfRoutes($event:Event){
-console.log($event);
   }
 }
