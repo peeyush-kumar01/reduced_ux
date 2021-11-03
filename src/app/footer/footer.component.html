@@ -1,39 +1,52 @@
-<div class="container navbar fixed-bottom navbar-expand-sm navbar-dark  bg-dark flex-column flex-md-row footer c-foot">
-  <div id="we" title="We!" data-bs-toggle="offcanvas" data-bs-target="#offcanvaswe" aria-controls="offcanvas"
-    class="me-4 i-custom">
-    <b>We!</b>
-  </div>
-  <div id="contact" title="Contct" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"
-    class="me-4" (click)="setContactDetail()">
-    <i class="fas fa-id-card-alt i-custom" id="contact_ico"></i>
-  </div>
-  <div id="aboutUs" title="About Us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"
-    class="me-4" (click)="setAboutDetail()">
-    <i class="fas fa-info i-custom" id="aboutUs_ico"></i>
-  </div>
-  <div id="feedback" title="Write to us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-    aria-controls="offcanvas" class="me-4" (click)="setFeedbackDetail()">
-    <i class="fas fa-envelope i-custom" id="feedback_ico"></i>
-  </div>
-  <div class="me-4" id="copywrite" title="Copywrite" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-    aria-controls="offcanvas" (click)="setCopywriteDetail()">
-    <i class="fas fa-copyright i-custom" id="copywrite_ico"></i>
-  </div>
-  <div class="me-4" id="location" title="locate us on map" data-bs-toggle="offcanvas" data-bs-target="#offcanvasL"
-    aria-controls="offcanvas" (click)="setMapDetail()">
-    <i class="fas fa-map-marker-alt i-custom"></i>
-  </div>
-  <div id="TnC" title="TnC" data-bs-toggle="offcanvas" data-bs-target="#offcanvastnc" aria-controls="offcanvas"
-    class="me-4 i-custom">
-    <b>T&C</b>
-  </div>
-  <div class="me-4" id="twitter"> <a href="https://twitter.com/" target="_blank"><i
-        class="fab fa-twitter i-custom me-4"></i></a></div>
-  <div class="me-4" id="linkedin">
-    <a href="https://www.linkedin.com/company/prasi-labs/" target="_blank">
-      <i class="fab fa-linkedin i-custom me-4"></i></a>
-  </div>
+<div class="ul">
+
+      <div id="we" title="We!" data-bs-toggle="offcanvas" data-bs-target="#offcanvaswe" aria-controls="offcanvas"
+        class="i-custom list-item">
+        <b>We!</b>
+      </div>
+  
+      <div id="contact" title="Contct" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"
+        class="list-item" (click)="setContactDetail()">
+        <i class="fas fa-id-card-alt i-custom" id="contact_ico"></i>
+      </div>
+
+      <div id="aboutUs" title="About Us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+        aria-controls="offcanvas" class="list-item" (click)="setAboutDetail()">
+        <i class="fas fa-info i-custom" id="aboutUs_ico"></i>
+      </div>
+
+      <div id="feedback" title="Write to us" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+        aria-controls="offcanvas" class="list-item" (click)="setFeedbackDetail()">
+        <i class="fas fa-envelope i-custom" id="feedback_ico"></i>
+      </div>
+   
+      
+      <div class="list-item" id="copywrite" title="Copywrite" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+        aria-controls="offcanvas" (click)="setCopywriteDetail()">
+        <i class="fas fa-copyright i-custom" id="copywrite_ico"></i>
+      </div>
+  
+      <div class="list-item" id="location" title="locate us on map" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasL" aria-controls="offcanvas" (click)="setMapDetail()">
+        <i class="fas fa-map-marker-alt i-custom"></i>
+      </div>
+  
+      <div id="TnC" title="TnC" data-bs-toggle="offcanvas" data-bs-target="#offcanvastnc" aria-controls="offcanvas"
+        class="i-custom list-item">
+        <b>T&C</b>
+      </div>
+   
+      <div class="list-item" id="twitter"> <a href="https://twitter.com/" target="_blank"><i
+            class="fab fa-twitter i-custom"></i></a></div>
+
+      <div class="list-item" id="linkedin">
+        <a href="https://www.linkedin.com/company/prasi-labs/" target="_blank">
+          <i class="fab fa-linkedin i-custom"></i></a>
+      </div>
+ 
 </div>
+
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvas">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">
@@ -54,10 +67,11 @@
     </h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-<div class="map">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.315161343237!2d78.38300281433425!3d17.444623305744706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910c675daef9%3A0x5afcb3e5f5e2c241!2sPrasi%20Labs%20Private%20Limited!5e0!3m2!1sen!2sin!4v1634912369875!5m2!1sen!2sin"
-    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+  <div class="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.315161343237!2d78.38300281433425!3d17.444623305744706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910c675daef9%3A0x5afcb3e5f5e2c241!2sPrasi%20Labs%20Private%20Limited!5e0!3m2!1sen!2sin!4v1634912369875!5m2!1sen!2sin"
+      width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
   <div class="offcanvas-body">
     <div [innerHTML]="sectionDetail.detail">
 

@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { AppModule } from '../app.module';
+import { MessagesComponent } from '../messages/messages.component';
 
 @Component({
   selector: 'app-main',
@@ -34,6 +35,7 @@ export class MainComponent implements OnInit {
 
   getProductByName(event :any): any { 
     var eValue=(event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value  ;                         
+    MessagesComponent.setErrormessage(eValue,'Please enter some search criteria');
     const client = this.http.get<any>(AppModule.URL + AppModule.GET_NAME_PRODUCTS + eValue).toPromise();
     return client.then(
       (response: any) => {

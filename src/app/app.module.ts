@@ -64,11 +64,11 @@ import { SearchFilterPipe } from './search-filter.pipe';
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  static readonly URL='http://localhost:3000';
+  static readonly URL='http://103.24.202.225:443';
   static readonly GET_ALL_PRODUCTS='/getoffering/all';
   static readonly GET_NAME_PRODUCTS='/getoffering/name/';
   static readonly GET_CASNO_PRODUCTS='/getoffering/casno/';
-  static readonly GET_CATG_PRODUCTS='/getoffering/category/';
+  static readonly GET_CATG_PRODUCTS='/getoffering/category/'; 
   static readonly GET_CNTRY_PRODUCTS='/getoffering/country/';
   static readonly GET_PTNR_PRODUCTS='/getoffering/partner/';
 }

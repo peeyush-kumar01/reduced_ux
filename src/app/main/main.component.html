@@ -1,114 +1,122 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="mt-1 c-l">
-        <br/>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <button class="btn btn-primary a" title="Search by name" (click)="getProductByName($event)">
-              <i class="fab fa-searchengin"></i>
-            </button>
-          </div>
-          <input class="form-control f" type="text" placeholder="Search by name" />
-        </div>
-        <br/>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <button class="btn btn-secondary a" title="Search by category" (click)="getProductByCatg($event)">
-              <i class=" fab fa-searchengin"></i>
-            </button>
-          </div>
-          <input class="form-control f" type="text" placeholder="Search by category" />
-        </div>
-        <br/>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <button class="btn btn-warning a" title="Search by CAS no" (click)="getProductByCASNo($event)">
-              <i class=" fab fa-searchengin"></i>
-            </button>
-          </div>
-          <input class="form-control f" type="text" placeholder="Search by CAS no" />
-        </div>
-        <br/>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <button class="btn btn-info a" title="Search by our partners" (click)="getProductByPtnr($event)">
-              <i class=" fab fa-searchengin"></i>
-            </button>
-          </div>
-          <input class="form-control f" type="text" placeholder="Search by our partners" />
-        </div>
-        <br/>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <button class="btn btn-dark a" title="Search by country" (click)="getProductByCntry($event)">
-              <i class=" fab fa-searchengin"></i>
-            </button>
-          </div>
-          <input class="form-control f" type="text" placeholder="Search by country" />
-        </div>
-        <br/>
-      </div>
-    </div>
-    <div class="col-sm-8 c-m">
-      <input class="form-control mb-1" [(ngModel)]="filterTerm" type="text" placeholder="Type to filter" />
-      <div class="row row-cols-3">
-        <div *ngFor="let i of products | searchFilter: filterTerm">
-          <div class="col" >
-            <div class="card  shadow-sm m-1 " (click)="setCurObj(i)">
-              <div class="card-header d-flex justify-content-between">
-                <h6>{{ i["Sl No"] }}</h6>
-                <h6>{{ i["CAS No"] }}</h6>
-              </div>
-              <div class="card-body d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModalInfo"><img class="img-c"
-                  src="data:image/png;base64,{{i['image']}}" /></div>
-              <div class="card-footer ">
-                <div class="text-nowrap t-c row flex-row flex-nowrap">
-                  {{ i["Product Name"] }}
-                </div>
-                
-                
-                  <button class="btn btn-sm btn-primary xx">Order&nbsp;now</button>
-                  <button class="btn btn-sm btn-info xy">Add&nbsp;to&nbsp;cart</button>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-sm-2">
-      <div id="carouselExampleIndicators" class="carousel slide c-e" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/Untitled.png" class="d-block w-100 c-m" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src="assets/structure-of-benzene.png" class="d-block w-100 c-m" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Untitled.png" class="d-block w-100 c-m" alt="..." />
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-primary a" title="Search by name" (click)="getProductByName($event)">
+                <i class="fab fa-searchengin"></i>
+              </button>
+            </div>
+            <input class="form-control f" type="text" placeholder="Search by name" />
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-sm-2">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <button class="btn btn-secondary a" title="Search by category" (click)="getProductByCatg($event)">
+                <i class=" fab fa-searchengin"></i>
+              </button>
+            </div>
+            <input class="form-control f" type="text" placeholder="Search by category" />
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <button class="btn btn-warning a" title="Search by CAS no" (click)="getProductByCASNo($event)">
+                <i class=" fab fa-searchengin"></i>
+              </button>
+            </div>
+            <input class="form-control f" type="text" placeholder="Search by CAS no" />
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <button class="btn btn-info a" title="Search by our partners" (click)="getProductByPtnr($event)">
+                <i class=" fab fa-searchengin"></i>
+              </button>
+            </div>
+            <input class="form-control f" type="text" placeholder="Search by our partners" />
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <button class="btn btn-dark a" title="Search by country" (click)="getProductByCntry($event)">
+                <i class=" fab fa-searchengin"></i>
+              </button>
+            </div>
+            <input class="form-control f" type="text" placeholder="Search by country" />
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
       </div>
-      <hr class="border border-success" />
-      <div class="important">
-        This section is meant for important informtion.
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6"><input class="form-control" [(ngModel)]="filterTerm" type="text"
+            placeholder="Type to filter" />
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <!-- -->
+  <div class="custom-align">
+    <div class="row row-cols-3">
+      <div *ngFor="let i of products | searchFilter: filterTerm">
+        <div class="col">
+          <!--       -->
+
+          <div class="slide-container">
+
+            <div class="wrapper" (click)="setCurObj(i)">
+              <div class="clash-card barbarian" data-bs-toggle="modal"
+              data-bs-target="#exampleModalInfo">
+                <div class="clash-card__image clash-card__image--barbarian">
+                  <img src="data:image/png;base64,{{i['image']}}" />
+                </div>
+                <div class="clash-card__level clash-card__level--barbarian">-</div>
+                <div class="clash-card__unit-name">{{ i["Product Name"] }}</div>
+                <div class="clash-card__unit-description">
+                  &nbsp;
+                </div>
+
+                <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
+                  <div class="one-third">
+                    <div class="stat">{{ i["CAS No"] }}</div>
+                    <div class="stat-value">CAS No</div>
+                  </div>
+
+                  <div class="one-third">
+                    <div class="stat">{{ i["CAT No"] }}</div>
+                    <div class="stat-value">CAT No</div>
+                  </div>
+
+                  <div class="one-third no-border">
+                    <div class="stat">{{ i["Sl No"] }}</div>
+                    <div class="stat-value">SL No</div>
+                  </div>
+
+                </div>
+
+              </div> <!-- end clash-card barbarian-->
+            </div> <!-- end wrapper -->
+
+
+          </div>
+
+
+          <!--       -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -116,16 +124,16 @@
         <div class="align-content-center">
           <div class="top">
             {{CardProdObj["Sl No"]}}
-            <br/>
+            <br />
             {{CardProdObj["CAS No"]}}
-            <br/>
+            <br />
             {{CardProdObj["Cat No"]}}
-            <br/>
-            
+            <br />
+
           </div>
           <div class="bottom">
             <img src="data:image/png;base64,{{CardProdObj['image']}}" />
-            <br/>
+            <br />
             {{CardProdObj["Product Name"]}}
           </div>
         </div>

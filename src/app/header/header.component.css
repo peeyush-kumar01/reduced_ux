@@ -1,21 +1,58 @@
 
 .c-head {
-  opacity: 0.8;
-  padding-left: 7rem;
-  padding-right: 7rem;
+  opacity: 0.9;
   min-height: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   justify-content: space-between;
+  background-color: rgb(12, 11, 11);
+  box-shadow: white 0px 3px 8px;
+ 
+}
+.custom-color{
+  color: white !important;
 }
 .x{
   font-size: xx-large;
+  opacity: unset;
 }
 .y{
   font-size: x-small;
   font-weight: bold;
+  opacity: unset;
 }
 .img-n{
   height: 4rem !important;
-  width: 6rem !important;
-  display: block !important;
-  margin-right: 0.3rem !important;
+  width: 5rem !important;
+  display:  inherit !important;
+  margin-right: 0.7rem !important;
+  opacity: unset;
+  box-shadow:black 0px 3px 8px;
+}
+
+.text {
+  position: absolute;
+  top: 50%; 
+  right: 90%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 12em;
+  font-weight: 700;
+  color: rgb(241, 232, 232);
+  opacity: 1.0;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
 }

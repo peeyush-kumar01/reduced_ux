@@ -9,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class MessagesComponent implements OnInit {
 
   constructor() { }
-  messages: string = '';
+  static messages: string = '';
   ngOnInit(): void {
   }
 
+  static setErrormessage(vcheck: any, msg: string) {
+    if (vcheck === undefined || vcheck === null) {
+      MessagesComponent.messages = msg;
+    }else{
+      MessagesComponent.messages ='';
+    }
+  }
+
+  get errorMsg(){
+    return MessagesComponent.messages;
+  }
 }

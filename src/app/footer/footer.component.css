@@ -1,22 +1,4 @@
 
-.footer {
-  color: rgb(211, 247, 8);
-  font-size: larger;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  position:  fixed;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-top:0.5rem;
-  padding-bottom: 0.5rem;
-  bottom: 0;
-  
-}                                                                                                                                     
-.map{
-  margin: 2em !important;
-}
 .i-custom:hover {
   transition: transform 125ms;
   transform: scale(1.1);
@@ -26,10 +8,74 @@
 a {
   color: inherit;
 }
-.c-foot {
-  opacity: 0.8;
+
+.ul {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  top: 60%;
+  left:0%;
+  transform: translate(50%,-50%);
+    /*transform: rotate(-90deg) skew(0deg, 0deg);*/
 }
-.se{
-  text-align: justify;
-  font-size: small ;
+
+.list-item {
+  background: #000;
+  color: yellow;
+  text-align: center;
+  height: 2.5em;
+  width: 4em;
+  line-height: 2.5em;
+  border-bottom: 1px solid #060606;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: all 0.25s linear;
+  margin-top: 0.25em;
+  opacity: 1;
+}
+.list-item:hover {
+  background: #ff6e42;
+  color: #fffcfb;
+  transform: translate(0.9em, -0.9em);
+  transition: all 0.25s linear;
+  box-shadow: -2em 2em 0 #e1e1e1;
+}
+.list-item:hover:before, .list-item:hover:after {
+  transition: all 0.25s linear;
+}
+.list-item:hover:before {
+  background: #b65234;
+  width: 1em;
+  top: 0.5em;
+  left: -1em;
+}
+.list-item:hover:after {
+  background: #b65234;
+  width: 1em;
+  bottom: -2.5em;
+  left: 1em;
+  height: 4em;
+}
+.list-item:before, .list-item:after {
+  content: "";
+  position: absolute;
+  transition: all 0.25s linear;
+  width: 0.5em;
+}
+.list-item:after {
+  height: 4em;
+  background: #181818;
+  bottom: -2.25em;
+  left: 1.5em;
+  transform: rotate(90deg) skew(0, 45deg);
+}
+.list-item:before {
+  height: 2.5em;
+  background: #121212;
+  top: 0.25em;
+  left: -0.5em;
+  transform: skewY(-45deg);
 }
