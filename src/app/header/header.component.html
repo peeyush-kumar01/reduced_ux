@@ -4,43 +4,35 @@
       <ul class="navbar-nav bd-navbar-nav flex-row">
         <li>
           <a class="navbar-brand" routerLink="/main">
-            <!-- img src="assets/Prasilabs.png" class="img-n" / -->
+            <img src="assets/Prasilabs.png" class="img-n" />
           </a>
         </li>
         <li>
           <a class="navbar-brand text" routerLink="/main">
             <div class="x" data-heading="Folded">{{ title | uppercase }}</div>
-            <div class="y">INNOVATION</div>
           </a>
         </li>
       </ul>
-    </div> 
-    <div class="col-sm-6">
-      <div class="row w-100">
-           <div class="col-sm">
-             <a class="navbar-brand " routerLink="/login">
-                    <button class="btn btn-sm btn-warning" type="submit">
-                      Login/Signup
-                    </button>
-             </a>
-          </div>
-      </div>
-      <div class="row w-100">
-        <div class="col-sm-4 float-right">
-          <a class="navbar-brand custom-color" routerLink="/partners">
-            <u>Our Partners</u>
-          </a>
-        </div>
-        <div class="col-sm-4 float-right">
-          <a class="navbar-brand custom-color" routerLink="/partners">
-            <u>Offers</u>
-          </a>
-        </div>
-        <div class="col-sm-4 float-right">
-          <a class="navbar-brand custom-color" routerLink="/partners">
-            <u>Certification</u>
-          </a>
-        </div> 
+    </div>
+    <div class="col-sm-6 d-flex align-items-end justify-content-end">
+
+      <div class="">
+        <a class="navbar-brand custom-color" routerLink="/partners">
+          Our Partners
+        </a>
+         &nbsp;|&nbsp;
+        <a class="navbar-brand custom-color" routerLink="/partners">
+          Offers
+        </a>
+        &nbsp;|&nbsp;
+        <a class="navbar-brand custom-color" routerLink="/partners">
+          Certification
+        </a>
+        &nbsp;|&nbsp;
+       <a class="navbar-brand custom-color" routerLink="/login">
+            Login/Signup
+          </a> 
+
       </div>
     </div>
   </div>

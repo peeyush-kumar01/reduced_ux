@@ -1,40 +1,41 @@
 
 .c-head {
   opacity: 0.9;
-  min-height: 4rem;
+  min-height: 6rem;
   padding-left: 1rem;
   padding-right: 1rem;
   justify-content: space-between;
-  background-color: rgb(12, 11, 11);
-  box-shadow: white 0px 3px 8px;
+  background-color: rgb(6, 46, 119);
+  box-shadow: black 0px 3px 8px;
+
  
 }
 .custom-color{
   color: white !important;
+  font-size: smaller;
+  font-weight: bold;
+
+}
+.custom-color:hover{
+  text-decoration: underline;
 }
 .x{
   font-size: xx-large;
-  opacity: unset;
-}
-.y{
-  font-size: x-small;
-  font-weight: bold;
-  opacity: unset;
 }
 .img-n{
   height: 4rem !important;
   width: 5rem !important;
-  display:  inherit !important;
   margin-right: 0.7rem !important;
-  opacity: unset;
-  box-shadow:black 0px 3px 8px;
+  background-color:white;
 }
 
 .text {
   position: absolute;
+  /*
   top: 50%; 
   right: 90%;
   transform: translate(50%,-50%);
+  */
   text-transform: uppercase;
   font-family: verdana;
   font-size: 12em;

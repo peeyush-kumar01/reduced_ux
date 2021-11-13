@@ -166,7 +166,7 @@ body {
   min-height: 450px;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(to bottom, #8c7a7a 0%, #af877c 65%, #af877c 100%) fixed;
+  background: linear-gradient(to left, white 0%, whitesmoke 65%, rgb(228, 207, 187) 100%) fixed;
   background-size: cover;
   margin: 1em;
 }

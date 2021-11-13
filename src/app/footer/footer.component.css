@@ -2,7 +2,7 @@
 .i-custom:hover {
   transition: transform 125ms;
   transform: scale(1.1);
-  color: rgb(247, 241, 241);
+  color: rgb(26, 63, 224);
   cursor: pointer;
 }
 a {
@@ -11,53 +11,47 @@ a {
 
 .ul {
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
   justify-content: center;
   z-index: 100;
   position: fixed;
-  top: 60%;
-  left:0%;
+  right:50%;  
+  bottom:0;
+  width: 45%;
   transform: translate(50%,-50%);
-    /*transform: rotate(-90deg) skew(0deg, 0deg);*/
+ /*transform: rotate(45deg) skew(0deg, 0deg);*/
 }
-
 .list-item {
-  background: #000;
-  color: yellow;
+  background:none;
+  color:yellow;
   text-align: center;
-  height: 2.5em;
-  width: 4em;
-  line-height: 2.5em;
-  border-bottom: 1px solid #060606;
+  height: 2em;
+  width: 3em;
+  line-height: 2em;
   position: relative;
   display: block;
   text-decoration: none;
   transition: all 0.25s linear;
-  margin-top: 0.25em;
+  margin-right: 1em;
   opacity: 1;
 }
 .list-item:hover {
-  background: #ff6e42;
-  color: #fffcfb;
-  transform: translate(0.9em, -0.9em);
+  color: dodgerblue;
+  transform: translate(0.5em, -0.5em);
   transition: all 0.25s linear;
-  box-shadow: -2em 2em 0 #e1e1e1;
+  z-index: 101;
+  cursor: pointer;
 }
 .list-item:hover:before, .list-item:hover:after {
   transition: all 0.25s linear;
 }
-.list-item:hover:before {
-  background: #b65234;
-  width: 1em;
-  top: 0.5em;
-  left: -1em;
-}
+
 .list-item:hover:after {
   background: #b65234;
   width: 1em;
   bottom: -2.5em;
   left: 1em;
-  height: 4em;
+  height: 5em;
 }
 .list-item:before, .list-item:after {
   content: "";
@@ -66,16 +60,22 @@ a {
   width: 0.5em;
 }
 .list-item:after {
-  height: 4em;
-  background: #181818;
-  bottom: -2.25em;
-  left: 1.5em;
-  transform: rotate(90deg) skew(0, 45deg);
-}
-.list-item:before {
   height: 2.5em;
-  background: #121212;
-  top: 0.25em;
-  left: -0.5em;
-  transform: skewY(-45deg);
+  background: wheat;
+  bottom: -1.5em;
+  left: 0.80em;
+  transform: rotate(90deg) skew(0, 45deg);
+  border-radius: 1em;
+}
+.footer{
+position: fixed;
+bottom: 0;
+width: 50%;
+height: 55px;
+background-color: #460505;
+display: block;
+right: 25%;
+border-top-left-radius: 25px;
+border-top-right-radius: 25px;
+opacity: 0.8;
 }
