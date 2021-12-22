@@ -1,0 +1,10 @@
+.media{
+    font-size: small;
+    margin: 1em;
+}
+
+@media screen and (max-width: 650px){
+    .media{
+        font-size: smaller;
+    }
+}

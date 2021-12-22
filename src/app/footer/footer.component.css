@@ -1,81 +1,20 @@
 
-.i-custom:hover {
-  transition: transform 125ms;
-  transform: scale(1.1);
-  color: rgb(26, 63, 224);
-  cursor: pointer;
-}
-a {
-  color: inherit;
-}
-
-.ul {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  z-index: 100;
-  position: fixed;
-  right:50%;  
-  bottom:0;
-  width: 45%;
-  transform: translate(50%,-50%);
- /*transform: rotate(45deg) skew(0deg, 0deg);*/
-}
-.list-item {
-  background:none;
-  color:yellow;
-  text-align: center;
-  height: 2em;
-  width: 3em;
-  line-height: 2em;
-  position: relative;
-  display: block;
-  text-decoration: none;
-  transition: all 0.25s linear;
-  margin-right: 1em;
-  opacity: 1;
-}
-.list-item:hover {
-  color: dodgerblue;
-  transform: translate(0.5em, -0.5em);
-  transition: all 0.25s linear;
-  z-index: 101;
-  cursor: pointer;
-}
-.list-item:hover:before, .list-item:hover:after {
-  transition: all 0.25s linear;
-}
-
-.list-item:hover:after {
-  background: #b65234;
-  width: 1em;
-  bottom: -2.5em;
-  left: 1em;
-  height: 5em;
-}
-.list-item:before, .list-item:after {
-  content: "";
-  position: absolute;
-  transition: all 0.25s linear;
-  width: 0.5em;
-}
-.list-item:after {
-  height: 2.5em;
-  background: wheat;
-  bottom: -1.5em;
-  left: 0.80em;
-  transform: rotate(90deg) skew(0, 45deg);
-  border-radius: 1em;
-}
 .footer{
-position: fixed;
-bottom: 0;
-width: 50%;
-height: 55px;
-background-color: #460505;
-display: block;
-right: 25%;
-border-top-left-radius: 25px;
-border-top-right-radius: 25px;
-opacity: 0.8;
+position: relative;
+background-image:linear-gradient(to bottom,rgba(9, 10, 10, 0.897),rgba(9, 10, 10, 0.897));
+min-height: 100px;
+color: white;
+font-weight: bold;
+font-size: medium;
+width: 100%;
+clear: both;
+}
+
+/* Change navbar styling on small viewports */
+@media (max-width: 991.98px) { 
+  .footer {
+    min-height: auto;
+    font-size: small;
+    min-height: 50px;
+  }
 }

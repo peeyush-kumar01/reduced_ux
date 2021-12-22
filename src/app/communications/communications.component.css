@@ -7,3 +7,8 @@
 .custom-c{
   color:chocolate;
 }
+@media screen and (max-width:900px) {
+  .media,.btn{
+    font-size: smaller;
+  }
+}

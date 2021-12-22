@@ -21,3 +21,8 @@
   cursor: not-allowed;
 }
 
+@media screen and (max-width:900px) {
+  .media,.btn{
+    font-size: smaller;
+  }
+}

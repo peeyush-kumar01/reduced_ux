@@ -1,0 +1,136 @@
+<div class="offer1 d-flex align-items-center justify-content-evenly clearfix">
+    <div class="row x">
+        <div class="col-sm-12 text-center">
+            <h4><strong>Search any product</strong></h4>
+        </div>
+        <div class="col-sm-12">
+            <div class="dot"><a id="searchAll" routerLink="main" class="btn btn-warning broder">Search</a>
+                <input class="form-control" type="text" />
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <h4><strong>Explore our products</strong></h4>
+        </div>
+        <div class="col-sm-4">
+            <div class="dot"><a id="searchAPI" routerLink="main">API</a></div>
+        </div>
+        <div class="col-sm-4">
+            <div class="dot"><a id="searchDP" routerLink="main">Degradation Products</a></div>
+        </div>
+        <div class="col-sm-4">
+            <div class="dot"><a id="searchDM" routerLink="main">Drug Metabolites</a></div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="dot"><a id="searchCN" routerLink="main">Country</a></div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dot"><a id="searchSP" routerLink="main">Speciality</a></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="text-center fs-1 text-primary mt-3">
+        Our Values
+    </div>
+    <div class="row principal">
+        <div class="col-sm-12 principal-left mb-3">
+            <div class="row">
+                <div class="col-sm-4 d-flex align-items-center justify-content-center mb-1">
+                    <div class="rounded-pill commitment" title="COMMITMENT" (click)="setCommitment()"
+                        data-bs-toggle="collapse" data-bs-target="collapseSecP" aria-controls="collapseSec"
+                        [attr.aria-expanded]="!isModelP">
+                        <i class="fas fa-handshake fa-3x"></i>
+                    </div>
+                    &nbsp;
+                    <div class="ctext">COMMITMENT</div>
+                </div>
+                <div class="col-sm-4 d-flex align-items-center justify-content-center  mb-1">
+                    <div class="rounded-pill consistency" title="CONSISTENCY" (click)="setConsistency()"
+                        data-bs-toggle="collapse" data-bs-target="collapseSecP" aria-controls="collapseSec"
+                        [attr.aria-expanded]="!isModelP">
+                        <i class="fas fa-thumbs-up fa-3x"></i>
+                    </div>
+                    &nbsp;
+                    <div class="ctext">CONSISTENCY</div>
+                </div>
+                <div class="col-sm-4 d-flex align-items-center justify-content-center  mb-1">
+                    <div class="rounded-pill transparency" title="TRANSPARENCY" (click)="setTransparecy()"
+                        data-bs-toggle="collapse" data-bs-target="collapseSecP" aria-controls="collapseSec"
+                        [attr.aria-expanded]="!isModelP">
+                        <i class="fas fa-hand-paper fa-3x"></i>
+                    </div>
+                    &nbsp;
+                    <div class="ctext">TRANSPARENCY</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-12 principal-right">
+            <div class="collapse" id="collapseSecP" [(ngbCollapse)]="isModelP" (click)="isModelP" [animation]="true">
+                <div class="card text">
+                    <div class="card-header text-shadow">
+                        {{principle.header}}
+                    </div>
+                    <div class="card-body">
+                        <P class="text-break fw-normal text-justify lh-base">
+                            {{principle.detail}}
+                        </P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-12">
+        <app-offering></app-offering>
+    </div>
+</div>
+<div class="text-center fs-1 text-primary">
+    And We Hear
+</div>
+<div class="container-fluid testimonies">
+        <div class="row">
+            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
+                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+                    never mind
+                    but fineklfslfsfdsjfkjdsfds
+                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
+                    ldkdlddsdksdsjdsdjlkdlkdslfd
+                    ldkdfdsflj</p>
+            </div>
+            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
+                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+                    never mind
+                    but fineklfslfsfdsjfkjdsfds
+                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
+                    ldkdlddsdksdsjdsdjlkdlkdslfd
+                    ldkdfdsflj</p>
+            </div>
+            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
+                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+                    never mind
+                    but fineklfslfsfdsjfkjdsfds
+                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
+                    ldkdlddsdksdsjdsdjlkdlkdslfd
+                    ldkdfdsflj</p>
+            </div>
+            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
+                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+                    never mind
+                    but fineklfslfsfdsjfkjdsfds
+                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
+                    ldkdlddsdksdsjdsdjlkdlkdslfd
+                    ldkdfdsflj</p>
+            </div>
+            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
+                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+                    never mind
+                    but fineklfslfsfdsjfkjdsfds
+                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
+                    ldkdlddsdksdsjdsdjlkdlkdslfd
+                    ldkdfdsflj</p>
+            </div>
+        </div>
+</div>

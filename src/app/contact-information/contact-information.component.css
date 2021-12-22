@@ -43,3 +43,8 @@
   border: none;
   align-items: center;
 }
+@media screen and (max-width:900px) {
+  .media,input{
+    font-size: smaller;
+  }
+}

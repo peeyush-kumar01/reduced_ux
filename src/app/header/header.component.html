@@ -1,39 +1,102 @@
-<nav class="navbar flex-column flex-md-row c-head">
-  <div class="row w-100">
-    <div class="col-sm-6">
-      <ul class="navbar-nav bd-navbar-nav flex-row">
-        <li>
-          <a class="navbar-brand" routerLink="/main">
-            <img src="assets/Prasilabs.png" class="img-n" />
-          </a>
-        </li>
-        <li>
-          <a class="navbar-brand text" routerLink="/main">
-            <div class="x" data-heading="Folded">{{ title | uppercase }}</div>
-          </a>
-        </li>
-      </ul>
+<header class="header">
+  <nav class="navbar navbar-expand-lg py-3">
+    <div class="container">
+      <a href="#" class="navbar-brand text-uppercase font-weight-bold">
+        <div class="d-flex">
+          <img src="../../assets/Prasilabs.png" class="title" />
+          &nbsp;
+          <!-- <h2><strong>PRASI LABS</strong></h2> -->
+        </div>
+      </a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+        aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+      <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav w-25 nav-pills float-end">
+          <li class="nav-item">
+            <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setAboutDetail()"
+              class="nav-link text-uppercase font-weight-bold shadow" data-bs-toggle="collapse"
+              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" title="About Us">
+              We!
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setContactDetail()" data-bs-toggle="collapse"
+              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" class="nav-link shadow" title="Contact">
+              <i class="fas fa-id-card-alt" id="contact_ico"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#collapseSecFeedback" (click)="isCollapsed = !isCollapsed;setFeedbackDetail()"
+              data-bs-toggle="collapse" aria-controls="collapseSecFeedback" [attr.aria-expanded]="!isCollapsed"
+              class="nav-link shadow" title="Feedback">
+              <i class="fas fa-envelope" id="feedback_ico"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setMapDetail()" data-bs-toggle="collapse"
+              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" class="nav-link shadow">
+              <i class="fas fa-map-marker-alt"></i>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setTnCDetail()" data-bs-toggle="collapse"
+              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed"
+              class="nav-link text-uppercase font-weight-bold shadow">
+              T&C
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/" target="_blank" (click)="isCollapsed = !isCollapsed" class="nav-link shadow">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.linkedin.com/company/prasi-labs/" target="_blank" (click)="isCollapsed = !isCollapsed"
+              class="nav-link shadow"><i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLinkActive]="'active'" routerLink="login" (click)="isCollapsed = !isCollapsed"
+              class="nav-link shadow"><i class="fas fa-sign-in-alt"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="col-sm-6 d-flex align-items-end justify-content-end">
+  </nav>
+</header>
+<div class="collapse" id="collapseSec" [(ngbCollapse)]="isModel" (click)="isModel=true" [animation]="true">
+  <div class="card sd m-5">
+    <div class="card-header">
+      {{sectionDetail['header']}}
+    </div>
+    <div class="card-body" [innerHtml]="sectionDetail['detail']">
 
-      <div class="">
-        <a class="navbar-brand custom-color" routerLink="/partners">
-          Our Partners
-        </a>
-         &nbsp;|&nbsp;
-        <a class="navbar-brand custom-color" routerLink="/partners">
-          Offers
-        </a>
-        &nbsp;|&nbsp;
-        <a class="navbar-brand custom-color" routerLink="/partners">
-          Certification
-        </a>
-        &nbsp;|&nbsp;
-       <a class="navbar-brand custom-color" routerLink="/login">
-            Login/Signup
-          </a> 
+    </div>
+  </div>
+</div>
 
+<div class="collapse" id="collapseSecFeedback" [(ngbCollapse)]="isModel1" [animation]="true">
+  <div class="card sd m-5">
+    <div class="card-header">
+      {{sectionDetail['header']}}
+    </div>
+    <div class="card-body">
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="e" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="detail">Message</label>
+            <textarea class="form-control" id="detail" rows="3"></textarea>
+          </div>
+          <button class="btn btn-sm btn-primary" (click)="submitFeedback();">Submit</button>
+        </form>
       </div>
     </div>
   </div>
-</nav>
+</div>

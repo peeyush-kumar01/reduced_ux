@@ -7,3 +7,9 @@
   padding-bottom: 3%;
   border: none;
 }
+
+@media screen and (max-width: 650px) {
+  .smedia{
+    font-size: smaller;
+  }
+}

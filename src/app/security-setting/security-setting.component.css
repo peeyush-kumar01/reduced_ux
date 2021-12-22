@@ -2,3 +2,9 @@
 .card{
   border: none;
 }
+
+@media screen and (max-width:900px) {
+  .media{
+    font-size: small;
+  }
+}

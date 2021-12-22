@@ -1,7 +1,7 @@
 <br />
 <h4 class="custom-c">Service Requests</h4>
 <hr id="horzntl-custom-inv" />
-<div class="container mt-2">
+<div class="container media mt-2">
   <div class="row row-cols-4 text-center text-uppercase mb-2">
     <div class="col flex-sm-col border-bottom col-color shadow">SR#</div>
     <div class="col d-table-cell border-bottom col-color shadow-sm">
@@ -11,7 +11,7 @@
     <div class="col d-table-cell border-bottom col-color shadow-sm">Action</div>
   </div>
   <div *ngFor="let val of SR; let i = index">
-    <div class="row row-cols-4 text-start text-dark">
+    <div class="row row-cols-4 text-start text-dark me-1">
       <div
         class="col d-flex justify-content-center"
         data-bs-toggle="modal"
@@ -40,7 +40,7 @@
           Update
         </div>
         <div
-          class="btn btn-sm btn-success m-1"
+          class="btn btn-sm btn-success"
           id="srclose{{ i }}"
           (mouseenter)="getId($event)"
           [ngStyle]="id == 'srclose' + i ? getStyle() : {}"

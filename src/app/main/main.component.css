@@ -1,76 +1,73 @@
-
-.custom-select{
-  width:   1% !important;
+.resultCard{
+  position: relative;
+  margin-top: 3rem;
+  margin-left: 1rem;
+  margin-right: 4rem;
 }
-.filter{
-  background-color:lightcyan;
+.top{
+  position:fixed;
+  z-index: 1;
+  bottom: 100px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
 }
-.card{
-  background: white;
-  margin: 1rem;
-  border-radius: 19px;
+.circle{
+  border-radius: 50%;
+  background:rgba(2,2,2,0.2);
+  width: 3em;
+  height: 3em;
   text-align: center;
-  box-shadow: -1px 15px 30px -12px black;
-  
-}
-.card:hover {
-  transition: transform 125ms;
-  transform: scale(1.05);
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 3px;
   cursor: pointer;
 }
-
-.card-header{
-  background-image: linear-gradient(to bottom,rgb(238, 178, 122),white);
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  border: none;
+.circle:hover{
+  transition: 1s;
+  transform: scale(1.3);
 }
-
-.card-header img {
+.img{
+  position: relative;
   width: 15vw;
   height: 15vh;
-  position: relative;
- margin-top: 1em;
- 
 }
-.card-body{
-  padding: 5px;
-  margin-bottom: 5px;
-  min-width: fit-content;
+.prod{
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  margin: 1em;
+  min-height: 55vh !important;
+  cursor: pointer;
+  background: linear-gradient(to bottom,white,rgb(158, 236, 197));
+}
+
+.ch,.cb,.cf {
+  background-color: transparent !important;
+  border:none !important;
+  text-align: center;
+}
+.bt{
+  color: black;
+}
+.bt:hover{
+  background-color: yellow;
+}
+.cb{
+  color: rgb(80, 26, 5);
+  font-size: small;
+}
+.cf{
+  font-size: smaller;
+}
+.prod:hover{
+  transform: scale(1.1);
+  transition: 0.8s;
+  background: linear-gradient(to bottom,rgb(158, 236, 197),white);
+}
+@media screen and (max-width: 650px) {
+
+.img{
+  position: relative;
+  width: 60vw;
   height: 20vh;
-}
-
-.card-footer{
-  color: white;
-  font-weight: 300;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-  border: none;
-  background: #EC9B3B;
-}
-
-.card-footer .one-third {
-  border-right: 1px solid #BD7C2F;
-  width: 33%;
-  float: left;
-}
-
-.card-footer .two-third {
-  border-right: 1px solid #BD7C2F;
-  width: 66%;
-  float: right;
-}
-
-.card-footer .stat {
-  position: relative;
-  font-size: 24px;
-  margin-bottom: 1em;
-}
-.card-footer .stat-value {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 12px;
-}
-.card-footer .no-border{
-  border-right: none;
+ }
 }

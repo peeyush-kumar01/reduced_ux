@@ -38,15 +38,15 @@
         >
           <div class="row row-cols-4">
             <div
-              class="col"
+              class="col colc"
               [ngStyle]="{ color: order['orderIconColor'] }"
               title="{{ order['orderStatus'] }}"
             >
               <i class="fas {{ icon[order['orderStatus']] }} fa-lg"></i>
             </div>
-            <div class="col">{{ order["order#"] }} ;</div>
-            <div class="col">other payment detail</div>
-            <div class="col">Shipping detail</div>
+            <div class="col colc">{{ order["order#"] }} ;</div>
+            <div class="col colc">other payment detail</div>
+            <div class="col colc">Shipping detail</div>
           </div>
         </div>
       </h4>
@@ -57,8 +57,8 @@
         data-bs-parent="#accordionFlush"
       >
         <div class="accordion-body">
-          <div class="row row-cols-3">
-            <div class="col mb-2" *ngFor="let item of order.items">
+          <div class="row">
+            <div class="col-sm-4 mb-2" *ngFor="let item of order.items">
               <div class="card border-info shadow-sm">
                 <div class="card-header">
                   <div class="row row-cols-4">

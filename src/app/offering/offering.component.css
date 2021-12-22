@@ -1,0 +1,62 @@
+.offer{
+margin: 1em;
+display: block;
+}
+
+.color{
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background-color: paleturquoise;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+    color: rgb(9, 16, 78);
+}
+
+.colornone{
+    min-height: 20em;   
+    display: block;
+    border:none;
+    background-color: gray;
+    color: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    text-align: center;
+    text-justify: newspaper;
+    
+}
+.color:hover{
+    background-color: mediumspringgreen;
+}
+.wc{
+    width: 600px;
+    height: 400px;
+}
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 650px) {
+    p {
+      font-size: 8px;
+    }
+ 
+    .offer1{
+        min-height: 25em;
+    }
+
+    .wc{
+        width: 500px;
+        height: 300px;
+    }
+  }
+ 
+  @media screen and (max-width: 980px) {
+    p {
+      font-size: 12px;
+    }
+    .offer1{
+        min-height: 25em;
+    }
+  }

@@ -1,59 +1,79 @@
-
-.c-head {
-  opacity: 0.9;
-  min-height: 6rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  justify-content: space-between;
-  background-color: rgb(6, 46, 119);
-  box-shadow: black 0px 3px 8px;
-
- 
+.navbar {
+  transition: all 0.8s;
+ /* background-color: crimson;*/
+ box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
 }
-.custom-color{
-  color: white !important;
-  font-size: smaller;
-  font-weight: bold;
-
+.sd{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.custom-color:hover{
-  text-decoration: underline;
-}
-.x{
-  font-size: xx-large;
-}
-.img-n{
-  height: 4rem !important;
-  width: 5rem !important;
-  margin-right: 0.7rem !important;
-  background-color:white;
+.navbar .nav-link {
+  color: rgb(52, 165, 42);
+  text-align: center;
 }
 
-.text {
-  position: absolute;
-  /*
-  top: 50%; 
-  right: 90%;
-  transform: translate(50%,-50%);
-  */
-  text-transform: uppercase;
-  font-family: verdana;
-  font-size: 12em;
-  font-weight: 700;
-  color: rgb(241, 232, 232);
-  opacity: 1.0;
-  text-shadow: 1px 1px 1px #919191,
-      1px 2px 1px #919191,
-      1px 3px 1px #919191,
-      1px 4px 1px #919191,
-      1px 5px 1px #919191,
-      1px 6px 1px #919191,
-      1px 7px 1px #919191,
-      1px 8px 1px #919191,
-      1px 9px 1px #919191,
-      1px 10px 1px #919191,
-  1px 18px 6px rgba(16,16,16,0.4),
-  1px 22px 10px rgba(16,16,16,0.2),
-  1px 25px 35px rgba(16,16,16,0.2),
-  1px 30px 60px rgba(16,16,16,0.4);
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: steelblue;
+  text-decoration: none;
+}
+.title{
+  height: 60px;
+  width: 120px;
+}
+.navbar .navbar-brand {
+  color:crimson;  
+}
+
+
+/* Change navbar styling on scroll */
+.navbar.active {
+  background: #fff;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active .nav-link {
+  color: #555;
+}
+
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+  color: #555;
+  text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+  color: #555;
+}
+.nav-item:hover{
+  transform: scale(1.25);
+  transition: 0.8s;
+}
+.navbar-brand:hover{
+  transform: scale(1.25);
+  transition: 0.8s;
+}
+.nav-item{
+
+  transition: 0.8s;
+}
+.navbar-brand{
+  transition: 0.8s;
+}
+/* Change navbar styling on small viewports */
+@media (max-width: 991.98px) {
+  .navbar {
+      background: #fff transparent;
+  }
+
+  .navbar .navbar-brand, .navbar .nav-link {
+      color:crimson;
+  }
+
+  .navbar .nav-link {
+    color: rgb(52, 165, 42);
+}
+
+  .navbar-toggler{
+    color: brown;
+  }
 }

@@ -1,75 +1,67 @@
-
+<div class="resultCard" id="top">
+  <div class="container d-flex align-content-center justify-content-center mb-2">
+    <select class="form-control form-control-sm w-50">
+      <option>All</option>
+      <option>Country</option>
+      <option>partners</option>
+    </select>
+    <select class="form-control form-control-sm w-50">
+      <option>All</option>
+      <option>Small select</option>
+      <option>Small select</option>
+    </select>
+    <div class="input-group w-60">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-search fa-2x"></i></div>
+      </div>
+      <input type="text" class="form-control" id="inlineFormInputGroup">
+    </div>
+  </div>
   <div class="row">
-    <div class="col-sm-12">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="btn btn-info" for="inputGroupSelect01">Search</label>
+    <ng-container *ngFor="let i of products | searchFilter: filterTerm">
+      <div class="col-sm-3">
+        <div class="card prod clearfix">
+          <div class="card-header ch" (click)="setCurObj(i)" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">
+            <img class="img" src="data:image/png;base64,{{i['image']}}" />
+          </div>
+          <div class="card-body cb text-wrap text-break" (click)="setCurObj(i)" data-bs-toggle="modal"
+            data-bs-target="#exampleModalInfo">
+            CAS#:{{CardProdObj["CAS No"]}}
+            <hr>
+            {{ i["productname"] }}
+          </div>
+          <div class="card-footer cf">
+            <div class="row align-items-start">
+              <div class="col">
+                Price
+              </div>
+              <div class="col">
+                Qantity
+              </div>
+              <div class="col">
+                Very reactive
+              </div>
             </div>
-            <div class="w-25">
-            <select class="form-control" id="inputGroupSelect01">
-              <option selected>...</option>
-              <option value="name">Product Name</option>
-              <option value="CAS">CAS No</option>
-              <option value="Cat">Category</option>
-              <option value="Country">Country</option>
-              <option value="Partner">Partner</option>
-            </select></div>
-            <input type="text" placeholder="Choose category and type to search" class="form-control" aria-label="Text input with segmented dropdown button">
+            <div class="row align-items-end">
+              <div class="col">
+                <a class="btn btn-sm btn-info bt">Add to cart</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-sm btn-primary bt">Order now</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-sm-6"><input class="form-control filter" [(ngModel)]="filterTerm" type="text"
-          placeholder="Type to filter" />
       </div>
-      </div>
-    </div>
+    </ng-container>
   </div>
-  <!-- -->
-  <div class="custom-align">
-    <div class="row row-cols-4">
-      <div *ngFor="let i of products | searchFilter: filterTerm">
-        <div class="col">
-          <!--       -->
-
-          <div class="card clearfix" (click)="setCurObj(i)" data-bs-toggle="modal"
-          data-bs-target="#exampleModalInfo">
-              
-                <div class="card-header">
-                  <img src="data:image/png;base64,{{i['image']}}" />
-                </div>
-                
-                <div class="card-body text-wrap text-break">
-                  {{ i["Product Name"] }}
-                </div>
-
-                <div class="card-footer">
-                  <div class="one-third">
-                    <div class="stat">{{ i["SL No"] }}</div>
-                    <div class="stat-value">SL No</div>
-                  </div>
-
-                  <div class="two-third no-border">
-                    <div class="stat">{{ i["CAS No"] }}</div>
-                    <div class="stat-value">CAS No</div>
-                  </div>
-
-                </div>
-          </div>
-
-
-          <!--       -->
-        </div>
-      </div>
-    </div>
-  </div>
-
+</div>
 <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
         <div class="align-content-center">
-          <div class="top">
+          <div class="">
             {{CardProdObj["Sl No"]}}
             <br />
             {{CardProdObj["CAS No"]}}
@@ -78,7 +70,7 @@
             <br />
 
           </div>
-          <div class="bottom">
+          <div class="">
             <img src="data:image/png;base64,{{CardProdObj['image']}}" />
             <br />
             {{CardProdObj["Product Name"]}}
@@ -86,10 +78,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-primary">
+        <button type="button" class="btn btn-sm btn-primary bt">
           Order&nbsp;now
         </button>
-        <button type="button" class="btn btn-sm btn-info">
+        <button type="button" class="btn btn-sm btn-info bt">
           Add&nbsp;to&nbsp;cart
         </button>
         <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
@@ -99,5 +91,10 @@
     </div>
   </div>
 </div>
-
+<div class="top">
+  <div class="circle"><i class="fas fa-sort-alpha-up-alt fa-2x"></i></div>
+  <div class="circle"><i class="fas fa-sort-alpha-down-alt fa-2x"></i></div>
+  <div class="circle"> <i class="fas fa-filter fa-2x"></i></div>
+  <div class="circle" (click)="goBack();">TOP</div>
+</div>
 <div class="mt-2"><br /></div>

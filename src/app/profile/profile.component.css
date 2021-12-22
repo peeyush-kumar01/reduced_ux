@@ -10,3 +10,15 @@
   transition: transform 125ms;
   transform: scale(0.8);
 }
+
+@media screen and (max-width:900px){
+  .media{
+    font-size: smaller;
+    text-align: center;
+
+  }
+  h5{
+    font-size: small;
+    font-weight: 900;
+  }
+}

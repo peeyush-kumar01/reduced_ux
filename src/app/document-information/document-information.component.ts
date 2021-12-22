@@ -22,7 +22,7 @@ export class DocumentInformationComponent implements OnInit {
       docId: '',
     },
     {
-      docName: 'sds',
+      docName: 'sdsfffdfffdsfdsfdfsfsdfdsf',
       docType: '',
       docId: '',
     },

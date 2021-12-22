@@ -1,10 +1,9 @@
 
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard, AppService } from './app.service';
 import {HttpClientModule} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +30,11 @@ import { UserComponent } from './user/user.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { PrincipalComponent } from './principal/principal.component';
+import { OfferingComponent } from './offering/offering.component';
+
+
+import {productModel} from './products';
 
 @NgModule({
   declarations: [
@@ -58,13 +62,15 @@ import { SearchFilterPipe } from './search-filter.pipe';
     MainComponent,
     PageNotFoundComponent,
     SearchFilterPipe,
+    PrincipalComponent,
+    OfferingComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule,HttpClientModule],
   providers: [AuthGuard, AppService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  static readonly URL='http://103.24.202.225:443';
+  static readonly URL='http://localhost:3000';
   static readonly GET_ALL_PRODUCTS='/getoffering/all';
   static readonly GET_NAME_PRODUCTS='/getoffering/name/';
   static readonly GET_CASNO_PRODUCTS='/getoffering/casno/';

@@ -1,6 +1,6 @@
 
 export interface Account {
-  customerid: String;
+  customerid?: String;
   name: String;
   email: String;
   pan?: String;

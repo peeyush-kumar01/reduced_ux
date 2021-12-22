@@ -19,8 +19,10 @@ import { CartComponent } from './cart/cart.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './app.service';
+import { PrincipalComponent } from './principal/principal.component';
 
 const routes: Routes = [
+  { path: '', component: PrincipalComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainComponent },
   {
@@ -63,8 +65,16 @@ const routes: Routes = [
         component: SecuritySettingComponent,
         canActivate: [AuthGuard],
       },
-      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+      },
       {
         path: 'invoice',
         component: InvoicesComponent,
@@ -80,10 +90,13 @@ const routes: Routes = [
         component: CommunicationsComponent,
         canActivate: [AuthGuard],
       },
-      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [AuthGuard]
+      },
     ],
   },
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -91,4 +104,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

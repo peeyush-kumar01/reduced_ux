@@ -1,0 +1,205 @@
+.offer1{
+  background:  url("../../assets/BGI.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  box-shadow: rgb(0, 0, 0) 5px 10px 18px;
+  min-height: 25em;
+  border-radius: 19px;
+  padding:3em;
+  margin-top: 3em;
+  margin-left: 2em;
+  margin-right: 2em;
+  }
+  .dot{
+    display: flex;
+    flex: 2 1;
+    margin: 1rem 1rem;
+    border-radius: 10px;
+    padding: 20px 20px 20px;
+    background-image: linear-gradient(to bottom,rgb(241, 96, 96),white);
+    cursor: pointer;
+    }
+    .dot:hover{
+        background-image: linear-gradient(to top,rgb(96, 142, 241),white);
+    }
+    .x{
+      padding: 2em;
+      background-color: rgba(245, 238, 238,0.7);
+      font-weight: 700;
+}
+
+
+.principal{
+    transform: all 2s;
+    font-weight: bold;
+    display: flex;
+    padding: 3em;
+    justify-content: center;
+    transition-property: all;
+    transition-duration: 4s;
+    transition-delay: 2s;
+    position: relative;
+}
+.principal-left{
+    transform: all 0.4s;
+    font-weight: bold;
+    /*
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;*/
+}
+.principal-right{
+    transform: all 0.4s;
+    background: transparent;
+   /* animation-name: floating;*/
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    
+}
+.principal-right:hover{
+    animation-play-state: paused;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
+.commitment{
+    padding: 1em;
+    color:  rgb(10, 105, 165);
+    animation-name: rotate; 
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    box-shadow:rgb(10, 105, 165) 0px 1px 3px;
+    cursor: pointer;
+
+}
+.consistency{
+    padding: 1em;
+    color: rgb(150, 13, 150);
+  animation-name: rotate;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    box-shadow: rgb(150, 13, 150) 0px 1px 3px;
+    cursor: pointer;
+}
+.transparency{
+    padding: 1em;
+    color: rgb(34, 56, 34);
+    animation-name: rotate;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    box-shadow: rgb(34, 56, 34) 0px 1px 3px;
+    cursor: pointer;
+ 
+}
+  
+
+@keyframes rotate {
+    0% { transform: scale(0.95); }
+    50%  { transform: scale(1.0); }
+    100%   { transform: scale(0.95); } 
+}
+.commitment:hover{
+    animation-play-state: paused;
+    background: transparent;
+}
+.consistency:hover{
+    animation-play-state: paused;
+    background: transparent;
+}
+.transparency:hover{
+    animation-play-state: paused;
+    background: transparent;
+}
+.testimonies{
+background:linear-gradient(to bottom,white,rgb(146, 241, 194));
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+box-shadow: violet 1px 4px 6px;
+min-height: 100vh;
+border-bottom-left-radius: 15%;
+border-bottom-right-radius: 15%;
+background-blend-mode: hue;
+}
+.testm{
+  background-color:transparent;
+  color: rgb(214, 178, 111);
+  min-height: 25vh;
+}
+.conBnd{
+  border-top-left-radius: 15% !important;
+  border-top-right-radius: 15% !important;
+  background-color:blanchedalmond !important;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+.ctext{
+  font-size: large;
+}
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 650px) {
+    p {
+      font-size: 8px;
+    }
+    .principal-right{
+        height: max-content;
+        width: max-content;
+    }
+    .commitment{
+      width: 60%;
+      text-align: center;
+  }
+  .transparency{
+      width: 60%;
+      text-align: center;
+  }
+  .consistency{
+      width: 60%;
+      text-align: center;
+  }
+    .ctext{
+      font-size: smaller;
+      display: none;
+    }
+    .offer1{
+      padding:1em;
+      font-size: small;
+    }
+  }
+ 
+  @media screen and (max-width: 980px) {
+    p {
+      font-size: 12px;
+    }
+      .commitment{
+          width: 90%;
+      }
+      .transparency{
+          width: 90%;
+      }
+      .consistency{
+          width: 90%;
+      }
+      .ctext{
+        font-size: small;
+      }
+    .principal-right{
+        height: max-content;
+    }
+    .offer1{
+      padding:1em;
+      font-size: small;
+    }
+    
+  }

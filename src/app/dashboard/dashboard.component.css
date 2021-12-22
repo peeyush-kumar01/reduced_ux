@@ -12,3 +12,9 @@
 .cart-c{
   color:brown;
 }
+
+@media screen and (max-width: 650px){
+  ul,a{
+    font-size: smaller;
+  }
+}

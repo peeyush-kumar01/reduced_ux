@@ -8,12 +8,12 @@
   cursor: pointer;
 }
 .x-fit {
-  width: min-content;
-  height: min-content;
+  width: auto;
+  height: auto;
 }
 .card{
   border: none;
-
+  background-color:transparent;
 }
 .fit{
   width: 4em;
@@ -23,4 +23,10 @@
 .x-fit:active{
   transition: transform 125ms;
   transform: scale(0.8);
+}
+
+@media screen and (max-width:900px){
+  .card-title{
+    font-size: smaller;
+  }
 }

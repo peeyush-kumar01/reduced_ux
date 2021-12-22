@@ -3,12 +3,12 @@
 <h4 class="custom-c">Contacts</h4>
 <a routerLink="../../profile">Back</a>
 <hr id="horzntl-custom-inv" />
-<div class="container">
-  <div class="d-flex row row-cols-3">
-    <div class="col" *ngFor="let con of contacts">
+<div class="container media">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let con of contacts">
       <div class="m-2">
         <div
-          class="badge bg-secondary float-start w-25"
+          class="badge bg-secondary float-start"
           *ngIf="con['contactType'] !== ''"
           [ngClass]="con['contactClass']"
         >
