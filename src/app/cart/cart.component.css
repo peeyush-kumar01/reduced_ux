@@ -1,0 +1,45 @@
+.osum{
+    float: left;
+    display: block;
+    min-height: 15rem;
+    min-width: auto;
+    color: rgba(8, 4, 4, 0.699);
+    background-color: transparent;
+    margin-top: 2%;
+}
+.oaddr{
+    float: inline-start;
+    color: rgba(7, 3, 3, 0.699);
+    margin-top: 10%;
+    margin-left: 5%;
+}
+.billcart{
+    float: left;
+}
+.shipcart{
+    margin-left: 2%;
+    float: right;
+}
+.summary{
+    min-width: 100%;
+    min-height: 15rem;
+}
+.listItem{
+    margin-top: 2%;
+    min-width: 100%;
+    float: inline-end;
+}
+@media screen and (max-width:900px){
+    .osum{
+        font-size: smaller;
+    }
+    .oaddr{
+        font-size: smaller;
+    }
+    .listItem{
+        font-size: smaller;
+    }
+    select{
+        font-size: smaller;
+    }
+}

@@ -8,6 +8,7 @@ font-weight: bold;
 font-size: medium;
 width: 100%;
 clear: both;
+transform: translateY(99%);
 }
 
 /* Change navbar styling on small viewports */
