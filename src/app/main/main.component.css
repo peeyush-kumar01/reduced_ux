@@ -63,11 +63,19 @@
   transition: 0.8s;
   background: linear-gradient(to bottom,rgb(158, 236, 197),white);
 }
+.input-group-text:hover{
+  cursor: pointer;
+  background-color: yellow;
+
+}
 @media screen and (max-width: 650px) {
 
 .img{
   position: relative;
   width: 60vw;
   height: 20vh;
+ }
+ section{
+   font-size: small;
  }
 }

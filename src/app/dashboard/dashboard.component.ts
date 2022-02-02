@@ -1,6 +1,4 @@
 
-import { DOCUMENT } from '@angular/common';
-import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

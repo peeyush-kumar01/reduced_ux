@@ -21,7 +21,7 @@
       </ul>
     </div>
     <div class="col card">
-      <form>
+      <form (ngSubmit)="loginService()">
         <div class="form-floating mb-1">
           <input
             type="email"
@@ -40,9 +40,9 @@
           />
           <label for="floatingPassword">Password</label>
         </div>
-        <a routerLink="/dashboard" class=" me-2"
-          ><button type="submit" class="btn btn-sm btn-primary" >Sign in</button></a
-        >
+        
+          <button type="submit" class="btn btn-sm btn-primary" >Sign in</button>
+        
         <a routerLink="/register"
         ><button type="submit" class="btn btn-sm btn-secondary" >New User? Register</button></a
       >

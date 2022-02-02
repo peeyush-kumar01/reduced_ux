@@ -1,0 +1,18 @@
+.left{
+float: left;
+width: 48%;
+}
+.right{
+    float: right;
+    width: 48%;
+}
+.top{
+    
+    height: 50%;
+    width: 100%;
+}
+.down{
+    
+    height: 50%;
+    width: 100%;
+}

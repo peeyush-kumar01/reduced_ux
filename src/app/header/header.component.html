@@ -1,11 +1,9 @@
 <header class="header">
-  <nav class="navbar navbar-expand-lg py-3">
+  <nav class="navbar navbar-expand-lg py-4">
     <div class="container">
-      <a href="#" class="navbar-brand text-uppercase font-weight-bold">
+      <a routerLink="/" class="navbar-brand text-uppercase font-weight-bold">
         <div class="d-flex">
           <img src="../../assets/Prasilabs.png" class="title" />
-          &nbsp;
-          <!-- <h2><strong>PRASI LABS</strong></h2> -->
         </div>
       </a>
       <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,7 +16,7 @@
             <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setAboutDetail()"
               class="nav-link text-uppercase font-weight-bold shadow" data-bs-toggle="collapse"
               aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" title="About Us">
-              We!
+              <i class="fas fa-info" id="contact_ico"></i>
             </a>
           </li>
           <li class="nav-item">
@@ -36,39 +34,39 @@
           </li>
           <li class="nav-item">
             <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setMapDetail()" data-bs-toggle="collapse"
-              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" class="nav-link shadow">
+              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed" class="nav-link shadow" title="Location">
               <i class="fas fa-map-marker-alt"></i>
             </a>
           </li>
-          <li class="nav-item active">
-            <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setTnCDetail()" data-bs-toggle="collapse"
-              aria-controls="collapseSec" [attr.aria-expanded]="!isCollapsed"
-              class="nav-link text-uppercase font-weight-bold shadow">
-              T&C
+          <li class="nav-item" *ngIf="!isLoggedIn() else logoutf">
+            <a routerLink="login" (click)="isCollapsed = !isCollapsed" class="nav-link shadow" title="Login">
+              <i class="fas fa-sign-in-alt"></i>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/" target="_blank" (click)="isCollapsed = !isCollapsed" class="nav-link shadow">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.linkedin.com/company/prasi-labs/" target="_blank" (click)="isCollapsed = !isCollapsed"
-              class="nav-link shadow"><i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="login" (click)="isCollapsed = !isCollapsed"
-              class="nav-link shadow"><i class="fas fa-sign-in-alt"></i>
-            </a>
-          </li>
+          <ng-template #logoutf>
+
+            <li class="nav-item">
+              <a (click)="isCollapsed = !isCollapsed; home()" class="nav-link shadow" title="Home"><i
+                  class="fas fa-igloo"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)="isCollapsed = !isCollapsed; logout()" class="nav-link shadow"><i class="fas fa-sign-out-alt"
+                  title="Logout"></i>
+              </a>
+            </li>
+
+          </ng-template>
+
+
+
         </ul>
       </div>
     </div>
   </nav>
 </header>
-<div class="collapse" id="collapseSec" [(ngbCollapse)]="isModel" (click)="isModel=true" [animation]="true">
-  <div class="card sd m-5">
+<div class="collapse container cla" id="collapseSec" [(ngbCollapse)]="isModel" (click)="isModel=true" [animation]="true">
+  <div class="card sd mt-5">
     <div class="card-header">
       {{sectionDetail['header']}}
     </div>
@@ -78,7 +76,7 @@
   </div>
 </div>
 
-<div class="collapse" id="collapseSecFeedback" [(ngbCollapse)]="isModel1" [animation]="true">
+<div class="collapse cla" id="collapseSecFeedback" [(ngbCollapse)]="isModel1" [animation]="true">
   <div class="card sd m-5">
     <div class="card-header">
       {{sectionDetail['header']}}

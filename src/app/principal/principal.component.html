@@ -1,7 +1,7 @@
 <div class="offer1 d-flex align-items-center justify-content-evenly clearfix">
     <div class="row x">
         <div class="col-sm-12 text-center">
-            <h4><strong>Search any product</strong></h4>
+            <h4 class="text-danger"><strong>Search any product</strong></h4>
         </div>
         <div class="col-sm-12">
             <div class="dot"><a id="searchAll" routerLink="main" class="btn btn-warning broder">Search</a>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-sm-12 text-center">
-            <h4><strong>Explore our products</strong></h4>
+            <h4 class="text-danger"><strong>Explore our products</strong></h4>
         </div>
         <div class="col-sm-4">
             <div class="dot"><a id="searchAPI" routerLink="main">API</a></div>
@@ -21,17 +21,39 @@
             <div class="dot"><a id="searchDM" routerLink="main">Drug Metabolites</a></div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="dot"><a id="searchCN" routerLink="main">Country</a></div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="dot"><a id="searchSP" routerLink="main">Speciality</a></div>
+        </div>
+        <div class="col-sm-4">
+            <div class="dot"><a id="searchAll" routerLink="main">All</a></div>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="text-center fs-1 text-primary mt-3">
-        Our Values
+<div class="container-fluid">
+    <div class="text-center fs-3 text-primary mt-3 z">
+        <p class="bg-warning rounded-pill w-50 mt-4">WE, PRASI LABS</p>
+    </div>
+    <div class="we">
+
+        <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
+            We offer custom synthesis services of up to gram-quantities of materials for a wide range of
+            industrial
+            and academic customers.We listen to our customers and provide products that meet their
+            specifications.
+            The purity of our products is supported by solid analytical data and their certification is
+            tailored
+            to
+            our customer needs.​
+            Our strong partner network enables us to server our customer quickly to their expectation and
+            beyond.
+        </p>
+
+    </div>
+    <div class="text-center fs-3 text-primary mt-3 z">
+        <p class="bg-warning rounded-pill w-50 mt-4">OUR VALUES</p>
     </div>
     <div class="row principal">
         <div class="col-sm-12 principal-left mb-3">
@@ -67,9 +89,10 @@
 
         </div>
         <div class="col-sm-12 principal-right">
-            <div class="collapse" id="collapseSecP" [(ngbCollapse)]="isModelP" (click)="isModelP" [animation]="true">
-                <div class="card text">
-                    <div class="card-header text-shadow">
+            <div class="collapse text" id="collapseSecP" [(ngbCollapse)]="isModelP" (click)="isModelP"
+                [animation]="true">
+                <div class="card ">
+                    <div class="card-header hcolor text-shadow">
                         {{principle.header}}
                     </div>
                     <div class="card-body">
@@ -82,55 +105,28 @@
         </div>
     </div>
 </div>
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center mx-1">
     <div class="col-sm-12">
         <app-offering></app-offering>
     </div>
 </div>
-<div class="text-center fs-1 text-primary">
-    And We Hear
-</div>
 <div class="container-fluid testimonies">
-        <div class="row">
-            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
-                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
-                    never mind
-                    but fineklfslfsfdsjfkjdsfds
-                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
-                    ldkdlddsdksdsjdsdjlkdlkdslfd
-                    ldkdfdsflj</p>
-            </div>
-            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
-                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
-                    never mind
-                    but fineklfslfsfdsjfkjdsfds
-                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
-                    ldkdlddsdksdsjdsdjlkdlkdslfd
-                    ldkdfdsflj</p>
-            </div>
-            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
-                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
-                    never mind
-                    but fineklfslfsfdsjfkjdsfds
-                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
-                    ldkdlddsdksdsjdsdjlkdlkdslfd
-                    ldkdfdsflj</p>
-            </div>
-            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
-                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
-                    never mind
-                    but fineklfslfsfdsjfkjdsfds
-                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
-                    ldkdlddsdksdsjdsdjlkdlkdslfd
-                    ldkdfdsflj</p>
-            </div>
-            <div class="col-sm-4 testm"><i class="fas fa-medal fa-4x"></i>
-                <p class="text-justify text-wrap text-secondary p-1"> it was too awesome to work with
-                    never mind
-                    but fineklfslfsfdsjfkjdsfds
-                    kdfdlfdsfdsfkjdsfdjsfdsklfdfdfdfd
-                    ldkdlddsdksdsjdsdjlkdlkdslfd
-                    ldkdfdsflj</p>
+    <div class="text-center fs-3 text-primary z">
+        <p class="bg-warning rounded-pill w-50 mt-4">AND WE HEAR</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 testm" *ngFor="let ap of appriciation">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-medal fa-2x"></i>
+                    {{ap.who}}
+                </div>
+                <div class="card-body">
+                    <p class="text-justify text-wrap text-secondary p-1"> 
+                        {{ap.what}}
+                    </p>
+                </div>
             </div>
         </div>
+    </div>
 </div>

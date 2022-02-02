@@ -1,0 +1,156 @@
+<div class="container-fluid minh">
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <nav class="navbar leftnav">
+                <ul class="nav navbar-nav smallnv">
+                    <li class="nav-link">
+                        <button class="btn btn-sm btn-info btnw">All Customeres</button>
+                    </li>
+                    <li class="nav-link">
+                        <button class="btn btn-sm btn-secondary btnw">Inactive Customeres</button>
+                    </li>
+                    <li class="nav-link">
+                        <button class="btn btn-sm btn-warning btnw">Unverified Customeres</button>
+                    </li>
+                    <li class="nav-link">
+                        <button class="btn btn-sm btn-danger btnw">Blocked Customeres</button>
+                    </li>
+                    <li class="nav-link">
+                        <button class="btn btn-sm btn-success btnw">Partners</button>
+                    </li>
+                    <li>
+                        <div class="circle"><i class="fas fa-sort-alpha-up-alt fa-2x"></i></div>
+                    </li>
+                    <li>
+                        <div class="circle"><i class="fas fa-sort-alpha-down-alt fa-2x"></i></div>
+                    </li>
+                    <li>
+                        <div class="circle">TOP</div>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-10">
+            <div class="continer ">
+                <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="filterTerm">
+                <div class="list-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row row-cols-1 m-1" *ngFor="let customer of data | searchFilter: filterTerm;index as i">
+                                <a href="#" *ngIf="i%2==0;" class="list-group-item list-group-item-action active"
+                                    aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1">{{customer.name +''+ customer.name +''+ customer.name}}</h4>
+                                        <small>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle smalltext"
+                                                    type="button" id="action" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Take Action
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="action">
+                                                    <li><a class="dropdown-item smalltext" href="#">Activate</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Inactive</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Block</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Confirm</a></li>
+                                                </ul>
+                                            </div>
+                                        </small>
+                                    </div>
+                                    <div class="mb-1">
+                                        <div class="table table-borderless lightcolor smalltext">
+                                            <div class="row">
+                                                <div class="col-sm">Phone</div>
+                                                <div class="col-sm">Email</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">CompanyId</div>
+                                                <div class="col-sm">Company Name</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">Orders</div>
+                                                <div class="col-sm">Amount</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <button type="button" class="btn btn-outline-warning smalltext">
+                                                    Contacts <span class="badge bg-light">4</span>
+                                                </button>
+                                            </div>
+                                            <div class="col-sm smalltext">
+                                                <button type="button" class="btn btn-outline-warning smalltext">
+                                                    Addresses <span class="badge bg-light">4</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row row-cols-1 m-1" *ngFor="let customer of data | searchFilter: filterTerm;index as i">
+                                <a *ngIf="i%2!=0;" href="#" class="list-group-item list-group-item-action active"
+                                    aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1">{{customer.name +''+ customer.name +''+ customer.name}}</h4>
+                                        <small>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle smalltext"
+                                                    type="button" id="action" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Take Action
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="action">
+                                                    <li><a class="dropdown-item smalltext" href="#">Activate</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Inactive</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Block</a></li>
+                                                    <li><a class="dropdown-item smalltext" href="#">Confirm</a></li>
+                                                </ul>
+                                            </div>
+                                        </small>
+                                    </div>
+                                    <div class="mb-1">
+                                        <div class="table table-borderless lightcolor smalltext">
+                                            <div class="row">
+                                                <div class="col-sm">Phone</div>
+                                                <div class="col-sm">Email</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">CompanyId</div>
+                                                <div class="col-sm">Company Name</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm">Orders</div>
+                                                <div class="col-sm">Amount</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-sm smalltext">
+                                                <button type="button" class="btn btn-outline-warning smalltext">
+                                                    Contacts <span class="badge bg-light">4</span>
+                                                </button>
+                                            </div>
+                                            <div class="col-sm smalltext">
+                                                <button type="button" class="btn btn-outline-warning smalltext">
+                                                    Addresses <span class="badge bg-light">4</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

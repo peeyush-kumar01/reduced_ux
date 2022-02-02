@@ -1,0 +1,46 @@
+.minh{
+    min-height: 150px;
+}
+.leftnav{
+    position: fixed;
+}
+.btnw{
+    min-width: 15vw;
+}
+.smalltext{
+    font-size: medium !important;
+}
+.lightcolor{
+    color: white !important;
+}
+.circle{
+    border-radius: 50%;
+    background:rgba(2,2,2,0.2);
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
+  .active:hover{
+      background-color: purple;
+  }
+@media screen and (max-width:900px){
+    .smallnv{
+        display: flex;
+        flex-direction: row;
+        font-size: x-small;
+        justify-content: space-between;
+    }
+    .smalltext{
+        font-size: small !important;
+    }
+    .leftnav{
+        position: inherit;
+    }
+    .btnw{
+        min-width: 45vw;
+    }
+}

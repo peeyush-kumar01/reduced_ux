@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-security-setting',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecuritySettingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  goBack() {
+    let path = '/'
+    if (sessionStorage.getItem('currentUser')) {
+      path = '/dashboard/profile'
+    }
+    else if (sessionStorage.getItem('adminUser')) {
+      path = '/administratorurlhidden/admindashboard/adminprofile'
+    }
+    this.router.navigateByUrl(path);
+  }
 }

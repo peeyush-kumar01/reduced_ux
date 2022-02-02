@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http'
+import { Observable, Subject } from 'rxjs';
 import {
   Router,
   CanActivate,
@@ -12,21 +13,14 @@ import {
   providedIn: 'root',
 })
 export class AppService {
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
-  getLoginDetail(): Observable<String> {
-    this.add('HeroService: fetched heroes');
-    return of('peeyush');
+  getData(url: string, options: object): Observable<any> {
+    return this.http.get(url, options);
   }
 
-  messages: string[] = [];
-
-  add(message: string) {
-    this.messages.push(message);
-  }
-
-  clear() {
-    this.messages = [];
+  postData(url: string, body: any, options: object): Observable<any> {
+    return this.http.post(url, body, options);
   }
 }
 
@@ -34,15 +28,47 @@ export class AppService {
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (localStorage.getItem('currentUser')) {
+    if (sessionStorage.getItem('currentUser')) {
       return true;
     }
-    return true;
+
     // not logged in so redirect to login page with the return url
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-    
+    return false;
+  }
+
+
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AdminAuthGuard implements CanActivate {
+  constructor(private router: Router) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (sessionStorage.getItem('adminUser')) {
+      return true;
+    }
+
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['/administratorurlhidden'], { queryParams: { returnUrl: state.url } });
+    return false;
+  }
+
+
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AddToCart {
+  private _cart = new Subject();
+  cart$ = this._cart.asObservable();
+  addtocart(item: any) {
+    this._cart.next(item);
   }
 }

@@ -1,9 +1,9 @@
 <div class="container">
- 
+
     <div class="summary">
         <div class="osum">
             <button class="btn btn-sm btn-success">Pleace Order</button>
-            <hr/>
+            <hr />
             <h6><b>Order Summary</b></h6>
             <p>Total payble amount AUD nine hundred and ninty only.</p>
             <table class="table table-striped table-dark table-responsive-sm">
@@ -12,10 +12,8 @@
                     <tr>
                         <th scope="col">
                             <select class="form-control">
-                                <option>Choose Currency</option>
-                                <option>INR</option>
-                                <option>USD</option>
-                                <option>AUD</option>
+                                <option *ngFor="let c of currency">{{c}}</option>
+                               
                             </select>
                         </th>
                         <th scope="col">
@@ -30,22 +28,22 @@
                 <tbody>
                     <tr>
                         <th scope="row">Total Price</th>
-                        <td>1000.00</td>
+                        <td>{{totalPrice}}</td>
                         <td>AUD</td>
                     </tr>
                     <tr>
                         <th scope="row">Discount</th>
-                        <td>100.00</td>
+                        <td>{{totalDiscount}}</td>
                         <td>AUD</td>
                     </tr>
                     <tr>
                         <th scope="row">Tax</th>
-                        <td>90.00</td>
+                        <td>{{totalTax}}</td>
                         <td>AUD</td>
                     </tr>
                     <tr>
                         <th scope="row">Payable Price</th>
-                        <td>990.00 </td>
+                        <td>{{payblePrice}} </td>
                         <td>AUD</td>
                     </tr>
                 </tbody>
@@ -80,29 +78,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark<br />CAS NO #</td>
-                    <td>5L @ 140AUD/L<br />tax 5% gst</td>
-                    <td>735 AUD</td>
-                    <td><button class="btn btn-sm btn-danger">X</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td><button class="btn btn-sm btn-danger">X</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td><button class="btn btn-sm btn-danger">X</button></td>
+                <tr *ngFor="let item of cartItem; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.iname}}</td>
+                    <td>{{item.qntty}}</td>
+                    <td>{{item.price}}</td>
+                    <td><button class="btn btn-sm btn-danger" (click)="removeItem(i)">X</button></td>
                 </tr>
             </tbody>
         </table>
         <button class="btn btn-sm btn-success">Pleace Order</button>
     </div>
-    
+
 </div>

@@ -1,10 +1,9 @@
-
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppModule } from '../app.module';
-import { MessagesComponent } from '../messages/messages.component';
 import { Product } from '../products';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AddToCart } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -14,13 +13,70 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 })
 export class MainComponent implements OnInit {
   location: Location;
-  constructor(private http: HttpClient, location: Location) {
+  constructor(location: Location, private appmodule: AppModule, private cartservice: AddToCart, private router: Router) {
     this.location = location;
+  }
+
+  addToCart(obj: Product): boolean | void {
+    if (!sessionStorage.getItem('currentUser')) {
+      alert('Please login.');
+      return false;
+    }
+    let qty = (!obj.quantity ? 1 : obj.quantity)
+    let cartItem = {
+      iname: obj.productname,
+      qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
+      price: (parseFloat(obj.priceperunit) * qty),
+      discount: '10.00',
+      tax: '1.10'
+    }
+    AppModule.CART_LST.push(cartItem);
+    alert('Item added to cart');
+  }
+
+  moveToCart(obj: Product): boolean | void {
+    if (!sessionStorage.getItem('currentUser')) {
+      alert('Please login.');
+      return false;
+    }
+
+    let qty = (!obj.quantity ? 1 : obj.quantity)
+    let cartItem = {
+      iname: obj.productname,
+      qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
+      price: (parseFloat(obj.priceperunit) * qty),
+      discount: '10.00',
+      tax: '1.10'
+    }
+
+    AppModule.CART_LST.push(cartItem);
+    this.router.navigateByUrl('/dashboard/cart')
+  }
+
+
+  getKey(): void {
+    this.keyList = Object.keys(this.selectOption);
+  }
+
+  getValues(): void {
+    this.valueList = this.selectOption[this.selectKey];
   }
 
   products: Product[] = [];
   filterTerm: any = '';
   CardProdObj: any = {};
+  error: any = ""
+  selectKey: string = 'All';
+  keyList: Array<string> = [];
+  valueList: Array<string> = [];
+  selectOption: { [index: string]: string[] } = {
+    All: ['All'],
+    Name: ['All'],
+    Country: AppModule.LST_CNTRY,
+    Category: AppModule.LST_CATG,
+    Partners: AppModule.LST_PTNR,
+    CASNo: ['All']
+  }
 
   //this.filterTerm = event.target.value;
 
@@ -29,79 +85,54 @@ export class MainComponent implements OnInit {
     return false;
   }
   getProduct(): any {
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_ALL_PRODUCTS).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response['successMsg'];
-      }
+    this.appmodule.runGetCall('ALL_PRODUCT', '').subscribe(
+      (value) => { this.products = value['successMsg'] ;console.log(this.products)},
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
 
   getProductByName(event: any): any {
     var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    MessagesComponent.setErrormessage(eValue, 'Please enter some search criteria');
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_NAME_PRODUCTS + eValue).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response;
-      }
+    this.appmodule.runGetCall('NAME_PRODUCT', eValue).subscribe(
+      (value) => { this.products = value['successMsg'] },
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
 
   getProductByCASNo(event: any): any {
     var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CASNO_PRODUCTS + eValue).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response;
-      }
+    this.appmodule.runGetCall('CASNO_PRODUCT', eValue).subscribe(
+      (value) => { this.products = value['successMsg'] },
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
   getProductByCatg(event: any): any {
     var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CATG_PRODUCTS + eValue).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response;
-      }
+    this.appmodule.runGetCall('CATG_PRODUCT', eValue).subscribe(
+      (value) => { this.products = value['successMsg'] },
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
   getProductByCntry(event: any): any {
     var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_CNTRY_PRODUCTS + eValue).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response;
-      }
+    this.appmodule.runGetCall('CNTRY_PRODUCT', eValue).subscribe(
+      (value) => { this.products = value['successMsg'] },
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
 
   getProductByPtnr(event: any): any {
     var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    const client = this.http.get<any>(AppModule.URL + AppModule.GET_PTNR_PRODUCTS + eValue).toPromise();
-    return client.then(
-      (response: any) => {
-        this.products = response;
-      }
+    this.appmodule.runGetCall('PTNR_PRODUCT', eValue).subscribe(
+      (value) => { this.products = value['successMsg'] },
+      (error) => { console.log(error) },
+      () => { console.log("Done") }
     )
-      .catch((error: any) => {
-        console.log(error);
-      })
   }
 
   setCurObj(obj: any) {
@@ -110,5 +141,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    this.getKey();
+    this.getValues();
   }
 }

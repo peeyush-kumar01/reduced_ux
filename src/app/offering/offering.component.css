@@ -1,36 +1,48 @@
 .offer{
-margin: 1em;
+margin-top: 1em;
 display: block;
 }
-
+.z{
+   display: flex;
+   justify-content: center;
+}
+.shadow-lg-c:hover{
+    transform: scale(1.2);
+    transition: 1s;
+}
+.shadow-lg-t{
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.7);
+    font-weight: 700;
+}
 .color{
     min-height: 20em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:none;
-    background-color: paleturquoise;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-style:double;
+    background-image:linear-gradient(to bottom,rgb(238, 176, 96),white);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.3) 0px 0px 1px 1px;
     text-transform: uppercase;
     font-weight: 900;
     text-align: center;
-    color: rgb(9, 16, 78);
+    color: rgb(17, 73, 136);
 }
 
 .colornone{
     min-height: 20em;   
     display: block;
     border:none;
-    background-color: gray;
-    color: white;
+    background-color: rgb(241, 247, 244);
+    color: black;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     text-align: center;
     text-justify: newspaper;
     
 }
 .color:hover{
-    background-color: mediumspringgreen;
+    background-image: linear-gradient(to bottom,white,rgb(238, 176, 96));
+    transition: 1s;
 }
 .wc{
     width: 600px;

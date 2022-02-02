@@ -28,6 +28,7 @@
     margin-top: 2%;
     min-width: 100%;
     float: inline-end;
+    margin-bottom: 10%;
 }
 @media screen and (max-width:900px){
     .osum{

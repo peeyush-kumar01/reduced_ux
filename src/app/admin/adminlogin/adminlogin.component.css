@@ -1,0 +1,40 @@
+.left{
+    float: left;
+    position: relative;
+    min-width: 20vw;
+    font-size: medium;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.right{
+    float: right;
+    width: 30vw;
+    height: 50vh;
+    background-image: url('../../../assets/Prasilabs.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-size: contain;
+}
+.margin-top{
+    margin-top: 10%;
+   
+}
+@media screen and (max-width: 900px){
+    .margin-top{
+        margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .right{
+       display: none;
+    }
+    .left{
+        float: none;
+        display: block;
+        box-shadow: black 3px 3px 3px;
+        padding: 2em;
+    }
+}

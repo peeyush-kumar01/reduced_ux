@@ -1,0 +1,14 @@
+
+#horzntl-custom-comm {
+    width: 50%;
+    color: chocolate;
+    height: 5px;
+  }
+  .custom-c{
+    color:chocolate;
+  }
+  @media screen and (max-width:900px) {
+    .media,.btn{
+      font-size: smaller;
+    }
+  }

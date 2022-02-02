@@ -1,19 +1,20 @@
 .navbar {
   transition: all 0.8s;
  /* background-color: crimson;*/
- box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+ box-shadow: rgba(46, 169, 240, 0.4) 0px 5px, rgba(46, 169, 240, 0.3) 0px 10px, rgba(46, 169, 240, 0.2) 0px 15px, rgba(46, 169, 240, 0.1) 0px 20px, rgba(46, 169, 240, 0.05) 0px 25px;
 }
 .sd{
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  /*box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;*/
+  border: none !important;
 }
 .navbar .nav-link {
-  color: rgb(52, 165, 42);
+  color: rgb(58, 95, 55);
   text-align: center;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
-  color: steelblue;
+  color: rgb(14, 41, 63);
   text-decoration: none;
 }
 .title{
@@ -53,27 +54,31 @@
   transition: 0.8s;
 }
 .nav-item{
-
+  width: 5em;
   transition: 0.8s;
 }
 .navbar-brand{
   transition: 0.8s;
 }
+.cla{
+  transition: 1s;
+}
+
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
   .navbar {
-      background: #fff transparent;
+      background: white;
   }
 
   .navbar .navbar-brand, .navbar .nav-link {
-      color:crimson;
+      color:rgb(185, 95, 20);
   }
 
   .navbar .nav-link {
-    color: rgb(52, 165, 42);
+    color: rgb(58, 95, 55);
 }
 
   .navbar-toggler{
-    color: brown;
+    color: rgb(185, 95, 20);
   }
 }
