@@ -1,2 +1,13 @@
+import { InvoiceType } from './Objects'
 
-export interface Invoice {}
+export class Invoice {
+    invoiceObj: InvoiceType;
+
+    constructor(obj: InvoiceType) {
+        this.invoiceObj = obj;
+    }
+
+    validateInvoice(){
+        
+    }
+}

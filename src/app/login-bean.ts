@@ -28,6 +28,6 @@ export class LoginBean implements Login {
 
   //validate if user id contains other than basic latin charaters
   validateUserId(): boolean {
-    return this.userid.match(/[^A-Za-z0-9_]/g) ? false : true;
+    return this.userid.match(/[^A-Za-z0-9.]/g) ? false : true;
   }
 }

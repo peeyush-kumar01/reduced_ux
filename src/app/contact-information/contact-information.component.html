@@ -1,18 +1,15 @@
-
 <br />
 <h4 class="custom-c">Contacts</h4>
 <a routerLink="../../profile">Back</a>
+<br /><br />
+<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#contactModel">New Contact</button>
 <hr id="horzntl-custom-inv" />
 <div class="container media">
   <div class="row">
     <div class="col-sm-4" *ngFor="let con of contacts">
       <div class="m-2">
-        <div
-          class="badge bg-secondary float-start"
-          *ngIf="con['contactType'] !== ''"
-          [ngClass]="con['contactClass']"
-        >
-        {{ con["contactType"] }}
+        <div class="badge bg-secondary float-start" *ngIf="con['contactType'] !== ''" [ngClass]="con['contactClass']">
+          {{ con["contactType"] }}
         </div>
         <div class="card border-warning shadow">
           <div class="card-header">
@@ -27,31 +24,25 @@
             <div class="row row-cols-1">
               <div class="col d-flex justify-content-between mb-1">
                 <i class="fas fa-phone text-primary me-3"></i>
-                <div class="text-dark">3434343434</div>
+                <div class="text-dark"> {{ con["contactPhone"] }}</div>
               </div>
               <div class="col d-flex justify-content-between mb-1">
                 <i class="fas fa-mobile text-secondary me-3"></i>
-                <div class="">3434343434</div>
+                <div class=""> {{ con["contactMobile"] }}</div>
               </div>
               <div class="col d-flex justify-content-between mb-1">
                 <i class="fas fa-at text-dark me-3"></i>
-                <div class="">3434343434</div>
+                <div class=""> {{ con["contactEmail"] }}</div>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <button
-              class="btn btn-sm border-primary float-start"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModalEdit"
-            >
+            <button class="btn btn-sm border-primary float-start" data-bs-toggle="modal"
+              data-bs-target="#exampleModalEdit">
               Edit
             </button>
-            <button
-              class="btn btn-sm border-danger float-end"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModalDispose"
-            >
+            <button class="btn btn-sm border-danger float-end" data-bs-toggle="modal"
+              data-bs-target="#exampleModalDispose">
               Delete
             </button>
           </div>
@@ -61,42 +52,23 @@
   </div>
 </div>
 
-<div
-  class="modal fade"
-  id="exampleModalDispose"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModalDispose" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body">Are you sure you want to delete the contact? If you have used this contact before, it will still be visible in those respective sections.</div>
+      <div class="modal-body">Are you sure you want to delete the contact? If you have used this contact before, it will
+        still be visible in those respective sections.</div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-sm btn-secondary"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
           No
         </button>
-        <button
-          type="button"
-          class="btn btn-sm btn-danger"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">
           Yes
         </button>
       </div>
     </div>
   </div>
 </div>
-<div
-  class="modal fade"
-  id="exampleModalEdit"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -120,31 +92,104 @@
             </div>
             <div class="col">
               <label for="name">Sex</label>
-              <input class="form-control" type="text" id="sex" name="sex" />
+              <select class="form-control" type="text" id="sex" name="sex">
+                <option>NOT_DISCLOSED</option>
+                <option>MALE</option>
+                <option>FEMALE</option>
+                <option>OTHERS</option>
+              </select>
+
             </div>
             <div class="col">
               <label for="name">Type</label>
-              <input class="form-control" type="text" id="type" name="type" />
+              <select class="form-control" type="text" id="type" name="type">
+                <option>PRIMARY</option>
+                <option>BILLING</option>
+                <option>SHIPPING</option>
+                <option>GENERAL</option>
+              </select>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-sm btn-secondary"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
           Cancel
         </button>
-        <button
-          type="button"
-          class="btn btn-sm btn-success"
-          data-bs-dismiss="modal"
-        >
+        <button type="button" class="btn btn-sm btn-success" data-bs-dismiss="modal">
           Update
         </button>
       </div>
     </div>
+  </div>
+</div>
+<div class="modal fade" id="contactModel" tabindex="-1" aria-labelledby="productModel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-text float-start d-inline">
+              <form>
+                <div class="mb-1 row">
+                  <label for="name" class="col-sm-2 col-form-label lablec">Name</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id='nname'>
+                  </div>
+                  <label for="email" class="col-sm-2 col-form-label lablec">Email</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" id='nemail'>
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="phone" class="col-sm-2 col-form-label lablec">Phone</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="countrycode-number" id='nphone'>
+                  </div>
+                  <label for="mobile" class="col-sm-2 col-form-label lablec">Mobile</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="countrycode-number" id='nmobile'>
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="sex" class="col-sm-2 col-form-label lablec">Sex</label>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control" id='nsex'>
+                      <option>
+                        MALE
+                      </option>
+                      <option>
+                        FEMALE
+                      </option>
+                      <option>
+                        OTHERS
+                      </option>
+                    </select>
+                  </div>
+                  <label for="type" class="col-sm-2 col-form-label lablec">Type</label>
+                  <div class="col-sm-4">
+                    <select type="text" class="form-control" id='ntype'>
+                      <option>PRIMARY</option>
+                      <option>BILLING</option>
+                      <option>SHIPPING</option>
+                      <option>GENERAL</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-info" (click)="putcontacts()">
+          Create
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+          X
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>

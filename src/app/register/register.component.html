@@ -7,6 +7,8 @@
                 </strong>
                 <label class="lable" for="name">Full name*</label>
                 <input tpe="text" class="form-control" id="name" formControlName="name" required />
+
+
                 <br />
                 <div class="row row-cols-2">
                     <div>
@@ -27,8 +29,8 @@
                 <div class="row row-cols-2">
                     <div>
                         <label class="lable" for="country">Country*</label>
-                        <input list="countrylist" class="form-control" id="country" formControlName="country" required
-                            />
+                        <input list="countrylist" class="form-control" id="country" formControlName="country"
+                            required />
                         <datalist id="countrylist">
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Aland Islands</option>
@@ -292,8 +294,7 @@
                             <option value="OTHER" selected>OTHER (please mention)</option>
                         </select>
                         <ng-template #ind>
-                            <select class="form-control" id="idtype" formControlName="idtype"
-                                 required>
+                            <select class="form-control" id="idtype" formControlName="idtype" required>
                                 <option value="NOT_DISCLOSED" selected>NOT_DISCLOSED</option>
                                 <option value="PAN" selected>PAN</option>
                                 <option value="DL" selected>DRIVING LICENSE</option>
@@ -337,9 +338,8 @@
                 <div class="row row-cols-2">
                     <div>
                         <label class="lable" for="regtype">Registration type*</label>
-                        <select class="form-control" id="regtype" formControlName="regtype" required
-                            >
-                            <option value="INDIVIDUAL">INDIVIDUAL</option>
+                        <select class="form-control" id="regtype" formControlName="regtype" required>
+                            <option value="PERSON">INDIVIDUAL</option>
                             <option value="COMPANY">COMPANY</option>
                         </select>
                     </div>

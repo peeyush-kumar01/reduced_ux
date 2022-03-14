@@ -9,15 +9,40 @@ import { Account } from 'src/app/account';
 export class CustomerinformationComponent implements OnInit {
 
   constructor() { }
-  filterTerm:any='';
+  filterTerm: any = '';
   ngOnInit(): void {
   }
-  account:Account={
-    name: "Prasi Labs",
-    email: "info@prasilabs.com",
-    selfdeclaration: true,
-    companyname: "PRASI Labs",
-  }
+  account: Account = new Account({
+    id: 'String',
+    customerid: 'String',
+    fullname: 'String',
+    email: 'String',
+    phone: 'String',
+    cemail: 'String',
+    cphone: 'String',
+    caddress: 'String',
+    uaddress: 'String',
+    cstate: 'String',
+    czip: 1,
+    idtype: 'String',
+    idname: 'String',
+    idnum: 'String',
+    type: 'String',
+    compregno: 'String',
+    company: 'String',
+    uniqbusidenno: 'String',
+    uniqbusidentype: 'String',
+    buscountry: 'String',
+    contact: 'String',
+    address: 'String',
+    selfdeclation: false,
+    status: 'String',
+    dob: new Date('2022-02-22'),
+    updatedby: 'string | null',
+    createdby:' string | null',
+    created: '',
+    updated: '',
+  })
 
-  data:Array<Account>=[this.account,this.account,this.account,this.account,this.account,this.account,this.account,this.account,this.account]
+  data: Array<Account> = [this.account, this.account, this.account, this.account, this.account, this.account, this.account, this.account, this.account]
 }

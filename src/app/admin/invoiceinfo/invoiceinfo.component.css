@@ -24,3 +24,34 @@
   .custom-c{
     color:chocolate;
   }
+  .fifty{
+    width:50% !important
+  }
+  .sixty{
+    width: 60% !important;
+  }
+  .fifteen{
+    width: 15% !important;
+  }
+  .hundred{
+    width: 100% !important;
+  }
+  .forty{
+    width: 40% !important;
+  }
+  .ten{
+    width: 10% !important;
+  }
+  .iconInvoice{
+    height:25% !important;
+    width: 25% !important;
+  }
+  .posImgInv{
+    position: relative;
+    float: left;
+    width: 25%;
+  }
+  .textInv{
+   float: right;
+   width: 75%;
+  }

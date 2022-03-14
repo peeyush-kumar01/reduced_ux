@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppModule } from '../app.module';
-import { Product } from '../products';
+import { ProductType } from '../Objects';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AddToCart } from '../app.service';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
     this.location = location;
   }
 
-  addToCart(obj: Product): boolean | void {
+  addToCart(obj: ProductType): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
       alert('Please login.');
       return false;
@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
     let cartItem = {
       iname: obj.productname,
       qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
-      price: (parseFloat(obj.priceperunit) * qty),
+      price: (parseFloat(obj.priceperunit) * Number(qty)),
       discount: '10.00',
       tax: '1.10'
     }
@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
     alert('Item added to cart');
   }
 
-  moveToCart(obj: Product): boolean | void {
+  moveToCart(obj: ProductType): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
       alert('Please login.');
       return false;
@@ -44,7 +44,7 @@ export class MainComponent implements OnInit {
     let cartItem = {
       iname: obj.productname,
       qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
-      price: (parseFloat(obj.priceperunit) * qty),
+      price: (parseFloat(obj.priceperunit) * Number(qty)),
       discount: '10.00',
       tax: '1.10'
     }
@@ -62,7 +62,7 @@ export class MainComponent implements OnInit {
     this.valueList = this.selectOption[this.selectKey];
   }
 
-  products: Product[] = [];
+  products: ProductType[] = [];
   filterTerm: any = '';
   CardProdObj: any = {};
   error: any = ""
@@ -86,7 +86,7 @@ export class MainComponent implements OnInit {
   }
   getProduct(): any {
     this.appmodule.runGetCall('ALL_PRODUCT', '').subscribe(
-      (value) => { this.products = value['successMsg'] ;console.log(this.products)},
+      (value) => { this.products = value['successMsg']; console.log(this.products) },
       (error) => { console.log(error) },
       () => { console.log("Done") }
     )

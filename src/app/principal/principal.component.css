@@ -1,5 +1,5 @@
 .offer1{
-  background:  url(../../assets/wp2612891-periodic-table-hd-wallpaper.png) center no-repeat fixed;
+  background:  url(../../assets/PeriodicTableBlueprint-1024x576.jpg) center no-repeat fixed;
   -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -136,13 +136,12 @@
     background: transparent;
 }
 .testimonies{
-background:url(../../assets/wp2871088-hd-periodic-table-wallpaper.jpg) center no-repeat fixed;
+background:transparent;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-box-shadow: rgb(130, 195, 238) 1px 2px 3px;
-min-height: 50vh;
+min-height: auto;
 background-blend-mode: hue;
 }
 .z{
@@ -168,6 +167,15 @@ background-blend-mode: hue;
 }
 .ctext{
   font-size: large;
+}
+.cardMain{
+  box-shadow: rgb(130, 195, 238) 2px 4px 6px;
+}
+
+.cardMain:hover{
+  transform: scale(0.9);
+  transition: 1s;
+  cursor: pointer;
 }
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 650px) {

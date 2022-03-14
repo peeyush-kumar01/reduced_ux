@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppModule } from '../app.module';
 import { LoginBean } from '../login-bean';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,25 +12,31 @@ import { LoginBean } from '../login-bean';
 })
 export class LoginComponent implements OnInit {
   error: String
-  constructor(private appmodule: AppModule, private router: Router) {
+
+  constructor(private formbuilder: FormBuilder, private appmodule: AppModule, private router: Router) {
     this.error = ''
   }
+
+  loginForm = this.formbuilder.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+  })
 
   ngOnInit(): void { }
 
   loginService() {
-    let LB = new LoginBean('peeyush', 'kumar2312');
-    console.log(LB.validateUserId())
+    let LB = new LoginBean(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
+    
     if (
       LB.validateLogin() &&
       LB.validateUserId() &&
-      LB.validatePassLen &&
+      LB.validatePassLen() &&
       LB.validateUserPassEqulity()
     ) {
       this.appmodule.runGetCall('LOGIN', { 'userid': LB.userid, 'password': LB.password }).subscribe(
         data => {
           if (data['successMsg']) {
-            sessionStorage.setItem('currentUser', data['successMsg']);
+            sessionStorage.setItem('currentUser', JSON.stringify(data['successMsg']));
             AppModule.IS_LOGGED_IN = true;
             this.router.navigateByUrl('/dashboard/home');
           }
@@ -43,8 +50,8 @@ export class LoginComponent implements OnInit {
         }
       )
     } else {
+      this.error = "Please enter correct values. Username can not contain other than alphabet, numbers and dot. Password must be minimum of 8 character in length"
       console.log(this.error);
-      this.error = "Please enter correct values. Username can not contain other than alphabet, numbers and underscore. Password must be minimum of 8 character in length"
     }
   }
 }

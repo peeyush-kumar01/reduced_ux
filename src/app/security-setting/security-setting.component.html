@@ -1,54 +1,38 @@
-
-<br/>
+<br />
 <a (click)="goBack()">Back</a>
 <div class="container media shadow m-5 p-2">
   <div class="row row-cols-2">
     <div class="col card text-break text-wrap d-flex justify-content-center">
       Password requirements:
       <ul>
-        <li>Password must be of minimum 8 charachters in length</li>
+        <li>Password must be of minimum 8 charachters in length.</li>
         <li>
           There must be at least on uppercase, one lowercase, one number and one
           special charachter.
         </li>
         <li>
-          Supported special charachters are
-          <strong style="color: red">~ % * # $ ! _ + - ` ( ) [ ] </strong>
+          Please logout and login after changing the password.
         </li>
       </ul>
     </div>
     <div class="col card">
       <form>
         <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control border-warning"
-            id="floatingInput"
-            placeholder="name@example.com"
-          />
+          <input name="oldPassword" type="email" class="form-control border-warning" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="oldPassword" />
           <label for="floatingInput">Existing password</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="password"
-            class="form-control border-danger"
-            id="floatingPassword"
-            placeholder="Password"
-          />
+          <input name="newPassword" type="password" class="form-control border-danger" id="floatingPassword" placeholder="Password"
+            [(ngModel)]="newPassword" />
           <label for="floatingPassword">New password</label>
         </div>
         <div class="form-floating mb-3">
-          <input
-            type="password"
-            class="form-control border-danger"
-            id="floatingPassword"
-            placeholder="Password"
-          />
+          <input name="reNewPassword" type="password" class="form-control border-danger" id="floatingPassword" placeholder="Password"
+            [(ngModel)]="reNewPassword" />
           <label for="floatingPassword">Retype new password</label>
         </div>
-        <a routerLink="/dashboard"
-          ><button type="submit" class="btn btn-primary">Change</button></a
-        >
+        <button type="submit" class="btn btn-primary" (click)="updatePassword($event)">Change</button>
       </form>
     </div>
   </div>

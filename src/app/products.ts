@@ -1,67 +1,69 @@
-export interface Product {
-    productname: string,
-    casno: string,
-    unitselltype: string,
-    priceperunit: string,
-    quantity: number,
-    status: string,
-    type: string,
-    currency: string,
-    makecountry?: string,
-    makecompany?: string,
-    reactivity?: string,
-    storgetype?: string,
-    structure?: string,
-    chemicalformula?: string,
-    chemicalname?: string,
-    availabilitydate?: Date,
-    enddate?: Date,
-    id?: string,
-}
+import { ProductType } from './Objects'
 
-export class productModel {
-    product: Product;
+export class ProductModel {
+    product: ProductType;
     constructor(
-        prod: Product
+        prod: ProductType
     ) {
         this.product = prod;
     }
 
-    checkProdMandatoryFields(): boolean {
+    checkProdMandatoryFields(): object {
+        let returnObject = {
+            status: true,
+            message: 'Validation skipped'
+        }
+
         if (this.product.productname === undefined || this.product.productname === null || this.product.productname.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product name can not be empty.'
         }
         if (this.product.casno === undefined || this.product.casno === null || this.product.casno.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product cas number can not be empty.'
         }
         if (this.product.unitselltype === undefined || this.product.unitselltype === null || this.product.unitselltype.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product sell type can not be empty.'
         }
         if (this.product.priceperunit === undefined || this.product.priceperunit === null || this.product.priceperunit.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product price per unit can not be empty.'
         }
         if (this.product.quantity === undefined || this.product.quantity === null) {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product quantity can not be empty.'
         }
         if (this.product.status === undefined || this.product.status === null || this.product.status.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product status can not be empty.'
         }
         if (this.product.type === undefined || this.product.type === null || this.product.type.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product type can not be empty.'
         }
         if (this.product.currency === undefined || this.product.currency === null || this.product.currency.trim() == "") {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product currency can not be empty.'
         }
-        return true;
+        return returnObject;
     };
 
-    checkAvailabilityDate(): boolean {
+    checkAvailabilityDate(): object {
+        let returnObject = {
+            status: true,
+            message: 'Validation skipped'
+        }
+
         if (this.product.enddate && this.product.enddate.getTime() <= Date.now()) {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product end date can not be in the past.'
         }
         if (this.product.availabilitydate && this.product.availabilitydate.getTime() <= Date.now()) {
-            return false;
+            returnObject.status = false;
+            returnObject.message = 'Product availability date date can not be in the past.'
         }
-        return true;
+
+        return returnObject
     }
 }

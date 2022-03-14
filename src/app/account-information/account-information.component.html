@@ -1,138 +1,139 @@
 <br />
-<form>
-  <div class="container shadow bg-light">
-    <div class="row align-items-start">
+<div class="container">
+  <form [formGroup]="profile" (ngSubmit)="updateUser($event)">
+    <div class="row">
       <div class="col-sm-6">
-        <h5 class="text-center text-dark">Personal detail</h5>
-        <hr />
+        <strong>Individual detail
+          <hr />
+        </strong>
+        <label class="lable" for="name">UserId*</label>
+        <input tpe="text" class="form-control-plaintext" id="customerid" formControlName="customerid" readonly />
+        <br />
 
-        <div class="form-group">
-          <label for="name" class="text-info">Full Name</label>
-          <input class="form-control" type="text" id="name" name="name" required [(ngModel)]="customer1.account.name"
-            (input)="enableProfileSave()" />
-        </div>
+        <label class="lable" for="name">Full name*</label>
+        <input tpe="text" class="form-control-plaintext" id="name" formControlName="name" readonly />
+        <br />
         <div class="row row-cols-2">
-          <div class="col">
-            <div class="form-group">
-              <label for="sex" class="text-info">Sex</label>
-              <input class="form-control" type="text" id="sex" name="sex" required [(ngModel)]="customer1.account.sex"
-                (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <label class="lable" for="sex">Sex*</label>
+            <input type="text" class="form-control-plaintext" id="sex" formControlName="sex" readonly />
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="dob" class="text-info">Date of Birth</label>
-              <input class="form-control" type="date" id="dob" name="dob" required
-                [ngModel]="customer1.account.DOB | date: 'YYYY-MM-dd'" (ngModelChange)="
-                  customer1.account.DOB = $event; enableProfileSave()
-                " />
-            </div>
+          <div>
+            <label class="lable" for="dob">Date of birth*</label>
+            <input type="date" class="form-control-plaintext" id="dob" formControlName="dob" readonly />
           </div>
         </div>
+        <br />
         <div class="row row-cols-2">
-          <div class="col">
-            <div class="form-group">
-              <label for="userid" class="text-info">User Id</label>
-              <input class="form-control-plaintext" type="text" id="userid" name="userid" readonly required
-                value="abcd" />
-            </div>
+          <div>
+            <label class="lable" for="country">Country*</label>
+            <input class="form-control-plaintext" id="country" formControlName="country" readonly />
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="pan" class="text-info">PAN</label>
-              <input class="form-control" type="text" id="pan" name="pan" [(ngModel)]="customer1.account.pan"
-                (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <label class="lable" for="idtype">ID type*</label>
+            <select class="form-control" id="idtype" formControlName="idtype" *ngIf="formData.country != 'IN'; else ind"
+              required>
+              <option value="NOT_DISCLOSED" selected>NOT_DISCLOSED</option>
+              <option value="OTHER" selected>OTHER (please mention)</option>
+            </select>
+            <ng-template #ind>
+              <select class="form-control" id="idtype" formControlName="idtype" required>
+                <option value="NOT_DISCLOSED" selected>NOT_DISCLOSED</option>
+                <option value="PAN" selected>PAN</option>
+                <option value="DL" selected>DRIVING LICENSE</option>
+                <option value="AADHAAR" selected>AADHAAR</option>
+                <option value="PASSPORT" selected>PASSPORT</option>
+              </select>
+            </ng-template>
           </div>
         </div>
+        <br />
+        <div *ngIf="formData.country != 'IN' && formData.idtype != 'NOT_DISCLOSED';">
+          <label class="lable" for="idname">ID name</label>
+          <input type="text" class="form-control" id="idname" formControlName="idname" [required]="isIdNumRequired"
+            [readonly]="!isIdNumRequired" />
+        </div>
+        <br />
+        <label class="lable" for="idnum">ID number</label>
+        <input type="text" class="form-control" id="idnum" formControlName="idnum" [required]="isIdNumRequired"
+          [readonly]="!isIdNumRequired" />
+        <br />
+        <label class="lable" for="email">Email*</label>
+        <input type="email" class="form-control-plaintext" id="email" formControlName="email" readonly />
+        <br />
+        <label class="lable" for="phone">Phone number</label>
+        <input type="text" class="form-control" id="phone" name="phone" />
+        <br />
+        <label class="lable" for="address">Address*</label>
+        <textarea class="form-control" id="address" formControlName="address" required></textarea>
+        <br />
         <div class="row row-cols-2">
-          <div class="col">
-            <div class="form-group">
-              <label for="type" class="text-info">Registration type</label>
-              <input class="form-control" type="text" id="type" name="type" required
-                [(ngModel)]="customer1.account.type" (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <label class="lable" for="state">State*</label>
+            <input type="text" class="form-control" id="state" formControlName="state" required>
+          </div>
+          <div>
+            <label class="lable" for="zip">Zip code*</label>
+            <input type="text" class="form-control" id="zip" formControlName="zip" required>
+          </div>
+        </div>
+        <br />
+        <div class="row row-cols-2">
+          <div>
+            <label class="lable" for="regtype">Registration type*</label>
+            <input type="text" class="form-control-plaintext" id="regtype" formControlName="regtype" readonly />
+          </div>
+          <div>
+            <label class="lable" for="decl">I confirm that information provided here are valid and
+              verified</label>
+            <input type="checkbox" id="decl" formControlName="decl">
           </div>
         </div>
       </div>
-
       <div class="col-sm-6">
-        <br/>
-        <h5 class="text-center text-dark">Company detail</h5>
-        <hr />
-
-        <div class="form-group">
-          <label for="companyname" class="text-info">Company Name</label>
-          <input class="form-control" type="text" id="companyname" name="companyname" required
-            [(ngModel)]="customer1.account.companyName" (input)="enableProfileSave()" />
-        </div>
-        <div class="row row-cols-3">
-          <div class="col">
-            <div class="form-group">
-              <label for="compnayIdentifierNo" class="text-info">Indentification No</label>
-              <input class="form-control" type="text" id="compnayIdentifierNo" name="compnayIdentifierNo" required
-                [(ngModel)]="customer1.account.compnayIdentifierNo" (input)="enableProfileSave()" />
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="compnayIdentifiertype" class="text-info">Identification Type</label>
-              <input class="form-control" type="text" id="compnayIdentifiertype" name="compnayIdentifiertype" required
-                [(ngModel)]="customer1.account.compnayIdentifiertype" (input)="enableProfileSave()" />
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="country" class="text-info">Country</label>
-              <input class="form-control" type="text" id="country" name="country" required
-                [(ngModel)]="customer1.account.country" (input)="enableProfileSave()" />
-            </div>
-          </div>
-        </div>
+        <strong>Company detail
+          <hr />
+        </strong>
+        <div class="lable" for="cname">Company name*</div>
+        <input class="form-control-plaintext" id="cname" type="text" formControlName="cname" readonly />
+        <br />
+        <div class="lable" for="cidname">Company id type*</div>
+        <input class="form-control-plaintext" id="cidname" type="text" formControlName="cidname" readonly />
+        <br />
+        <div class="lable" for="cidnum">Company id number*</div>
+        <input class="form-control-plaintext" id="cidnum" type="text" formControlName="cidnum" readonly />
+        <br />
+        <div class="lable" for="ccountry">Country*</div>
+        <input class="form-control-plaintext" id="ccountry" type="text" formControlName="ccountry" readonly />
         <div class="row row-cols-2">
-          <div class="col">
-            <div class="form-group">
-              <label for="companyEmail" class="text-info">Company Email</label>
-              <input class="form-control" type="text" id="companyEmail" name="companyEmail" required
-                [(ngModel)]="customer1.account.companyEmail" (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <label class="lable" for="cstate">State*</label>
+            <input type="text" class="form-control-plaintext" id="cstate" formControlName="cstate" readonly />
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="companyPhone" class="text-info">Company Phone</label>
-              <input class="form-control" type="text" id="companyPhone" name="companyPhone" required
-                [(ngModel)]="customer1.account.companyPhone" (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <label class="lable" for="czip">Zip code*</label>
+            <input type="text" class="form-control-plaintext" id="czip" formControlName="czip" readonly />
           </div>
         </div>
-        <div class="form-group">
-          <label for="companyAddress" class="text-info">Company Address</label>
-          <input class="form-control" type="text" id="companyAddress" name="companyAddress" required
-            (input)="enableProfileSave()" />
-        </div>
+        <br />
+        <div class="lable" for="cemail">Company email*</div>
+        <input class="form-control-plaintext" type="email" id="cname" formControlName="cemail" readonly />
+        <br />
+        <div class="lable" for="cphone">Company phone*</div>
+        <input class="form-control-plaintext" id="cphone" type="text" formControlName="cphone" readonly />
+        <br />
+        <div class="lable" for="caddress">Company address*</div>
+        <textarea class="form-control-plaintext" id="caddress" formControlName="caddress" readonly></textarea>
+        <br />
+        <div class="lable" for="creg">Registration number at PRASI LABS if available</div>
+        <input class="form-control" id="creg" type="text" formControlName="creg" />
+        <br />
         <div class="row row-cols-2">
-          <div class="col">
-            <div class="form-group">
-              <label for="associationNum" class="text-info">PRASI Labs registration no. at company</label>
-              <input class="form-control" type="text" id="associationNum" name="associationNum"
-                (input)="enableProfileSave()" />
-            </div>
+          <div>
+            <input type="submit" class="form-control btn btn-sm btn-primary" id="submit" value="Update">
           </div>
         </div>
-        <div class="mt-3"></div>
       </div>
     </div>
-  </div>
-  <div class="container float-right mt-3">
-    <div class="form-group mt-5">
-      <input class="form-check-input md-5" type="checkbox" id="selfAttest" name="selfAttest" disabled
-        [ngModel]="customer1.account.selfAttest" />
-      <label for="selfAttest" class="form-check-label text-danger">&nbsp; I ceritify that information provided by me
-        is
-        correct.</label>
-    </div>
-    <button type="submit" class="btn btn-success position-absolute end-50" [disabled]="profileSaveDisable">
-      Save
-    </button>
-  </div>
-</form>
+  </form>
+</div>

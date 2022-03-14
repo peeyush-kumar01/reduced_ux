@@ -16,32 +16,51 @@
 <br />
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 g-4">
-        <div class="col" *ngFor="let i of list">
-            <div class="card shadow bg-body rounded">
+        <div class="col" *ngFor="let product of list">
+            <div [ngClass]="['card','shadow','bg-body','rounded',product.prodid]">
                 <div class="card-header">
                     <div class="card-title d-inline float-start">
-                        <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext" id="pname"
-                            value="email">
+                        <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                            class="form-control-plaintext" id="pname_{{product.prodid}}"
+                            value="{{product.productname}}">
+                        <input type="text" readonly hidden class="form-control-plaintext" id="id_{{product.prodid}}"
+                            value="{{product.id}}">
+                        <input type="text" readonly class="form-control-plaintext" id="prodid_{{product.prodid}}"
+                            value="{{product.prodid}}">
                     </div>
                     <div class="card-title d-inline float-end">
                         <small>
                             <div class="dropdown">
-                                <button [ngClass]="productState" type="button" id="action" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <button [ngClass]="stateArray[product.prodid!].productState" type="button"
+                                    id="action_{{product.prodid}}" data-bs-toggle="dropdown" aria-expanded="false">
                                     Take Action
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="action">
                                     <li>
-                                        <div class="dropdown-item smalltext" [hidden]="!actionHiden">Activate</div>
+                                        <div class="dropdown-item smalltext"
+                                            [hidden]="!stateArray[product.prodid!].actionHiden"
+                                            (click)="changeActionHidden(product.prodid!)">Activate</div>
                                     </li>
                                     <li>
-                                        <div class="dropdown-item smalltext" [hidden]="actionHiden">Inactive</div>
+                                        <div class="dropdown-item smalltext"
+                                            [hidden]="stateArray[product.prodid!].actionHiden"
+                                            (click)="changeActionHidden(product.prodid!)">Inactive</div>
                                     </li>
                                     <li>
-                                        <div class="dropdown-item smalltext" [hidden]="isSave" (click)="save()">Save</div>
+                                        <div class="dropdown-item smalltext"
+                                            [hidden]="stateArray[product.prodid!].isSave"
+                                            (click)="save(product.prodid!)">
+                                            Save
+                                        </div>
+                                        <div class="dropdown-item smalltext"
+                                            [hidden]="stateArray[product.prodid!].isSave"
+                                            (click)="cancel(product.prodid!)">Cancel
+                                        </div>
                                     </li>
                                     <li>
-                                        <div class="dropdown-item smalltext" [hidden]="!isSave" (click)="changefieldreadonly()">Edit</div>
+                                        <div class="dropdown-item smalltext"
+                                            [hidden]="!stateArray[product.prodid!].isSave"
+                                            (click)="changefieldreadonly(product.prodid!)">Edit</div>
                                     </li>
                                 </ul>
                             </div>
@@ -51,97 +70,118 @@
                 <div class="card-body">
                     <div class="card-text float-start d-inline">
                         <div class="mb-1 row">
-                            <label for="casNo" class="col-sm-2 col-form-label lablec">CAS No</label>
+                            <label for="casNo_{{product.prodid}}" class="col-sm-2 col-form-label lablec">CAS No</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext" id="casNo"
-                                    value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="casNo_{{product.prodid}}"
+                                    value="{{product.casno}}">
                             </div>
-                            <label for="unitSellType" class="col-sm-2 col-form-label lablec">Unit</label>
+                            <label for="unitSellType_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Unit</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="unitSellType" value="email@example.com">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="quantity" class="col-sm-2 col-form-label lablec">Quantity</label>
-                            <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="quantity" value="email@example.com">
-                            </div>
-                            <label for="price" class="col-sm-2 col-form-label lablec">Price</label>
-                            <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext" id="price"
-                                    value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="unitSellType_{{product.prodid}}"
+                                    value="{{product.unitselltype}}">
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <label for="type" class="col-sm-2 col-form-label lablec">Type</label>
+                            <label for="quantity_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Quantity</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext" id="type"
-                                    value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="quantity_{{product.prodid}}"
+                                    value="{{product.quantity}}">
                             </div>
-                            <label for="currency" class="col-sm-2 col-form-label lablec">Currency</label>
+                            <label for="price_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Price</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="currency" value="email@example.com">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="mkcountry" class="col-sm-2 col-form-label lablec">Make Country</label>
-                            <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="mkcountry" value="email@example.com">
-                            </div>
-                            <label for="mkcompany" class="col-sm-2 col-form-label lablec">Make Company</label>
-                            <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="mkcompany" value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="price_{{product.prodid}}"
+                                    value="{{product.priceperunit}}">
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <label for="reactivity" class="col-sm-2 col-form-label lablec">Reactivity</label>
+                            <label for="type_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Type</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="reactivity" value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="type_{{product.prodid}}"
+                                    value="{{product.type}}">
                             </div>
-                            <label for="storageType" class="col-sm-2 col-form-label lablec">Storage Type</label>
+                            <label for="currency_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Currency</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="storageType" value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="currency_{{product.prodid}}"
+                                    value="{{product.currency}}">
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <label for="cname" class="col-sm-2 col-form-label lablec">Chemical Name</label>
+                            <label for="mkcountry_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Make Country</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext" id="cname"
-                                    value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="mkcountry_{{product.prodid}}"
+                                    value="{{product.makecountry}}">
+                            </div>
+                            <label for="mkcompany_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Make Company</label>
+                            <div class="col-sm-4">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="mkcompany_{{product.prodid}}"
+                                    value="{{product.makecompany}}">
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
+                            <label for="reactivity_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Reactivity</label>
+                            <div class="col-sm-4">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="reactivity_{{product.prodid}}"
+                                    value="{{product.reactivity}}">
+                            </div>
+                            <label for="storageType_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Storage Type</label>
+                            <div class="col-sm-4">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="storageType_{{product.prodid}}"
+                                    value="{{product.storgetype}}">
+                            </div>
+                        </div>
+                        <div class="mb-1 row">
+                            <label for="cname_{{product.prodid}}" class="col-sm-2 col-form-label lablec">Chemical Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="cname_{{product.prodid}}"
+                                    value="{{product.chemicalname}}">
                             </div>
                             <label for="cformula" class="col-sm-2 col-form-label lablec">Chemical Formula</label>
                             <div class="col-sm-4">
-                                <input type="text" [readonly]="fieldReadonly" class="form-control-plaintext"
-                                    id="cformula" value="email@example.com">
+                                <input type="text" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="cformula_{{product.prodid}}"
+                                    value="{{product.chemicalformula}}">
                             </div>
                         </div>
                         <div class="mb-1 row">
                             <label for="adate" class="col-sm-2 col-form-label lablec">Available From</label>
                             <div class="col-sm-4">
-                                <input type="date" [readonly]="fieldReadonly" class="form-control-plaintext" id="adate"
-                                    value="email@example.com">
+                                <input type="date" [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    class="form-control-plaintext" id="adate_{{product.prodid}}"
+                                    value="{{product.availabilitydate}}">
                             </div>
-                            <label for="structure" class="col-sm-2 col-form-label lablec">Structure</label>
-                            <div class="col-sm-4" *ngIf="fieldReadonly; else image">
-                                <img class="image w-25 h-25" id="structure" data-bs-toggle="modal" data-bs-target="#productIMG">
+                            <label for="r_structure_{{product.prodid}}"
+                                class="col-sm-2 col-form-label lablec">Structure</label>
+                            <div class="col-sm-4" *ngIf="stateArray[product.prodid!].fieldReadonly; else image">
+                                <img class="image w-25 h-25" id="r_structure_{{product.prodid}}" data-bs-toggle="modal"
+                                    data-bs-target="#productIMG">
                             </div>
                             <ng-template #image>
                                 <div class="col-sm-4">
-                                    <input type="file" class="form-control-plaintext" id="structure">
+                                    <input type="file" class="form-control-plaintext" id="structure_{{product.prodid}}">
                                 </div>
                             </ng-template>
                         </div>
                         <div class="mb-1 row">
                             <label for="others" class="col-sm-2 col-form-label lablec">Other detail</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" [readonly]="fieldReadonly" id="others"></textarea>
+                                <textarea class="form-control text-start"
+                                    [readonly]="stateArray[product.prodid!].fieldReadonly"
+                                    id="others_{{product.prodid}}">
+Product is available until: {{product.enddate | date}}
+Last updated by: {{product.updatedby}}
+Last upated on: {{product.updated | date:'medium'}}
+</textarea>
                             </div>
                         </div>
                     </div>
@@ -156,7 +196,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title d-inline float-start">
-                                Product <input type="text" class="form-control" id="pname" value="email">
+                                Product <input type="text" class="form-control" #npname>
                             </div>
                         </div>
                         <div class="card-body">
@@ -165,82 +205,82 @@
                                     <div class="mb-1 row">
                                         <label for="casNo" class="col-sm-2 col-form-label lablec">CAS No</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="casNo">
+                                            <input type="text" class="form-control" #ncasNo>
                                         </div>
                                         <label for="unitSellType" class="col-sm-2 col-form-label lablec">Unit</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="unitSellType">
+                                            <input type="text" class="form-control" #nunitSellType>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="quantity" class="col-sm-2 col-form-label lablec">Quantity</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="quantity">
+                                            <input type="text" class="form-control" #nquantity>
                                         </div>
                                         <label for="price" class="col-sm-2 col-form-label lablec">Price</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="price">
+                                            <input type="text" class="form-control" #nprice>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="type" class="col-sm-2 col-form-label lablec">Type</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="type">
+                                            <input type="text" class="form-control" #ntype>
                                         </div>
                                         <label for="currency" class="col-sm-2 col-form-label lablec">Currency</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="currency">
+                                            <input type="text" class="form-control" #ncurrency>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="mkcountry" class="col-sm-2 col-form-label lablec">Make
                                             Country</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="mkcountry">
+                                            <input type="text" class="form-control" #nmkcountry>
                                         </div>
                                         <label for="mkcompany" class="col-sm-2 col-form-label lablec">Make
                                             Company</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="mkcompany">
+                                            <input type="text" class="form-control" #nmkcompany>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="reactivity"
                                             class="col-sm-2 col-form-label lablec">Reactivity</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="reactivity">
+                                            <input type="text" class="form-control" #nreactivity>
                                         </div>
                                         <label for="storageType" class="col-sm-2 col-form-label lablec">Storage
                                             Type</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="storageType">
+                                            <input type="text" class="form-control" #nstorageType>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="cname" class="col-sm-2 col-form-label lablec">Chemical Name</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="cname">
+                                            <input type="text" class="form-control" #ncname>
                                         </div>
                                         <label for="cformula" class="col-sm-2 col-form-label lablec">Chemical
                                             Formula</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="cformula">
+                                            <input type="text" class="form-control" #ncformula>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
                                         <label for="adate" class="col-sm-2 col-form-label lablec">Available From</label>
                                         <div class="col-sm-4">
-                                            <input type="date" class="form-control" id="adate">
+                                            <input type="date" class="form-control" #nadate>
                                         </div>
                                         <label for="structure" class="col-sm-2 col-form-label lablec">Structure</label>
                                         <div class="col-sm-4">
-                                            <input type="file" class="form-control" id="structure">
+                                            <input type="file" class="form-control" #nstructure>
                                         </div>
                                     </div>
                                     <div class="mb-1 row">
-                                        <label for="others" class="col-sm-2 col-form-label lablec">Other detail</label>
+                                        <label for="others" class="col-sm-2 col-form-label lablec">End Date</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" id="others"></textarea>
+                                            <input type="date" class="form-control" #nedate>
                                         </div>
                                     </div>
                                 </form>
@@ -249,7 +289,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info bt" (click)="newProduct()">
+                    <button type="button" class="btn btn-sm btn-info" (click)="newProduct()">
                         Create
                     </button>
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">

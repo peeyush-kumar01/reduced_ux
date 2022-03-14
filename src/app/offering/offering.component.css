@@ -9,6 +9,7 @@ display: block;
 .shadow-lg-c:hover{
     transform: scale(1.2);
     transition: 1s;
+    color: rgb(14, 92, 116);
 }
 .shadow-lg-t{
     text-shadow: 3px 3px 3px rgba(0,0,0,0.7);
@@ -21,12 +22,12 @@ display: block;
     justify-content: center;
     align-items: center;
     border-style:double;
-    background-image:linear-gradient(to bottom,rgb(238, 176, 96),white);
+    background-image:linear-gradient(to bottom,rgb(240, 195, 137),white);
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.3) 0px 0px 1px 1px;
     text-transform: uppercase;
     font-weight: 900;
     text-align: center;
-    color: rgb(17, 73, 136);
+    color: rgb(35, 187, 233);
 }
 
 .colornone{
