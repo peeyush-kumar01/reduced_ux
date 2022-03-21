@@ -79,6 +79,7 @@ export class MainComponent implements OnInit {
   CardProdObj: any = {};
   error: any = ""
   selectKey: string = 'All';
+  selectVal: string = 'All';
   keyList: Array<string> = [];
   valueList: Array<string> = [];
   selectOption: { [index: string]: string[] } = {
@@ -90,7 +91,29 @@ export class MainComponent implements OnInit {
     CASNo: ['All']
   }
 
-  //this.filterTerm = event.target.value;
+  getClickedProduct() {
+
+    switch (this.selectKey.toLocaleUpperCase()) {
+      case 'COUNTRY':
+        this.getProductByCntry(this.selectVal)
+        break;
+      case 'CATEGORY':
+        this.getProductByCatg(this.selectVal)
+        break;
+      case 'PARTNERS':
+        this.getProductByPtnr(this.selectVal)
+        break;
+      case 'CASNO':
+        this.getProductByCASNo(this.filterTerm)
+        break;
+      case 'NAME':
+        this.getProductByName(this.filterTerm)
+        break;
+      default:
+        this.getProduct();
+    }
+
+  }
 
   goBack(): any {
     this.location.historyGo(0);
@@ -105,7 +128,7 @@ export class MainComponent implements OnInit {
   }
 
   getProductByName(event: any): any {
-    var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
+    var eValue = event
     this.appmodule.runGetCall('NAME_PRODUCT', eValue).subscribe(
       (value) => { this.products = value['successMsg'] },
       (error) => { console.log(error) },
@@ -114,7 +137,7 @@ export class MainComponent implements OnInit {
   }
 
   getProductByCASNo(event: any): any {
-    var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
+    var eValue = event
     this.appmodule.runGetCall('CASNO_PRODUCT', eValue).subscribe(
       (value) => { this.products = value['successMsg'] },
       (error) => { console.log(error) },
@@ -122,7 +145,7 @@ export class MainComponent implements OnInit {
     )
   }
   getProductByCatg(event: any): any {
-    var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
+    var eValue = event
     this.appmodule.runGetCall('CATG_PRODUCT', eValue).subscribe(
       (value) => { this.products = value['successMsg'] },
       (error) => { console.log(error) },
@@ -130,7 +153,7 @@ export class MainComponent implements OnInit {
     )
   }
   getProductByCntry(event: any): any {
-    var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
+    var eValue = event
     this.appmodule.runGetCall('CNTRY_PRODUCT', eValue).subscribe(
       (value) => { this.products = value['successMsg'] },
       (error) => { console.log(error) },
@@ -139,7 +162,7 @@ export class MainComponent implements OnInit {
   }
 
   getProductByPtnr(event: any): any {
-    var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
+    var eValue = event
     this.appmodule.runGetCall('PTNR_PRODUCT', eValue).subscribe(
       (value) => { this.products = value['successMsg'] },
       (error) => { console.log(error) },

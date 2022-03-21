@@ -1,19 +1,28 @@
 .offer{
 margin-top: 1em;
-display: block;
 }
 .z{
    display: flex;
    justify-content: center;
 }
+.shadow-lg-c{
+    color: whitesmoke;
+}
+.c-h{
+    background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
+}
+.c-b{
+    background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+}
 .shadow-lg-c:hover{
     transform: scale(1.2);
     transition: 1s;
-    color: rgb(14, 92, 116);
+    color: rgb(116, 89, 14);
 }
 .shadow-lg-t{
     text-shadow: 3px 3px 3px rgba(0,0,0,0.7);
-    font-weight: 700;
+    font-weight: 500;
+    color: whitesmoke;
 }
 .color{
     min-height: 20em;

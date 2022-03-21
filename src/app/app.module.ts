@@ -63,6 +63,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
+import { AtomComponent } from './atom/atom.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { RegisterComponent } from './register/register.component';
     AdmindashboardComponent,
     AdminhomeComponent,
     RegisterComponent,
+    AtomComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, NgbModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule],
   providers: [AuthGuard, AppService],
@@ -276,7 +278,7 @@ export class AppModule {
         return this.appservice.getData(AppModule.URL + AppModule.GET_LST_CATG + search, this.httpOptions)
 
       case 'CNTRY':
-        return this.appservice.getData(AppModule.URL + AppModule.GET_LST_CATG + search, this.httpOptions)
+        return this.appservice.getData(AppModule.URL + AppModule.GET_LST_CNTRY + search, this.httpOptions)
 
       case 'LOGIN':
         if (this.System.logintoken == "") {

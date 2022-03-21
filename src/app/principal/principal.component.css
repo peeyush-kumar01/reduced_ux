@@ -1,43 +1,53 @@
 .offer1{
-  background:  url(../../assets/PeriodicTableBlueprint-1024x576.jpg) center no-repeat fixed;
+  background-image: linear-gradient(to right, #141e30, #243b55);
   -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
   background-size: cover;
-  position: relative;
   box-shadow: rgb(0, 0, 0) 5px 10px 18px;
-  min-height: 25em;
-  border-radius: 19px;
-  padding:3em;
+  min-height: 30em;
+  border-radius: 9px;
+  padding:2em;
   margin-top: 3em;
-  margin-left: 2em;
-  margin-right: 2em;
-  width:50%
   }
   .dot{
     display: flex;
     flex: 2 1;
     margin: 1rem 1rem;
     border-radius: 5px;
-    padding: 10px 10px 10px;
-    background-image: linear-gradient(to bottom,rgb(135, 238, 216),white);
+    padding: 2px 2px 2px;
+    min-height: 2.5em;
+    background-image: linear-gradient(to bottom,rgb(5, 23, 48),rgb(7, 95, 95));
     cursor: pointer;
     justify-content: center;
     }
+    .dot1{
+      display: flex;
+      flex: 2 1;
+      margin: 1rem 1rem;
+      border-radius: 5px;
+      padding: 2px 2px 2px;
+      min-height: 2.5em;
+      
+      cursor: pointer;
+      justify-content: center;
+      }
     .dot>a{
-      color: maroon;
+      color: rgb(243, 236, 236);
       text-transform: uppercase;
       text-decoration: none;
+      font-size: small;
+      text-align: center;
     }
     .dot:hover{
-        background-image: linear-gradient(to top,rgb(44, 114, 61),white);
+        background-image: linear-gradient(to top,rgb(4, 30, 54),white);
         transform: scale(1.1);
         transition: 0.8s;
     }
     .x{
       padding: 2em;
       background-color: transparent;
-      font-weight: 700;
+      font-weight: 500;
 }
 .hcolor{
   background-color: rgba(60,179,113,0.7);
@@ -46,7 +56,7 @@
 
 .principal{
     transform: all 2s;
-    font-weight: bold;
+    font-weight: 300;
     display: flex;
     padding: 3em;
     justify-content: center;
@@ -54,10 +64,11 @@
     transition-duration: 4s;
     transition-delay: 2s;
     position: relative;
+    width: 100%;
 }
 .principal-left{
     transform: all 0.4s;
-    font-weight: bold;
+    font-weight: 500;
     /*
     display: flex;
     flex-direction: row;
@@ -144,10 +155,21 @@ background:transparent;
 background-size: cover;
 min-height: auto;
 background-blend-mode: hue;
+width: 100%;
+display: flex;
 }
 .z{
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
+}
+.zr{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.y{
+  min-height: 100px;
 }
 .we{
   background-blend-mode: hue;
@@ -157,9 +179,7 @@ background-blend-mode: hue;
   color: rgb(247, 245, 241);
   min-height: 25vh;
 }
-.testm .card-header{
-  background-color: brown;
-}
+
 .conBnd{
   border-top-left-radius: 15% !important;
   border-top-right-radius: 15% !important;
@@ -171,13 +191,50 @@ background-blend-mode: hue;
 }
 .cardMain{
   box-shadow: rgb(130, 195, 238) 2px 4px 6px;
+  border-top-left-radius: 50rem !important;
+  border-top-right-radius: 50rem !important;
 }
 
 .cardMain:hover{
   transform: scale(0.9);
   transition: 1s;
   cursor: pointer;
+  
 }
+.c-h{
+  border-top-left-radius: 50rem !important;
+  border-top-right-radius: 50rem !important;
+  background-image: linear-gradient(25deg,#d64c7f,#ee4758 50%);
+}
+.c-b{
+  background-image: radial-gradient(circle farthest-side, #fceabb, #f8b500);
+}
+.text3d {
+  color: #70869d;
+  letter-spacing: .15em;
+  text-shadow: 
+    -1px -1px 1px #efede3, 
+    0px 1px 0 #2e2e2e, 
+    0px 2px 0 #2c2c2c, 
+    0px 3px 0 #2a2a2a, 
+    0px 4px 0 #282828, 
+    0px 5px 0 #262626, 
+    0px 6px 0 #242424, 
+    0px 7px 0 #222, 
+   /* 0px 8px 0 #202020, 
+    0px 9px 0 #1e1e1e, 
+    0px 10px 0 #1c1c1c, 
+    0px 11px 0 #1a1a1a, 
+    0px 12px 0 #181818, 
+    0px 13px 0 #161616, 
+    0px 14px 0 #141414, 
+    0px 15px 0 #121212,*/
+    2px 20px 5px rgba(0, 0, 0, 0.9),
+    5px 23px 5px rgba(0, 0, 0, 0.3),
+    8px 27px 8px rgba(0, 0, 0, 0.5),
+    8px 28px 35px rgba(0, 0, 0, 0.9);
+}
+
   /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
   @media screen and (max-width: 650px) {
     p {
@@ -208,7 +265,7 @@ background-blend-mode: hue;
       font-size: small;
     }
   }
- 
+  
   @media screen and (max-width: 980px) {
     p {
       font-size: 12px;

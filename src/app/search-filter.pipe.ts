@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchFilterPipe implements PipeTransform {
 
   transform(value: any[], args: any): any[] {
-    return value && value.length>0 ? value.filter(item => JSON.stringify(item).indexOf(args) > -1) : [];
+    return value && value.length>0 ? value.filter(item => JSON.stringify(item).toLocaleLowerCase().indexOf(args.toLocaleLowerCase()) > -1) : [];
   }
 
 }

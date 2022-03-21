@@ -5,12 +5,12 @@
         {{i}}
       </option>
     </select>
-    <select class="form-control form-control-sm w-50">
+    <select class="form-control form-control-sm w-50" [(ngModel)]="selectVal">
       <option *ngFor="let j of valueList">{{j}}</option>
     </select>
     <div class="input-group w-60">
       <div class="input-group-prepend">
-        <div class="input-group-text"><i class="fas fa-search fa-2x"></i></div>
+        <div class="input-group-text" (click)="getClickedProduct()"><i class="fas fa-search fa-2x"></i></div>
       </div>
       <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="filterTerm">
     </div>
