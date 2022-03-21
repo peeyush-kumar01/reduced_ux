@@ -29,7 +29,7 @@
     [attr.aria-expanded]="!isCollapsed[i] ? false : true"
     [attr.aria-controls]="i"
   >
-    {{ i }}
+    {{ i }} - Updated on: {{val['updated'] }}
   </button>
   <div
     class="collapse"
@@ -37,7 +37,7 @@
     [ngbCollapse]="!isCollapsed[i] ? true : false"
   >
     <textarea class="form-control-plaintext" rows="3" readonly>
-  {{ val }}</textarea
+  {{ val['message'] }}</textarea
     >
   </div>
   <hr />

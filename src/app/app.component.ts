@@ -32,5 +32,15 @@ export class AppComponent {
       error => { console.log(error) },
       () => { console.log('Currency fetch completed') }
     );
+    this.appmodule.runGetCall('XCHANGE', '').subscribe(
+      data => { AppModule.LST_XCHANGE = data['successMsg'] },
+      error => { console.log(error) },
+      () => { console.log('Currency exchange fetch completed') }
+    );
+    this.appmodule.runGetCall('GST', '').subscribe(
+      data => { AppModule.LST_GST = data['successMsg'] },
+      error => { console.log(error) },
+      () => { console.log('GST fetch completed') }
+    );
   }
 }

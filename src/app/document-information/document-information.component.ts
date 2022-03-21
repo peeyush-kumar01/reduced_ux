@@ -12,49 +12,9 @@ export class DocumentInformationComponent implements OnInit {
   ngOnInit(): void {}
   docs: { [index: string]: string }[] = [
     {
-      docName: 'ABC',
+      docName: 'Will be coming soon',
       docType: 'PDF',
-      docId: '111',
-    },
-    {
-      docName: 'dsds',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: 'sdsfffdfffdsfdsfdfsfsdfdsf',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: 'sds',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: 'sds',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: '',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: '',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: '',
-      docType: '',
-      docId: '',
-    },
-    {
-      docName: '',
-      docType: '',
-      docId: '',
-    },
+      docId: '0',
+    }
   ];
 }

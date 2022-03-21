@@ -1,4 +1,3 @@
-
 <br />
 <h4 class="custom-c">Placed Orders</h4>
 <hr id="horzntl-custom-order" />
@@ -13,13 +12,8 @@
     </button>
     <div class="input-group m-1 rounded">
       <div class="input-group-text" id="btnGroupInvoiceSrch">Search</div>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Order# or date(MM-YYYY)"
-        aria-label="Order# or date(MM-YYYY)"
-        aria-describedby="btnGroupAddon"
-      />
+      <input type="text" class="form-control" placeholder="Order# or date(MM-YYYY)" aria-label="Order# or date(MM-YYYY)"
+        aria-describedby="btnGroupAddon" />
     </div>
   </div>
 </div>
@@ -28,34 +22,21 @@
   <div class="accordion accordion-flush" id="accordionFlush">
     <div class="accordion-item" *ngFor="let order of orders; let i = index">
       <h4 class="accordion-header" id="flush-headingOne{{ i }}">
-        <div
-          class="accordion-button collapsed shadow"
-          type="button"
-          data-bs-toggle="collapse"
-          [attr.data-bs-target]="'#flush-collapseOne' + i"
-          aria-expanded="false"
-          aria-controls="flush-collapseOne"
-        >
-          <div class="row row-cols-4">
-            <div
-              class="col colc"
-              [ngStyle]="{ color: order['orderIconColor'] }"
-              title="{{ order['orderStatus'] }}"
-            >
+        <div class="accordion-button collapsed shadow" type="button" data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#flush-collapseOne' + i" aria-expanded="false" aria-controls="flush-collapseOne">
+          <div class="row rowc">
+            <div class="col-sm-2 colc" [ngStyle]="{ color: order['orderIconColor'] }"
+              title="{{ order['orderStatus'] }}">
               <i class="fas {{ icon[order['orderStatus']] }} fa-lg"></i>
             </div>
-            <div class="col colc">{{ order["order#"] }} ;</div>
-            <div class="col colc">other payment detail</div>
-            <div class="col colc">Shipping detail</div>
+            <div class="col-sm-5 colc">{{ order["order#"] }}</div>
+            <div class="col-sm-2 colc"><b>{{order["orderamount"]}}&nbsp;{{order["currency"]}}</b></div>
+            <div class="col-sm-3 colc">{{order["status"]}}</div>
           </div>
         </div>
       </h4>
-      <div
-        id="flush-collapseOne{{ i }}"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingOne"
-        data-bs-parent="#accordionFlush"
-      >
+      <div id="flush-collapseOne{{ i }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlush">
         <div class="accordion-body">
           <div class="row">
             <div class="col-sm-4 mb-2" *ngFor="let item of order.items">
@@ -63,26 +44,32 @@
                 <div class="card-header">
                   <div class="row row-cols-4">
                     <div class="col">
-                      <i class="fas fa-tag" title="Unit Price"></i>
+                      <i class="fas fa-tag" title="Unit Price"></i>&nbsp;
+                      {{ item["itemprice"] }}
                     </div>
                     <div class="col">
-                      <i class="fas fa-arrow-down" title="Discount"></i>
+                      <i class="fas fa-arrow-down" title="Discount"></i>&nbsp;
+                      {{ item["discount"] }}
                     </div>
                     <div class="col">
-                      <i class="fas fa-percentage" title="Tax Surcharge"></i>
+                      
+                      <i class="fas fa-coins" title="Tax Surcharge"></i>&nbsp;
+                      {{ item["itemGstRate"] }}
                     </div>
                     <div class="col">
-                      <i class="fas fa-hashtag" title="Units Ordered"></i>
+                      <i class="fas fa-hashtag" title="Units Ordered"></i>&nbsp;
+                    {{  item["quantity"] }}
                     </div>
                   </div>
                 </div>
                 <div class="card-body">
-                  {{ item["itemNo"] }}
+                  {{ item["itemname"] }}
                 </div>
                 <div class="card-footer">
                   <div class="row row-cols-3">
                     <div class="col">
-                      <i class="fas {{ ret }}" title="Net Amount"></i>
+                      <i class="fas {{ ret }}" title="Net Amount"></i>&nbsp;
+                      {{  item["itemamount"] }}
                     </div>
                     <div class="col">{{ item["itemStatus"] }}</div>
                     <div class="col"></div>
@@ -94,29 +81,22 @@
           <div *ngIf="order.items.length > 0; else elset">
             <div class="row row-cols-3 d-flex justify-content-around">
               <div class="col oid d-flex align-items-center">
-                <i
-                  class="fas fa-file-download fa-2x"
-                  title="Download Invoice"
-                ></i>
+                <i class="fas fa-file-download fa-2x" title="Download Invoice"></i>
               </div>
               <div class="col d-flex align-items-center">
-                <i
-                  class="fas fa-truck-loading fa-lg m-2"
-                  title="Delivery Address"
-                ></i>
+                <i class="fas fa-truck-loading fa-lg m-2" title="Delivery Address"></i>
                 <span class="text-wrap text-break">
-                  Delivery
-                  Addressfsflfsdljfdsfkdfsdjfldsklfjsfjdslfjdslfskdjfdlsfjdslkfjdslkf
+                  {{ order["ship"]["contact"] }}
+                  <br />
+                  {{ order["ship"]["address"] }}
                 </span>
               </div>
               <div class="col d-flex align-items-center">
-                <i
-                  class="fas fa-money-bill fa-lg m-2"
-                  title="Billing Address"
-                ></i>
+                <i class="fas fa-money-bill fa-lg m-2" title="Billing Address"></i>
                 <span class="text-wrap text-break">
-                  Billing
-                  Addressdfdkfjdslfdjskfdjfdslfjdlsfjdlfjdlfjdkflsjfldkfjsljfdk
+                  {{ order["bill"]["contact"] }}
+                  <br />
+                  {{ order["bill"]["address"] }}
                 </span>
               </div>
             </div>

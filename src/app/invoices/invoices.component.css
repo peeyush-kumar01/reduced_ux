@@ -1,4 +1,6 @@
-
+.fnt{
+  font-size: smaller;
+}
 .card:hover {
   transition: transform 125ms;
   transform: scale(1.03);

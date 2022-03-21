@@ -164,7 +164,7 @@ export interface OrdersType {
     type: string,
     direction: string,
     orderid: string | null,
-    ordernum: string,
+    ordernum: string | number,
     orderamount: number,
     bill: {
         contact: string,
@@ -199,7 +199,7 @@ export interface OrderitemType {
     id: string | undefined | null,
     status: string ,
     type: string ,
-    ordernum: string | undefined | null,
+    ordernum: string | number,
     itemamount:number,
     taxamount: number,
     taxrate: number,
@@ -211,13 +211,15 @@ export interface OrderitemType {
     sgstrate: number,
     igstrate: number,
     discount: number,
+    itemprice:number,
     accntid: string,
     itemdetail: string,
     quantity: number,
     unit: string,
     itemname: string,
     itemid: string | undefined | null,
-    currency: string 
+    currency: string ,
+    pcid:string|null
 }
 
 export interface InvoiceType {

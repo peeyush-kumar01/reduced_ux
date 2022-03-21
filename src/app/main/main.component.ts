@@ -17,39 +17,51 @@ export class MainComponent implements OnInit {
     this.location = location;
   }
 
-  addToCart(obj: ProductType): boolean | void {
+  addToCart(obj: ProductType, x: number): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
       alert('Please login.');
       return false;
     }
-    let qty = (!obj.quantity ? 1 : obj.quantity)
-    let cartItem = {
-      iname: obj.productname,
-      qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
-      price: (parseFloat(obj.priceperunit) * Number(qty)),
-      discount: '10.00',
-      tax: '1.10'
-    }
-    AppModule.CART_LST.push(cartItem);
+
+    obj.quantity = (<HTMLInputElement>document.getElementById('quantity_' + x)).value ?
+      (<HTMLInputElement>document.getElementById('quantity_' + x)).value : "1"
+    AppModule.CART_LST.push(obj);
     alert('Item added to cart');
   }
 
-  moveToCart(obj: ProductType): boolean | void {
+  addToCarti(obj: ProductType): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
       alert('Please login.');
       return false;
     }
 
-    let qty = (!obj.quantity ? 1 : obj.quantity)
-    let cartItem = {
-      iname: obj.productname,
-      qntty: `${qty} ${obj.unitselltype} @ ${obj.priceperunit} per ${obj.unitselltype}`,
-      price: (parseFloat(obj.priceperunit) * Number(qty)),
-      discount: '10.00',
-      tax: '1.10'
+    obj.quantity = (<HTMLInputElement>document.getElementById('quantityi')).value ?
+      (<HTMLInputElement>document.getElementById('quantityi')).value : "1"
+    AppModule.CART_LST.push(obj);
+    alert('Item added to cart');
+  }
+
+  moveToCart(obj: ProductType, x: number): boolean | void {
+    if (!sessionStorage.getItem('currentUser')) {
+      alert('Please login.');
+      return false;
     }
 
-    AppModule.CART_LST.push(cartItem);
+    obj.quantity = (<HTMLInputElement>document.getElementById('quantity_' + x)).value ?
+      (<HTMLInputElement>document.getElementById('quantity_' + x)).value : "1"
+    AppModule.CART_LST.push(obj);
+    this.router.navigateByUrl('/dashboard/cart')
+  }
+
+  moveToCarti(obj: ProductType): boolean | void {
+    if (!sessionStorage.getItem('currentUser')) {
+      alert('Please login.');
+      return false;
+    }
+
+    obj.quantity = (<HTMLInputElement>document.getElementById('quantityi')).value ?
+      (<HTMLInputElement>document.getElementById('quantityi')).value : "1"
+    AppModule.CART_LST.push(obj);
     this.router.navigateByUrl('/dashboard/cart')
   }
 
@@ -86,7 +98,7 @@ export class MainComponent implements OnInit {
   }
   getProduct(): any {
     this.appmodule.runGetCall('ALL_PRODUCT', '').subscribe(
-      (value) => { this.products = value['successMsg']; console.log(this.products) },
+      (value) => { this.products = value['successMsg']; },
       (error) => { console.log(error) },
       () => { console.log("Done") }
     )

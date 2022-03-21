@@ -1,2 +1,11 @@
+import { AddressType } from "./Objects";
+export class Address {
+    address: AddressType;
+    constructor(obj: AddressType) {
+        this.address = obj;
+    }
 
-export interface Address {}
+    validateAddress(): void {
+
+    }
+}

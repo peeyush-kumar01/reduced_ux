@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   loginService() {
     let LB = new LoginBean(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
-    
+
     if (
       LB.validateLogin() &&
       LB.validateUserId() &&
@@ -38,12 +38,14 @@ export class LoginComponent implements OnInit {
           if (data['successMsg']) {
             sessionStorage.setItem('currentUser', JSON.stringify(data['successMsg']));
             AppModule.IS_LOGGED_IN = true;
+            AppModule.USR=data['successMsg']
             this.router.navigateByUrl('/dashboard/home');
           }
         },
         error => {
           this.error = error
           console.log(error);
+          alert(error)
         },
         () => {
           console.log('Login done');
@@ -52,6 +54,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.error = "Please enter correct values. Username can not contain other than alphabet, numbers and dot. Password must be minimum of 8 character in length"
       console.log(this.error);
+      alert(this.error)
     }
   }
 }

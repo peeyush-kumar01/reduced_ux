@@ -117,12 +117,16 @@ export class ProductinformationComponent implements OnInit {
     //  console.log(obj);
     console.log(p.checkProdMandatoryFields())
     console.log(p.checkAvailabilityDate())
-    this.appmodule.runGetCall('PRODUCT', { data: [{Product:obj}] }).subscribe(
-      (value) => {
-        console.log(value)
+    this.appmodule.runGetCall('PRODUCT', { data: [{ Product: obj }] }).subscribe(
+      (data) => {
+        console.log(data['successMsg']);
+        data['successMsg'] != undefined ? alert('Success!') : alert('Failed!')
       },
-      (error) => { console.log(error) },
-      () => { console.log("Done") }
+      (error) => {
+        console.log(error)
+        alert('Failed!')
+      },
+      () => { console.log('Done') }
     )
 
   }

@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-sign-information',
@@ -7,32 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-information.component.css'],
 })
 export class SignInformationComponent implements OnInit {
-  constructor() {
+  constructor(private appmodule: AppModule) {
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  ar: { [index: string]: string }[] = [
-    {
-      date: '12-Mar-2021',
-      user: 'us1',
-      detail: 'ok fine',
-    },
-    {
-      date: '12-Mar-2021',
-      user: 'us1',
-      detail: 'ok fine',
-    },
-    {
-      date: '12-Mar-2021',
-      user: 'us1',
-      detail: 'ok fine',
-    },
-    {
-      date: '12-Mar-2021',
-      user: 'us1',
-      detail: 'ok fine',
-    },
-  ];
+    this.appmodule.runGetCall('GET_LOGINLIST', {}).subscribe(
+      (data) => {
+        data['successMsg'].forEach((element: any) => {
+          this.ar.push(
+            {
+
+              date: element.updated,
+              user: element.accntid,
+              detail: element.message,
+            }
+          )
+        });
+        console.log(this.ar)
+      },
+      (error) => { console.log(error) },
+      () => { console.log('Done') }
+    )
+  }
+
+  ar: any[]=[]
 }

@@ -117,11 +117,15 @@ export class AccountInformationComponent implements OnInit, DoCheck {
     }
 
     this.appmodule.runGetCall('ACCOUNT', { data: [accountPayload] }).subscribe(
-      data => {
-        console.log(data['successMsg'])
+      (data) => {
+        console.log(data['successMsg']);
+        data['successMsg'] != undefined ? alert('Success!') : alert('Failed!')
       },
-      error => { console.log(error) },
-      () => { console.log('Done'); }
+      (error) => {
+        console.log(error)
+        alert('Failed!')
+      },
+      () => { console.log('Done') }
     )
   }
 

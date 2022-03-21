@@ -2,22 +2,23 @@
     float: left;
     display: block;
     min-height: 15rem;
-    min-width: auto;
+    width: 40% !important;
     color: rgba(8, 4, 4, 0.699);
     background-color: transparent;
     margin-top: 2%;
 }
 .oaddr{
-    float: inline-start;
+    float: right;
     color: rgba(7, 3, 3, 0.699);
     margin-top: 10%;
     margin-left: 5%;
+    width: 50%;
 }
 .billcart{
     float: left;
 }
 .shipcart{
-    margin-left: 2%;
+    margin-left: 1%;
     float: right;
 }
 .summary{
@@ -33,9 +34,11 @@
 @media screen and (max-width:900px){
     .osum{
         font-size: smaller;
+        width: 100%;
     }
     .oaddr{
         font-size: smaller;
+        width: 100%;
     }
     .listItem{
         font-size: smaller;

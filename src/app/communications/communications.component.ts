@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-communications',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./communications.component.css'],
 })
 export class CommunicationsComponent implements OnInit {
-  textArea: number[] = [1, 2, 3, 4];
-  isCollapsed: boolean [] = [];
-  constructor() {}
+  textArea: any[] = [];
+  isCollapsed: boolean[] = [];
+  constructor(private appmodule: AppModule) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.appmodule.runGetCall('GET_COMM', {}).subscribe(
+      (data) => {
+        data['successMsg'].forEach((element: any) => {
+          this.textArea.push({
+            updated: new Date(element.updated).toLocaleString(),
+            message: element.message
+          })
+        });
+      },
+      (error) => { console.log(error) },
+      () => { console.log('Done') }
+    )
+  }
 }

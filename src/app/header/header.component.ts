@@ -24,7 +24,10 @@ export class HeaderComponent implements OnInit {
   }
   home(): void {
     if (this.isLoggedIn()) {
-      this.router.navigateByUrl('/dashboard/home');
+      if (sessionStorage.getItem('adminUser'))
+        this.router.navigateByUrl('/administratorurlhidden/admindashboard/adminhome');
+      else
+        this.router.navigateByUrl('/dashboard/home');
     }
   }
   logout(): void {
@@ -41,10 +44,21 @@ export class HeaderComponent implements OnInit {
           }
           AppModule.IS_LOGGED_IN = false;
           this.router.navigateByUrl('/');
+        }else{
+          sessionStorage.removeItem('currentUser');
+          sessionStorage.removeItem('adminUser');
+          alert('Logout was not fully successfull. Please re-login.');
+          this.router.navigateByUrl('/login');
         }
       },
       error => {
         console.log(error);
+
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('adminUser');
+
+        alert('Logout was not successfull. However you can do the fresh login.');
+
       },
       () => {
         console.log('Logout done');

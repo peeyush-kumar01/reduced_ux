@@ -18,6 +18,12 @@ height: 5px;
   transform: scale(0.8);
 
 }
+.rowc{
+  width: 100% !important
+}
+.colc{
+  font-size: smaller;
+}
 @media screen and (max-width:900px) {
   .colc{
     font-size: smaller;

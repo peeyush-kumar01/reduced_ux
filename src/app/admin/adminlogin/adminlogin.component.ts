@@ -34,6 +34,7 @@ export class AdminloginComponent implements OnInit {
           if (data['successMsg'] && data['successMsg']['type'] == 'ADMIN') {
             sessionStorage.setItem('adminUser', JSON.stringify(data['successMsg']));
             AppModule.IS_LOGGED_IN = true;
+            AppModule.USR=data['successMsg']
             this.router.navigateByUrl('/administratorurlhidden/admindashboard/adminhome');
           }
         },

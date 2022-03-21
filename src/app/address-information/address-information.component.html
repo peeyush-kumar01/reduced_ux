@@ -1,10 +1,12 @@
 <br />
 <h4 class="custom-c">Address</h4>
 <a routerLink="../../profile">Back</a>
+<br /><br />
+<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModalNewAddress">New Address</button>
 <hr id="horzntl-custom-inv" />
 <div class="container media">
   <div class="row">
-    <div class="col-sm-4" *ngFor="let add of add">
+    <div class="col-sm-4" *ngFor="let add of Address">
       <div class="m-2">
         <div class="badge bg-secondary float-start w-25" *ngIf="add['addressType'] !== ''"
           [ngClass]="add['addressClass']">
@@ -18,11 +20,11 @@
           </div>
           <div class="card-footer">
             <button class="btn btn-sm border-primary float-start" data-bs-toggle="modal"
-              data-bs-target="#exampleModalEdit">
+              data-bs-target="#exampleModalEdit" (click)="setTempAdr(add)">
               Edit
             </button>
             <button class="btn btn-sm border-danger float-end" data-bs-toggle="modal"
-              data-bs-target="#exampleModalDispose">
+              data-bs-target="#exampleModalDispose" (click)="setTempAdr(add)">
               Delete
             </button>
           </div>
@@ -43,7 +45,7 @@
         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
           No
         </button>
-        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" (click)="deleteAddress()">
           Yes
         </button>
       </div>
@@ -54,42 +56,89 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <form>
+        <form [formGroup]="profileAddressEdit" (ngSubmit)="updateAddress($event)">
           <div class="row row-cols-2">
             <div class="col">
               <label for="name">Address</label>
-              <input class="form-control" type="text" id="address" name="address" />
+              <textarea class="form-control" id="address" formControlName="address" ></textarea>
             </div>
             <div class="col">
-              <label for="name">City</label>
-              <input class="form-control" type="text" id="city" name="city" />
+              <label for="state">State</label>
+              <input class="form-control" type="text" id="state" formControlName="state" />
             </div>
             <div class="col">
-              <label for="name">State</label>
-              <input class="form-control" type="text" id="state" name="state" />
+              <label for="pin">Zip/Pin</label>
+              <input class="form-control" type="number" id="pin" formControlName="pin" />
             </div>
             <div class="col">
-              <label for="name">Pin</label>
-              <input class="form-control" type="number" id="pin" name="pin" />
+              <label for="country">Country</label>
+              <input class="form-control" type="text" id="country" formControlName="country" />
             </div>
             <div class="col">
-              <label for="name">Country</label>
-              <input class="form-control" type="text" id="country" name="country" />
+              <label for="type">Type</label>
+              <select class="form-control" id="type" formControlName="type">
+                <option>BILLING</option>
+                <option>SHIPPING</option>
+                <option>PRIMARY</option>
+                <option>GENERAL</option>
+              </select>
             </div>
-            <div class="col">
-              <label for="name">Type</label>
-              <input class="form-control" type="text" id="type" name="type" />
-            </div>
+          </div>
+          <br />
+          <div>
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-sm btn-success" data-bs-dismiss="modal">
+              Update
+            </button>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
-          Cancel
-        </button>
-        <button type="button" class="btn btn-sm btn-success" data-bs-dismiss="modal">
-          Update
-        </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalNewAddress" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row row-cols-2">
+          <div class="col">
+            <label for="name">Address</label>
+            <textarea class="form-control" id="naddress" name="naddress" ></textarea>
+          </div>
+          <div class="col">
+            <label for="state">State</label>
+            <input class="form-control" type="text" id="nstate" name="nstate" />
+          </div>
+          <div class="col">
+            <label for="pin">Zip/Pin</label>
+            <input class="form-control" type="number" id="npin" name="npin" />
+          </div>
+          <div class="col">
+            <label for="country">Country</label>
+            <input class="form-control" type="text" id="ncountry" name="ncountry" />
+          </div>
+          <div class="col">
+            <label for="type">Type</label>
+            <select class="form-control" id="ntype" name="ntype" >
+              <option>BILLING</option>
+                <option>SHIPPING</option>
+                <option>PRIMARY</option>
+                <option>GENERAL</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <div>
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-sm btn-success" data-bs-dismiss="modal" (click)="putaddress()">
+            Create
+          </button>
+        </div>
       </div>
     </div>
   </div>

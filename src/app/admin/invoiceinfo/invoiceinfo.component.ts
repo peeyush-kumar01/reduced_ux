@@ -35,7 +35,7 @@ export class InvoiceinfoComponent implements OnInit {
   }
 
   getInvoice(): void {
-    this.appmodule.runGetCall('INVOICE', '').subscribe(
+    this.appmodule.runGetCall('GET_INVOICE', {}).subscribe(
       (value) => {
         this.listInvoice = value;
         console.log(value)
@@ -53,9 +53,11 @@ export class InvoiceinfoComponent implements OnInit {
       (error) => { console.log(error) },
       () => { console.log("Done") }
     )
+    this.getInvoice()
   }
 
   ngOnInit(): void {
+    this.getInvoice()
   }
 
 }

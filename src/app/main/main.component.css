@@ -45,18 +45,42 @@
   border:none !important;
   text-align: center;
 }
+.in{
+  width: 80%;
+  padding: 3px;
+}
 .bt{
   color: black;
+  font-size: smaller;
+  color: azure;
 }
 .bt:hover{
   background-color: yellow;
 }
 .cb{
-  color: rgb(80, 26, 5);
+  color: rgb(1, 7, 14);
   font-size: small;
+  font-weight: 800;
 }
 .cf{
   font-size: smaller;
+ 
+}
+.br{
+  font-weight: 900;
+  color: darkslategray;
+  padding: 2%;
+  font-size: medium;
+}
+.tl{
+  font-weight: 500;
+  text-align: left !important;
+  font-size: smaller;
+}
+.tv{
+  color: rgb(5, 1, 15);
+  font-weight: 700;
+  text-align: left !important;
 }
 .prod:hover{
   transform: scale(1.1);

@@ -1,4 +1,3 @@
-
 <br />
 <h4 class="custom-c">Invoice list of completed orders</h4>
 <hr id="horzntl-custom-inv" />
@@ -9,37 +8,40 @@
     <button type="button" class="btn btn-sm btn-dark m-1 rounded">Newest first</button>
     <div class="input-group m-1 rounded">
       <div class="input-group-text" id="btnGroupInvoiceSrch">Search</div>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Invoice# or date(MM-YYYY)"
-        aria-label="Invoice# or date(MM-YYYY)"
-        aria-describedby="btnGroupAddon"
-      />
+      <input type="text" class="form-control" placeholder="Invoice# or date(MM-YYYY)"
+        aria-label="Invoice# or date(MM-YYYY)" aria-describedby="btnGroupAddon" />
     </div>
   </div>
 </div>
 <br />
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-3 g-4">
-    <div class="col" *ngFor="let i of list">
+    <div class="col fnt" *ngFor="let i of listInvoice">
       <div class="card shadow bg-body rounded">
         <div class="card-header">
-          <div class="card-title d-inline float-start">
-            <i class="fas fa-file-invoice"></i>&nbsp; PL011-98
+          <div class="card-title d-inline float-start" title="Invoice id">
+            <i class="fas fa-file-invoice"></i>&nbsp; {{i['invid']}}
           </div>
-          <div class="Card-title d-inline float-end">
-            <i class="fas {{ ret }}"></i>&nbsp; 1234.00
+          <div class="Card-title d-inline float-end"  title="Payble amount">
+            <i class="fas {{ ret }}"></i>&nbsp; {{i['finalamount']}}
           </div>
         </div>
         <div class="card-body">
-          <div class="card-text float-start d-inline">
-            <i class="fas fa-truck"></i>&nbsp;
-          </div>
-          <p class="d-flex justify-content-evenly">{{ deliveredAddress }}</p>
+          <div class="card-text float-start d-inline"  title="Order number">
+            <i class="fas fa-shopping-bag"></i>&nbsp;{{i['ordernum']}}
 
-          <div class="d-inline float-start">
-            <i class="fas fa-calendar-check"></i>&nbsp; {{ currDate | date }}
+          </div>
+          <br />
+          <br />
+          <div>
+            <div class="card-text float-start d-inline"  title="Billing address">
+              <i class="fas fa-receipt"></i>&nbsp;
+            </div>
+            <p class="d-flex justify-content-evenly">{{ i['bill']['address'] }}</p>
+          </div>
+          <br />
+          <div class="d-inline float-start"  placeholder="Invoice date">
+            <i class="fas fa-calendar-check"></i>&nbsp; {{ i['invdate'] | date }}
           </div>
           <button title="Download" class="float-end btn-custom">
             <i class="fas fa-download"></i>

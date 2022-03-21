@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="row">
-    <ng-container *ngFor="let i of products | searchFilter: filterTerm">
+    <ng-container *ngFor="let i of products | searchFilter: filterTerm; let x=index">
       <div class="col-sm-3">
         <div class="card prod clearfix">
           <div class="card-header ch" (click)="setCurObj(i)" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">
@@ -24,28 +24,60 @@
           </div>
           <div class="card-body cb text-wrap text-break" (click)="setCurObj(i)" data-bs-toggle="modal"
             data-bs-target="#exampleModalInfo">
-            CAS#:{{i["casno"]}}
-            <hr>
-            {{ i["productname"] }}
-          </div>
-          <div class="card-footer cf">
             <div class="row align-items-start">
-              <div class="col">
-                {{ i["priceperunit"]}}
+              <div class="col br">
+                {{ i["productname"] }}
               </div>
-              <div class="col">
-                {{i["quantity"]}}{{i["quantity"]}}
+            </div>
+            <div class="row align-items-start">
+              <div class="col tl">
+                CAS#:
               </div>
-              <div class="col">
+              <div class="col tv">
+                {{i["casno"]}}
+              </div>
+            </div>
+            <div class="row align-items-start">
+              <div class="col tl">
+                Price/Unit:
+              </div>
+              <div class="col tv">
+                {{ i["priceperunit"]}}&nbsp;{{i["currency"]}}
+              </div>
+              </div>
+              <div class="row align-items-start">
+              <div class="col tl">
+                Unit:
+              </div>
+              <div class="col tv">
+                {{i["unitselltype"]}}
+              </div>
+              </div>
+              <div class="row align-items-start">
+              <div class="col tl">
+                Reactvity:
+              </div>
+              <div class="col tv">
                 {{i["reactivity"]}}
               </div>
             </div>
-            <div class="row align-items-end">
+          </div>
+          <div class="card-footer cf">
+            <div class="row align-items-start mb-2">
               <div class="col">
-                <a class="btn btn-sm btn-info bt" (click)="addToCart(i)">Add to cart</a>
+                <label class="label" for="quantity"><b>Quantity</b></label>
               </div>
               <div class="col">
-                <a class="btn btn-sm btn-primary bt" (click)="moveToCart(i)">Order now</a>
+                <input class="form-control in" id="quantity_{{x}}" type="number"/>
+              </div>
+            </div>
+            <div class="row align-items-end">
+
+              <div class="col">
+                <a class="btn btn-sm btn-info bt" (click)="addToCart(i,x)">Add to cart</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-sm btn-primary bt" (click)="moveToCart(i,x)">Order now</a>
               </div>
             </div>
           </div>
@@ -123,15 +155,23 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-primary bt" (click)="moveToCart(CardProdObj)" data-bs-dismiss="modal">
-          Order&nbsp;now
-        </button>
-        <button type="button" class="btn btn-sm btn-info bt" (click)="addToCart(CardProdObj)">
-          Add&nbsp;to&nbsp;cart
-        </button>
-        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
-          X
-        </button>
+        <div class="mb-2">
+          <label for="quantity">Choose desired quantity</label>
+          <input class="form-control" id="quantityi" type="number" />
+        </div>
+        <br />
+        <div>
+          <button type="button" class="btn btn-sm btn-primary bt" (click)="moveToCarti(CardProdObj)"
+            data-bs-dismiss="modal">
+            Order&nbsp;now
+          </button>
+          <button type="button" class="btn btn-sm btn-info bt" (click)="addToCarti(CardProdObj)">
+            Add&nbsp;to&nbsp;cart
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+            X
+          </button>
+        </div>
       </div>
     </div>
 

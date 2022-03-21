@@ -119,6 +119,8 @@ export class AppModule {
   static readonly URL = 'http://localhost:3000';
   // end point to get all active products
   static readonly GET_ALL_PRODUCTS = '/getoffering/all';
+  //end point to get login list
+  static readonly GET_LOGIN_LIST = '/loginlist'
   //end point to get all products for admin users
   static readonly GET_ADMIN_ALL_PRODUCTS = '/getoffering/admin/all';
   //end point to get product searched using product name
@@ -166,17 +168,23 @@ export class AppModule {
   // end point to get user's contact details.
   static readonly GET_CONTACT_SERVICE = '/contactlist'
   // end point to get user's address details.
-  static readonly GET_ADDRESS_SERVICE = '/address'
+  static readonly GET_ADDRESS_SERVICE = '/addresslist'
   // end point to get user's communication details.
   static readonly GET_COMMUNICATION_SERVICE = '/communication'
   // end point to get user's service request details.
-  static readonly GET_SR_SERVICE = '/sr'
+  static readonly GET_SR_SERVICE = '/srlist'
   // end point to get user's invoice details.
-  static readonly GET_INVOICE_SERVICE = '/invoice'
+  static readonly GET_INVOICE_SERVICE = '/invoicelist'
   // end point to get user's documents detail
   static readonly GET_DOC_SERVICE = '/doc'
   // end point to get exchange rates from lov. Must be loaded while aplication initialization
   static readonly GET_XCHANGE_RATE = '/xchange'
+  //endpoint to get gst
+  static readonly GET_GST_LIST = '/gstmap'
+  //end point to create orders
+  static readonly POST_ORDER_SERVICE = '/order'
+  // end point to get user's order details.
+  static readonly GET_ORDER_SERVICE = '/orderlist'
 
   static IS_LOGGED_IN: boolean;
   static LST_PTNR: Array<string> = [];
@@ -184,19 +192,21 @@ export class AppModule {
   static LST_CNTRY: Array<string> = [];
   static LST_CRNCY: Array<string> = [];
   static CART_LST: Array<any> = [];
-  static LST_XCHANGE: Array<any> = [];
+  static LST_XCHANGE: { [index: string]: any } = {};
+  static LST_GST: { [index: string]: any } = {};
+  static USR: any = {}
 
   static LOGIN_TOEKN = ''
   static API_TOEKN = ''
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8'
     })
   };
 
 
-  System = {
+  private System = {
     action: "",
     user: "",
     logintoken: "",
@@ -204,7 +214,7 @@ export class AppModule {
     id: ""
   }
 
-  setSystemTagValues = (): void => {
+  private setSystemTagValues = (): void => {
 
     this.System.user = JSON.parse(
       sessionStorage.getItem('currentUser') ? sessionStorage.getItem('currentUser')! :
@@ -249,6 +259,9 @@ export class AppModule {
 
       case 'CATG_PRODUCT':
         return this.appservice.getData(AppModule.URL + AppModule.GET_CATG_PRODUCTS + search, this.httpOptions)
+
+      case 'GST':
+        return this.appservice.getData(AppModule.URL + AppModule.GET_GST_LIST + search, this.httpOptions)
 
       case 'CNTRY_PRODUCT':
         return this.appservice.getData(AppModule.URL + AppModule.GET_CNTRY_PRODUCTS + search, this.httpOptions)
@@ -308,6 +321,36 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ADDRESS_SERVICE, search, this.httpOptions)
 
+      case 'GET_ORDER':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ORDER_SERVICE, search, this.httpOptions)
+
+      case 'GET_COMM':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_COMMUNICATION_SERVICE, search, this.httpOptions)
+
+      case 'GET_SR':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_SR_SERVICE, search, this.httpOptions)
+
+        case 'GET_INVOICE':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_INVOICE_SERVICE, search, this.httpOptions)
+
+      case 'GET_LOGINLIST':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_LOGIN_LIST, search, this.httpOptions)
+
       case 'ACCOUNT':
         if (this.System.user && this.System.user.indexOf('PSUSR') != -1) {
           this.System.action = 'update'
@@ -340,6 +383,18 @@ export class AppModule {
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.POST_ADDRESS_SERVICE, search, this.httpOptions)
+
+      case 'ORDER':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ORDER_SERVICE, search, this.httpOptions)
+
+      case 'SR':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_SR_SERVICE, search, this.httpOptions)
 
       default:
         return new Observable<any>()
