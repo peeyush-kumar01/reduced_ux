@@ -91,7 +91,7 @@ export class ProductinformationComponent implements OnInit {
 
   getProduct(): void {
     // var eValue = (event.target as HTMLElement).parentElement?.parentElement?.querySelector('input')?.value;
-    this.appmodule.runGetCall('ADMIN_ALL_PRODUCT', '').subscribe(
+    this.appmodule.runGetCall('ADMIN_ALL_PRODUCT', {}).subscribe(
       (value) => {
         this.list = value['successMsg'];
         this.list.forEach(item => {

@@ -138,6 +138,7 @@ export class RegisterComponent implements OnInit, DoCheck {
     this.appmodule.runGetCall('ACCOUNT', { data: [accountPayload] }).subscribe(
       data => {
         if (data['successMsg']['userid'] && data['successMsg']['type']) {
+          alert(`Your user id is ${data['successMsg']['userid'] } and pssword is entered email.`)
           this.router.navigateByUrl('/login');
         }
       },

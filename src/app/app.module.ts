@@ -64,6 +64,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { AtomComponent } from './atom/atom.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,7 @@ import { AtomComponent } from './atom/atom.component';
     RegisterComponent,
     AtomComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, NgbModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, NgbModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule, NgChartsModule],
   providers: [AuthGuard, AppService],
   bootstrap: [AppComponent],
 })
@@ -156,7 +157,7 @@ export class AppModule {
   // end point for user's address management
   static readonly POST_ADDRESS_SERVICE = '/address'
   // end point for user's feedback or any enquiry
-  static readonly POST_COMMUNICATION_SERVICE = '/communication'
+  static readonly POST_COMMUNICATION_SERVICE = '/commany'
   // end point for user's service request management
   static readonly POST_SR_SERVICE = '/sr'
   // end point for invoice management by administrator
@@ -187,6 +188,12 @@ export class AppModule {
   static readonly POST_ORDER_SERVICE = '/order'
   // end point to get user's order details.
   static readonly GET_ORDER_SERVICE = '/orderlist'
+  //get stat
+  static readonly GET_STAT = '/stat'
+  //getGST
+  static readonly GET_ADMIN_GST = '/getGST'
+
+
 
   static IS_LOGGED_IN: boolean;
   static LST_PTNR: Array<string> = [];
@@ -248,7 +255,10 @@ export class AppModule {
         return this.appservice.getData(AppModule.URL + AppModule.GET_ALL_PRODUCTS + search, this.httpOptions)
 
       case 'ADMIN_ALL_PRODUCT':
-        return this.appservice.getData(AppModule.URL + AppModule.GET_ADMIN_ALL_PRODUCTS + search, this.httpOptions)
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_ALL_PRODUCTS, search, this.httpOptions)
 
       case 'SEARCH_PRODUCT':
         return this.appservice.getData(AppModule.URL + AppModule.GET_SEARCH_PRODUCTS + search, this.httpOptions)
@@ -329,6 +339,12 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ORDER_SERVICE, search, this.httpOptions)
 
+      case 'GET_STAT':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_STAT, search, this.httpOptions)
+
       case 'GET_COMM':
         this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
@@ -341,7 +357,7 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_SR_SERVICE, search, this.httpOptions)
 
-        case 'GET_INVOICE':
+      case 'GET_INVOICE':
         this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
@@ -397,6 +413,18 @@ export class AppModule {
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.POST_SR_SERVICE, search, this.httpOptions)
+
+      case 'COMM':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_COMMUNICATION_SERVICE, search, this.httpOptions)
+
+      case 'GET_ADMIN_GST':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_GST, search, this.httpOptions)
 
       default:
         return new Observable<any>()

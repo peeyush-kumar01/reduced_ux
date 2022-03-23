@@ -1,5 +1,8 @@
 
 import { Component, HostListener, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AppModule } from '../app.module';
+import { CommunicationType } from '../Objects';
 
 @Component({
   selector: 'app-footer',
@@ -7,14 +10,18 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  constructor() {}
+  constructor(private formbuilder: FormBuilder, private appmodule: AppModule) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   sectionDetail: { [index: string]: string } = {
     header: '',
     detail: '',
   };
+
+  subscriptionForm = this.formbuilder.group({
+    semail: ['', [Validators.email, Validators.required]]
+  })
 
   setContactDetail(): void {
     this.sectionDetail.header = 'Contact Detail';
@@ -25,7 +32,7 @@ export class FooterComponent implements OnInit {
     <br/>Bharat (India) \
     <hr/> \
     <b>Email:</b><br/> \
-    <a href="mailto:info@prasilabs.com?Subject=Enquirey%20'+Date.now()+'" target="_top">info@prasilabs.com</a>\
+    <a href="mailto:info@prasilabs.com?Subject=Enquirey%20'+ Date.now() + '" target="_top">info@prasilabs.com</a>\
     ';
   }
 
@@ -56,8 +63,28 @@ export class FooterComponent implements OnInit {
     <br/><hr/><br/>ISO 9001:2015 Certified Company';
   }
 
-  setMapDetail():void {
+  setMapDetail(): void {
     this.sectionDetail.header = 'Hyderabad India';
     this.sectionDetail.detail = '<b>US</b>'
+  }
+
+  submitSubs(event: Event): void {
+    event.preventDefault();
+
+    let comm: CommunicationType = {
+      id: '',
+      commid: '',
+      type: 'SUBSCRIPTION',
+      user: this.subscriptionForm.get('semail')?.value,
+      message: 'Please add me to the newsletter subscription.',
+      accntid: this.subscriptionForm.get('semail')?.value,
+      updated: new Date().toISOString()
+    }
+
+    this.appmodule.runGetCall('COMM', { Communication: comm }).subscribe(
+      (data) => { if (data['successMsg']) { alert('Subscription request sent.') } },
+      (error => { console.log(error); alert('Something wrong happened. Please try again.') }),
+      () => { console.log('Done'); this.subscriptionForm.reset() }
+    )
   }
 }

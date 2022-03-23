@@ -1,24 +1,34 @@
 <div class="container-fluid">
-    Welcome&nbsp;back&nbsp;{{LoggedInUser}}
-    <hr />
-    <div class="left">
-        <div class="top">
-           <canvas #orderStatus></canvas>
+    <div class="row">
+        <div class="col">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType">
+          </canvas>
         </div>
-        <div class="down">
-            left down
+        <div class="col">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType">
+          </canvas>
+        </div>
+        <div class="col">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType">
+          </canvas>
         </div>
     </div>
-    <div class="right">
-        <div class="top">
-            <div class="left">
-                right top left
-            </div>
-            <div class="right">
-                right top right
-            </div>
+    <div class="row">
+        <div class="col">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType">
+          </canvas>
         </div>
-        <div class="down">
-            right down
+        <div class="col">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType">
+          </canvas>
         </div>
+        <div class="col">
+
+        </div>
+    </div>
     </div>

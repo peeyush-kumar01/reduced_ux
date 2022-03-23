@@ -1,1 +1,175 @@
-<p>tasks works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-primary text-light">
+                    Invoice Bulk Upload
+                </div>
+                <div class="card-body">
+                    <form>
+                        <label for="pfile">Select csv file(s)</label>
+                        <input type="file" id="pfile" class="form-control" multiple />
+                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
+                            (click)="uploadBInvoice()">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-primary text-light">
+                    Product Bulk Upload
+                </div>
+                <div class="card-body">
+                    <form>
+                        <label for="pfile">Select csv file(s)</label>
+                        <input type="file" id="pfile" class="form-control" multiple />
+                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
+                            (click)="uploadBProduct()">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-primary text-light">
+                    GST Bulk Upload
+                </div>
+                <div class="card-body">
+                    <form>
+                        <label for="pfile">Select csv file(s)</label>
+                        <input type="file" id="pfile" class="form-control" multiple />
+                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
+                            (click)="uploadBGST()">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row mt-2">
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-secondary text-light">
+                    Find and update GST
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-info mt-2" data-bs-target=" #gsttable"
+                        data-bs-toggle="modal">Click to
+                        see list of
+                        Products/GST</button>
+                    <div class="modal fade" id="gsttable" tabindex="-1" aria-labelledby="gsttableLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <form>
+                                        <table class="table table-sm table-responsive table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">SL#</th>
+                                                    <th scope="col">Product Id</th>
+                                                    <th scope="col">Product Name</th>
+                                                    <th scope="col">CASNO</th>
+                                                    <th scope="col">CGST</th>
+                                                    <th scope="col">SGST</th>
+                                                    <th scope="col">IGST</th>
+                                                    <th scope="col">OTHER TAX</th>
+                                                    <th scope="col">DISCOUNT</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let gst of listGST; index as i">
+                                                    <th scope="row">{{i}}</th>
+                                                    <td class="text-small"><input class="form-control" type="text" name="prodid" value="{{gst['prodid']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="productname" value="{{gst['productname']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="casno" value="{{gst['casno']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="cgst" value="{{gst['cgst']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="sgst" value="{{gst['sgst']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="igst" value="{{gst['igst']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="tax" value="{{gst['tax']}}"></td>
+                                                    <td class="text-small"><input class="form-control" type="text" name="discount" value="{{gst['discount']}}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
+                                        No
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal"
+                                        (click)="findandupdateGST()">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-secondary text-light">
+                    Find and update LOV
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-info mt-2" (click)="findandupdateLOV()">Click to
+                        see list of
+                        LOVs</button>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-secondary text-light">
+                    Find and update currency exchange rates
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-info mt-2"
+                        (click)="findandupdateXchange()">Click to see list of
+                        Exchange rates</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row mt-2">
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    Find and update system keys
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-warning mt-2" (click)="findandupdateKey()">Click
+                        to see list of
+                        system keys</button>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    Find and update company information
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-warning mt-2"
+                        (click)="findandupdateCompany()">Click to see list of
+                        company information</button>
+                </div>
+            </div>
+        </div>
+        <div class="col m-1">
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    Initite DB CSV backup
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-warning mt-2" (click)="InititeCSVBackup()">Click
+                        to start backup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

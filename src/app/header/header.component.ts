@@ -1,8 +1,10 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AppModule } from '../app.module';
+import { CommunicationType } from '../Objects';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +12,11 @@ import { AppModule } from '../app.module';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  constructor(private sanitizer: DomSanitizer, private router: Router, private appmodule: AppModule, private formbuilder: FormBuilder) { }
+  ngOnInit(): void { }
+
   title = 'PRASI Labs';
-  constructor(private sanitizer: DomSanitizer, private router: Router, private appmodule: AppModule) { }
   isCollapsed = true;
   isModel = true;
   isModel1 = true;
@@ -19,6 +24,14 @@ export class HeaderComponent implements OnInit {
     header: '',
     detail: '',
   };
+
+  feedbackForm = this.formbuilder.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required]]
+    }
+  )
+
   isLoggedIn(): boolean {
     return AppModule.IS_LOGGED_IN;
   }
@@ -44,7 +57,7 @@ export class HeaderComponent implements OnInit {
           }
           AppModule.IS_LOGGED_IN = false;
           this.router.navigateByUrl('/');
-        }else{
+        } else {
           sessionStorage.removeItem('currentUser');
           sessionStorage.removeItem('adminUser');
           alert('Logout was not fully successfull. Please re-login.');
@@ -61,15 +74,35 @@ export class HeaderComponent implements OnInit {
 
       },
       () => {
+        sessionStorage.clear()
         console.log('Logout done');
       }
     )
 
 
   }
-  submitFeedback(): void {
+  submitFeedback(event:Event): void {
+event.preventDefault();
+
+    let comm: CommunicationType = {
+      id: '',
+      commid: '',
+      type: 'FEEDBACK',
+      user: this.feedbackForm.get('email')?.value,
+      message: this.feedbackForm.get('message')?.value,
+      accntid: this.feedbackForm.get('email')?.value,
+      updated: new Date().toISOString()
+    }
+
+    this.appmodule.runGetCall('COMM', { Communication: comm }).subscribe(
+      (data) => { if (data['successMsg']) { alert('Feedback sent.') } },
+      (error => { console.log(error); alert('Something wrong happened. Please try again.') }),
+      () => { console.log('Done');this.feedbackForm.reset() }
+    )
+
     this.isModel1 = true;
   }
+
   setContactDetail(): void {
     this.sectionDetail.header = 'Contact Detail';
     this.sectionDetail.detail = '<b>Registered Office:</b><br/>Prasi Labs Pvt Ltd \
@@ -127,7 +160,5 @@ export class HeaderComponent implements OnInit {
     this.sectionDetail.detail = this.sectionDetail.detail = this.sanitizer.bypassSecurityTrustHtml(map);
   }
 
-  ngOnInit(): void {
-  }
 
 }

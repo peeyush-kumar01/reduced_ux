@@ -24,7 +24,8 @@ html {
 }
 .modal-body {
   /* bug fix - no overlay */    
-  background-color: khaki
+  background-color: khaki;
+ 
 }
 .wrapper {
   background: white;

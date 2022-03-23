@@ -32,10 +32,13 @@ export class AdminloginComponent implements OnInit {
       this.appmodule.runGetCall('LOGIN', { 'userid': LB.userid, 'password': LB.password }).subscribe(
         data => {
           if (data['successMsg'] && data['successMsg']['type'] == 'ADMIN') {
+            sessionStorage.removeItem('currentUser')
             sessionStorage.setItem('adminUser', JSON.stringify(data['successMsg']));
             AppModule.IS_LOGGED_IN = true;
             AppModule.USR=data['successMsg']
             this.router.navigateByUrl('/administratorurlhidden/admindashboard/adminhome');
+          }else{
+            sessionStorage.clear()
           }
         },
         error => {

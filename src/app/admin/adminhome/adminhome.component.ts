@@ -1,59 +1,73 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Chart, Point } from 'chart.js';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+
 
 @Component({
   selector: 'app-adminhome',
   templateUrl: './adminhome.component.html',
   styleUrls: ['./adminhome.component.css']
 })
-export class AdminhomeComponent implements OnInit, AfterViewInit {
-
-  @ViewChild('orderStatus')
-  private pieCanvas!: ElementRef;
-
-  LoggedInUser: string | null;
-  private chart: any;
-  private data: Point[];
-
-  constructor() {
-    this.LoggedInUser = sessionStorage.getItem('adminUser');
-    this.data = [{ x: 1, y: 5 }, { x: 2, y: 10 }, { x: 3, y: 6 }, { x: 4, y: 2 }, { x: 4.1, y: 6 }]
-  }
-  ngAfterViewInit(): void {
-    this.chart = new Chart(this.pieCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
-        datasets: [
-          {
-            label: 'Sell per week',
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15],
-            spanGaps: false,
-          }
-        ]
-      }
-    }
-    );
-
-  }
-
+export class AdminhomeComponent implements OnInit {
   ngOnInit(): void {
 
+  }
+
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  public barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 10
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end'
+      }
+    }
+  };
+  public barChartType: ChartType = 'bar';
+  public barChartPlugins = [
+    DataLabelsPlugin
+  ];
+
+  public barChartData: ChartData<'bar'> = {
+    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    datasets: [
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+    ]
+  };
+
+  // events
+  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public randomize(): void {
+    // Only Change 3 values
+    this.barChartData.datasets[0].data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      Math.round(Math.random() * 100),
+      56,
+      Math.round(Math.random() * 100),
+      40];
+
+    this.chart?.update();
   }
 }

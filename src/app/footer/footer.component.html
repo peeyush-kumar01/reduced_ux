@@ -40,9 +40,9 @@
 
     <p>Subscribe</p>
 
-    <form action="#" method="post">
+    <form [formGroup]="subscriptionForm" (ngSubmit)="submitSubs($event)">
 
-      <input type="text" name="email" placeholder="Email">
+      <input type="text" formControlName="semail" placeholder="Email">
       <button>Send</button>
 
     </form>
