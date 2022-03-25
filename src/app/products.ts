@@ -55,11 +55,11 @@ export class ProductModel {
             message: 'Validation skipped'
         }
 
-        if (this.product.enddate && this.product.enddate.getTime() <= Date.now()) {
+        if (this.product.enddate && this.product.enddate.getUTCSeconds() <= Date.now()) {
             returnObject.status = false;
             returnObject.message = 'Product end date can not be in the past.'
         }
-        if (this.product.availabilitydate && this.product.availabilitydate.getTime() <= Date.now()) {
+        if (this.product.availabilitydate && this.product.availabilitydate.getUTCSeconds() <= Date.now()) {
             returnObject.status = false;
             returnObject.message = 'Product availability date date can not be in the past.'
         }

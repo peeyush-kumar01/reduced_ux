@@ -192,8 +192,17 @@ export class AppModule {
   static readonly GET_STAT = '/stat'
   //getGST
   static readonly GET_ADMIN_GST = '/getGST'
+  //getLOV
+  static readonly GET_ADMIN_LOV = '/getLovAdmin'
 
+  //postLOV
+  static readonly POST_ADMIN_LOV = '/postLovAdmin'
+  //gpostexchange
+  static readonly POST_ADMIN_XCHANGE = '/postXchangeAdmin'
+  //post gst
+  static readonly POST_ADMIN_GST = '/postGSTAdmin'
 
+  static readonly GET_ADMIN_COMP = '/getCompanyAdmin'
 
   static IS_LOGGED_IN: boolean;
   static LST_PTNR: Array<string> = [];
@@ -425,6 +434,36 @@ export class AppModule {
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_GST, search, this.httpOptions)
+
+      case 'GET_ADMIN_LOV':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_LOV, search, this.httpOptions)
+
+      case 'POST_LOV_ADMIN':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_LOV, search, this.httpOptions);
+
+      case 'POST_XCHANGE':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_XCHANGE, search, this.httpOptions);
+
+      case 'POST_GST':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_GST, search, this.httpOptions);
+
+        case 'GET_ADMIN_COMP':
+          this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+          this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+          search['System'] = this.System;
+          return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COMP, search, this.httpOptions);
 
       default:
         return new Observable<any>()

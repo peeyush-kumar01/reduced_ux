@@ -20,11 +20,11 @@ html {
 }
 .modal-heder {
   /* bug fix - no overlay */    
-  background-color: wheat
+  background-color: rgb(230, 179, 245)
 }
 .modal-body {
   /* bug fix - no overlay */    
-  background-color: khaki;
+  background-color: rgb(244, 196, 48);
  
 }
 .wrapper {

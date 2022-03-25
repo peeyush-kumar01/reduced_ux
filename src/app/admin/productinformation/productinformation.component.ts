@@ -114,9 +114,9 @@ export class ProductinformationComponent implements OnInit {
 
   putProduct(obj: ProductType): void {
     let p = new ProductModel(obj);
-    //  console.log(obj);
-    console.log(p.checkProdMandatoryFields())
-    console.log(p.checkAvailabilityDate())
+    //console.log(obj);
+    //console.log(p.checkProdMandatoryFields())
+    //console.log(p.checkAvailabilityDate())
     this.appmodule.runGetCall('PRODUCT', { data: [{ Product: obj }] }).subscribe(
       (data) => {
         console.log(data['successMsg']);
@@ -176,7 +176,7 @@ export class ProductinformationComponent implements OnInit {
       makecompany: this.nmkcompany.nativeElement.value,
       reactivity: this.nreactivity.nativeElement.value,
       storgetype: this.nstorageType.nativeElement.value,
-      structure: this.nstructure.nativeElement.value,
+      structure: null,//this.nstructure.nativeElement.value,
       chemicalformula: this.ncformula.nativeElement.value,
       chemicalname: this.ncname.nativeElement.value,
       currency: this.ncurrency.nativeElement.value,
