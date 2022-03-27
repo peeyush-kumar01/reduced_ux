@@ -27,6 +27,7 @@
     "bootstrap": "^5.0.2",
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",
+    "convert-excel-to-json": "^1.7.0",
     "jquery": "^3.6.0",
     "mdb-angular-ui-kit": "^1.6.0",
     "mdb-ui-kit": "^3.10.1",
@@ -34,12 +35,14 @@
     "popper": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.4",
     "@angular/cli": "~12.1.4",
     "@angular/compiler-cli": "~12.1.0",
+    "@types/convert-excel-to-json": "^1.7.1",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { AppModule } from 'src/app/app.module';
 import { LovType, KeyType, CompanyType } from 'src/app/Objects';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-tasks',
@@ -15,14 +16,14 @@ export class TasksComponent implements OnInit {
     this.getLov();
     this.getGst();
     this.getComp();
-   
+
     this.getXchange();
   }
 
   listLOV: LovType[] = [];
   listGST: any[] = [];
   listXchange: any[] = [];
- 
+
   listCompany: CompanyType[] = [];
   @ViewChild('lovbody', { read: ViewContainerRef }) lovbody?: ViewContainerRef
   @ViewChild('newrow') newrow?: TemplateRef<any>
@@ -32,6 +33,7 @@ export class TasksComponent implements OnInit {
   @ViewChildren('compdata') compdata?: QueryList<ElementRef>
   @ViewChildren('xdata') xdata?: QueryList<ElementRef>
   @ViewChildren('gstdata') gstdata?: QueryList<ElementRef>
+ 
 
   getLov() {
     this.appmodule.runGetCall('GET_ADMIN_LOV', {}).subscribe(
@@ -249,15 +251,26 @@ export class TasksComponent implements OnInit {
 
   }
   //Upload bulk gst from a file
-  uploadBGST() {
+  uploadBGST(event: Event) {
+    event.preventDefault();
 
   }
   //upload bulk product from a file
-  uploadBProduct() {
+  uploadBProduct(event: Event) {
+    event.preventDefault();
+    console.log((<HTMLInputElement>event.target).files)
+    this.appmodule.runGetCall('BP',{file:(<HTMLInputElement>event.target).files}).subscribe(
+      (data)=>{
+        alert(data['successMsg'])
+      },
+      (error)=>{alert(error)},
+      ()=>{console.log('done')}
+    )
 
   }
   //uplod bulk invoice from a file
-  uploadBInvoice() {
+  uploadBInvoice(event: Event) {
+    event.preventDefault();
 
   }
 
@@ -278,5 +291,6 @@ export class TasksComponent implements OnInit {
   removeCompany() {
     this.gstbody!.remove()
   }
+
 
 }

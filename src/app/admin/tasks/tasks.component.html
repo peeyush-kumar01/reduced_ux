@@ -6,12 +6,10 @@
                     Invoice Bulk Upload
                 </div>
                 <div class="card-body">
-                    <form>
-                        <label for="pfile">Select csv file(s)</label>
-                        <input type="file" id="pfile" class="form-control" multiple />
-                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
-                            (click)="uploadBInvoice()">Upload</button>
-                    </form>
+                  
+                        <label for="pfile">Select xlsx file(s)</label>
+                        <input type="file" #ifile class="form-control" (change)="uploadBInvoice($event)" multiple />
+                        
                 </div>
             </div>
         </div>
@@ -21,12 +19,11 @@
                     Product Bulk Upload
                 </div>
                 <div class="card-body">
-                    <form>
-                        <label for="pfile">Select csv file(s)</label>
-                        <input type="file" id="pfile" class="form-control" multiple />
-                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
-                            (click)="uploadBProduct()">Upload</button>
-                    </form>
+                  
+                        <label for="pfile">Select xlsx file(s)</label>
+                        <input type="file" #pfile class="form-control" (change)="uploadBProduct($event)"  multiple />
+                        
+                 
                 </div>
             </div>
         </div>
@@ -36,12 +33,11 @@
                     GST Bulk Upload
                 </div>
                 <div class="card-body">
-                    <form>
-                        <label for="pfile">Select csv file(s)</label>
-                        <input type="file" id="pfile" class="form-control" multiple />
-                        <button type="submit" class="btn btn-sm btn-outline-dark mt-2"
-                            (click)="uploadBGST()">Upload</button>
-                    </form>
+                   
+                        <label for="pfile">Select xlsx file(s)</label>
+                        <input type="file" #gfile class="form-control" (change)="uploadBGST($event)" multiple />
+                       
+            
                 </div>
             </div>
         </div>

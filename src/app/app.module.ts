@@ -65,6 +65,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { AtomComponent } from './atom/atom.component';
 import { NgChartsModule } from 'ng2-charts';
+import { BillComponent } from './bill/bill.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { NgChartsModule } from 'ng2-charts';
     AdminhomeComponent,
     RegisterComponent,
     AtomComponent,
+    BillComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, NgbModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule, NgChartsModule],
   providers: [AuthGuard, AppService],
@@ -203,6 +205,13 @@ export class AppModule {
   static readonly POST_ADMIN_GST = '/postGSTAdmin'
 
   static readonly GET_ADMIN_COMP = '/getCompanyAdmin'
+  static readonly POST_ADMIN_BP = '/bulkproducts'
+  static readonly POST_ADMIN_BI = '/bulkinvoice'
+  static readonly POST_ADMIN_BG = '/bulkgst'
+  static readonly GET_ADMIN_SR = '/getSRListAdmin'
+
+  static readonly GET_ADMIN_COM = '/getCommunicationListAdmin'
+
 
   static IS_LOGGED_IN: boolean;
   static LST_PTNR: Array<string> = [];
@@ -459,11 +468,42 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_GST, search, this.httpOptions);
 
-        case 'GET_ADMIN_COMP':
+      case 'GET_ADMIN_COMP':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COMP, search, this.httpOptions);
+
+        case 'GET_ADMIN_COM':
           this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
           this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
           search['System'] = this.System;
-          return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COMP, search, this.httpOptions);
+          return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COM, search, this.httpOptions);
+
+          
+      case 'GET_ADMIN_SR':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_SR, search, this.httpOptions);
+
+      case 'BG':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_BG, search, this.httpOptions);
+
+      case 'BP':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_BP, search, this.httpOptions);
+
+      case 'BI':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_BI, search, this.httpOptions);
 
       default:
         return new Observable<any>()

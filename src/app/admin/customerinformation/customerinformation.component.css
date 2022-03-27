@@ -4,11 +4,19 @@
 .leftnav{
     position: fixed;
 }
+.h{
+    cursor: pointer;
+    font-style:italic;
+}
+.colortext{
+    color:rgb(9, 9, 92) !important
+}
 .btnw{
     min-width: 15vw;
 }
 .smalltext{
-    font-size: medium !important;
+    font-size: smaller !important;
+    font-weight: 600 !important;
 }
 .lightcolor{
     color: white !important;

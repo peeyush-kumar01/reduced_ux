@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-cominfo',
@@ -7,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CominfoComponent implements OnInit {
 
-  constructor() { }
+  textArea: any[] = [];
+  isCollapsed: boolean[] = [];
+  constructor(private appmodule: AppModule) { }
 
   ngOnInit(): void {
+    this.appmodule.runGetCall('GET_ADMIN_COM', {}).subscribe(
+      (data) => {
+        data['successMsg'].forEach((element: any) => {
+          this.textArea.push({
+            updated: new Date(element.updated).toLocaleString(),
+            accntname: element.accntname,
+            message: element.message
+          })
+        });
+      },
+      (error) => { console.log(error) },
+      () => { console.log('Done') }
+    )
   }
-  filterTerm:any='';
-  
-  textArea: number[] = [1, 2, 3, 4];
-  isCollapsed: boolean [] = [];
 }

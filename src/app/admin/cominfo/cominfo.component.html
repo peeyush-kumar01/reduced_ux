@@ -1,12 +1,12 @@
 
 <br />
-<h4 class="custom-c">Communication to customer</h4>
+<h4 class="custom-c">Communication sent to you</h4>
 <hr id="horzntl-custom-comm" />
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-sm btn-dark m-1 rounded">All</button>
-    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Oldest</button>
-    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Newest</button>
+    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Oldest first</button>
+    <button type="button" class="btn btn-sm btn-dark m-1 rounded">Newest first</button>
     <div class="input-group m-1 rounded">
       <input
         type="text"
@@ -14,13 +14,12 @@
         placeholder="Type date(MM-YYYY) to search"
         aria-label="Type date(MM-YYYY) to search"
         aria-describedby="btnGroupAddon"
-        [(ngModel)]="filterTerm"
       />
     </div>
   </div>
 </div>
 <br />
-<div class="container media mb-3" *ngFor="let val of textArea | searchFilter: filterTerm; let i = index">
+<div class="container media mb-3" *ngFor="let val of textArea; let i = index">
   <button
     class="btn btn-sm btn-primary"
     type="button"
@@ -30,7 +29,7 @@
     [attr.aria-expanded]="!isCollapsed[i] ? false : true"
     [attr.aria-controls]="i"
   >
-    Sent to On for
+    {{ i +1 }} - Updated on: {{val['updated'] }}, updated by: {{val['accntname']}}
   </button>
   <div
     class="collapse"
@@ -38,7 +37,7 @@
     [ngbCollapse]="!isCollapsed[i] ? true : false"
   >
     <textarea class="form-control-plaintext" rows="3" readonly>
-  {{ val }}</textarea
+  {{ val['message'] }}</textarea
     >
   </div>
   <hr />

@@ -1,6 +1,7 @@
 <br />
 <h4 class="custom-c">Service Requests</h4>
 <hr id="horzntl-custom-inv" />
+<button class="btn btn-sm btn-warning ms-1" data-bs-toggle="modal" data-bs-target="#sr">New SR</button>
 <div class="container media mt-2">
   <div class="row row-cols-4 text-center text-uppercase mb-2">
     <div class="col flex-sm-col border-bottom col-color shadow">SR#</div>
@@ -12,71 +13,100 @@
   </div>
   <div *ngFor="let val of SR; let i = index">
     <div class="row row-cols-4 text-start text-dark me-1">
-      <div
-        class="col d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-        style="cursor: pointer; color:blue"
-      >
+      <div class="col d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        style="cursor: pointer; color:blue" (click)="setContext(val)">
         <u>{{ val.srno }}</u>
       </div>
       <div class="col d-flex justify-content-center">
-        <p>{{ val.date }}</p>
+        <p>{{ val.created | date:'d/M/yy, h:mm a'}}</p>
       </div>
       <div class="col d-flex justify-content-center">
         <p>{{ val.status }}</p>
       </div>
-      <div
-        class="col d-flex justify-content-evenly"
-        (mouseenter)="isHovered = true"
-        (mouseleave)="isHovered = false"
-      >
-        <div
-          class="btn btn-sm btn-secondary m-1"
-          id="srupdate{{ i }}"
-          (mouseenter)="getId($event)"
-          [ngStyle]="id == 'srupdate' + i ? getStyle() : {}"
-        >
+      <div class="col d-flex justify-content-evenly" (mouseenter)="isHovered = true" (mouseleave)="isHovered = false">
+        <div class="btn btn-sm btn-secondary m-1" id="srupdate{{ i }}" (mouseenter)="getId($event)"
+          [ngStyle]="id == 'srupdate' + i ? getStyle() : {}" data-bs-target="#srupdate" data-bs-toggle="modal"
+          (click)="setContext(val)">
           Update
         </div>
-        <div
-          class="btn btn-sm btn-success"
-          id="srclose{{ i }}"
-          (mouseenter)="getId($event)"
-          [ngStyle]="id == 'srclose' + i ? getStyle() : {}"
-        >
+        <div class="btn btn-sm btn-success" id="srclose{{ i }}" (mouseenter)="getId($event)"
+          [ngStyle]="id == 'srclose' + i ? getStyle() : {}" (click)="closeSR(val)">
           Close
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="mb-3"></div>
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <h6 class="modal-title" id="staticBackdropLabel">
+          {{context['srno']}}&nbsp;&nbsp;{{context['type']}}&nbsp;&nbsp;{{context['accntname']}}</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">dfdsf
+      <div class="modal-body">
+        <p *ngFor="let vali of interactionKeys" class="text-justify border-bottom border-secondary">
+          {{vali}} <br /> {{context['interaction'][vali]}}
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sr" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="srLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="srLabel">Please provide description.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input list="ac" id="acname" class="form-control" placeholder="click to select account">
+        <datalist id="ac">
+          <option *ngFor="let ac of aclist">{{ac.fullname}}</option>
+        </datalist>
+        <br />
+        <select id="srtype" class="form-control">
+          <option>INFO</option>
+          <option>ISSUE</option>
+          <option>REQUEST</option>
+        </select>
+        <br />
+        <textarea id="srtext" class="form-control"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="createSR()">
+          Create
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="srupdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="srupdateLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="srupdateLabel">{{context['srno']}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <textarea id="srtextupdate" class="form-control"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="updateSR()">
+          Update
         </button>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/account';
+import { AccountType, ContactType, AddressType, OrdersType, ServicerequestType } from 'src/app/Objects';
+import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-customerinformation',
@@ -8,41 +10,100 @@ import { Account } from 'src/app/account';
 })
 export class CustomerinformationComponent implements OnInit {
 
-  constructor() { }
-  filterTerm: any = '';
-  ngOnInit(): void {
-  }
-  account: Account = new Account({
-    id: 'String',
-    customerid: 'String',
-    fullname: 'String',
-    email: 'String',
-    phone: 'String',
-    cemail: 'String',
-    cphone: 'String',
-    caddress: 'String',
-    uaddress: 'String',
-    cstate: 'String',
-    czip: 1,
-    idtype: 'String',
-    idname: 'String',
-    idnum: 'String',
-    type: 'String',
-    compregno: 'String',
-    company: 'String',
-    uniqbusidenno: 'String',
-    uniqbusidentype: 'String',
-    buscountry: 'String',
-    contact: 'String',
-    address: 'String',
-    selfdeclation: false,
-    status: 'String',
-    dob: new Date('2022-02-22'),
-    updatedby: 'string | null',
-    createdby:' string | null',
-    created: '',
-    updated: '',
-  })
+  constructor(private appmodule: AppModule) { }
 
-  data: Array<Account> = [this.account, this.account, this.account, this.account, this.account, this.account, this.account, this.account, this.account]
+  filterTerm: any = '';
+  accntList: AccountType[] = []
+  contactList: any[] = []
+  orderList: any[] = []
+  srList: ServicerequestType[] = []
+  addrList: any[] = []
+  setContext:any={}
+
+  ngOnInit(): void {
+    this.appmodule.runGetCall('GET_ACCOUNT', { listaccount: 'ALL' }).subscribe(
+      (data) => {
+        console.log(data['successMsg']);
+        this.accntList = data['successMsg'];
+      },
+      (error) => {
+        console.log(error);
+        alert(error)
+      },
+      () => {
+        console.log('Done')
+      }
+    )
+  }
+
+  //get respective contact detail
+  getCT(obj: AccountType) {
+    this.appmodule.runGetCall('GET_CONTACT', { listaccount: obj.customerid }).subscribe(
+      (data) => {
+       // console.log(data['successMsg']);
+        this.contactList = data['successMsg'];
+      },
+      (error) => {
+        console.log(error);
+        alert(error)
+      },
+      () => {
+        console.log('Done')
+      }
+    )
+  }
+
+  //get respective address detail
+  getAD(obj: AccountType) {
+    this.appmodule.runGetCall('GET_ADDRESS', { listaccount: obj.customerid }).subscribe(
+      (data) => {
+       // console.log(data['successMsg']);
+        this.addrList = data['successMsg'];
+      },
+      (error) => {
+        console.log(error);
+        alert(error)
+      },
+      () => {
+        console.log('Done')
+      }
+    )
+  }
+
+  //get respective order detail
+  getOD(obj: AccountType) {
+    this.appmodule.runGetCall('GET_ORDER', { listaccount: obj.customerid }).subscribe(
+      (data) => {
+       // console.log(data['successMsg']);
+        this.orderList = data['successMsg'].filter((d:any)=>{
+          return d.Orders
+        });
+      },
+      (error) => {
+        console.log(error);
+        alert(error)
+      },
+      () => {
+        console.log('Done')
+      }
+    )
+  }
+
+  //get respective service request detail
+  getSR(obj: AccountType) {
+    console.log(obj.customerid)
+    this.appmodule.runGetCall('GET_SR', { listaccount: obj.customerid }).subscribe(
+      (data) => {
+        console.log(data['successMsg']);
+        this.srList = data['successMsg'];
+      },
+      (error) => {
+        console.log(error);
+        alert(error)
+      },
+      () => {
+        console.log('Done')
+      }
+    )
+  }
 }

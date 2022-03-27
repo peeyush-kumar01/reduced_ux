@@ -24,7 +24,7 @@ html {
 }
 .modal-body {
   /* bug fix - no overlay */    
-  background-color: rgb(244, 196, 48);
+  background-color: rgb(239, 208, 240);
  
 }
 .wrapper {

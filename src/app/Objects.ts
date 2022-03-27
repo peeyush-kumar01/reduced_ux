@@ -90,6 +90,7 @@ export interface CommunicationType {
     user: string,
     message: string | null,
     accntid: string,
+    accntname?: string,
     updated: string,
 }
 
@@ -101,6 +102,7 @@ export interface ServicerequestType {
     type: string,
     interaction: string,
     updatedby: string | null,
+    accntname?: string,
     createdby: string | null,
     created: string | null,
     updated: string | null,
@@ -264,6 +266,7 @@ export interface InvoiceType {
     surcharge: number,
     otherdiscount: number,
     othercharges: number,
+    accntname?: string,
     shippingcharges: number,
     currency: string,
     invmaildetail: {
