@@ -1,57 +1,99 @@
 <div class="table table-sm table-responsive table-hover table-borderless border border-dark">
-    <div class="row">
-      <div class="col-sm-6">
-        This is main section
-      </div>
-      <div class="col-sm-6 border-start border-dark">
-        This is invoice section
-      </div>
-    </div>
-    <div class="row border-top border-dark">
-      <div class="col-sm-6"><strong>Shipped to:</strong></div>
-      <div class="col-sm-6 border-start border-dark"><strong>Billed to:</strong></div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 text-end">Kajal agarwall</div>
-      <div class="col-sm-6 border-start border-dark text-end">Aditi rao</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-7 bg-dark text-white">Item</div>
-      <div class="col-sm-1 bg-dark text-white">Discount</div>
-      <div class="col-sm-1 bg-dark text-white">Quantity</div>
-      <div class="col-sm-1 bg-dark text-white">Tax</div>
-      <div class="col-sm-1 bg-dark text-white">Amount</div>
-      <div class="col-sm-1 bg-dark text-white">Currency</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-7 border border-start-0">
-        ilgdfsdlafkldsjfkdlsfjdslakfjsdlk<br />
-        <p class="text-justify text-monospace">
-          <b><i>Cas#:</i></b>&nbsp;
-          <b><i>Rate:</i></b>&nbsp;
-          <b><i>Unit&nbsp;type:</i></b>&nbsp;
-          <b><i>Tax rate:</i></b>&nbsp;
-        </p>
-      </div>
-      <div class="col-sm-1 border">fds</div>
-      <div class="col-sm-1 border">dsfs</div>
-      <div class="col-sm-1 border">sdfds</div>
-      <div class="col-sm-1 border border-end-0">sdfs</div>
-      <div class="col-sm-1 border border-end-0">INR</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-8">Extra detil</div>
-      <div class="col-sm-4">
-        
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-3"><img class="ititle" src='../../assets/Prasilabs.png' /> </div>
+        <div class="col-sm-9">
+          <p><strong>PRASI LABS PVT LIMITED</strong><br />
+            Plot no: 3647, Sai Krishana Layout,<br />
+            Near Pragati Nagar Arch,<br />
+            Pragati Nagar, Hyderabad, Telangana - 500090,<br />
+            Bharat (India)<br />
+            E: info@prasilabs.com</p>
+        </div>
       </div>
     </div>
-    <div class="row border-top border-dark">
-      <div class="col-sm-12">
-        Payble amount in words:&nbsp;<strong>Hundred</strong>
+    <div class="col-sm-6 border-start border-dark">
+      <div class="row">
+        <div class="col d-flex justify-content-end">origional copy</div>
       </div>
-    </div>
-    <div class="row border-top border-dark">
-      <div class="col-sm-6">Note: It is a computer generated invioce. Signature is not required.</div>
-      <div class="col-sm-6 text-end">Issued by<br />PRASI LABS</div>
+      <div class="row">
+        <div class="col">Invoice#&nbsp;&nbsp;{{invoiceData?invoiceData.invid:''}}</div>
+        <div class="col">Order#&nbsp;&nbsp;{{invoiceData?invoiceData.ordernum:''}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Date&nbsp;&nbsp;{{invoiceData?invoiceData.created:'' | date:'dd/MM/yyyy'}}</div>
+        <div class="col">WayBill#&nbsp;&nbsp;{{invoiceData?invoiceData.waybillnum:''}}</div>
+      </div>
     </div>
   </div>
+  <div class="row border-top border-dark">
+    <div class="col-sm-6"><strong>Shipped to:</strong>
+
+    </div>
+    <div class="col-sm-6 border-start border-dark"><strong>Billed to:</strong>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 text-end">
+      <p>
+        {{invoiceData?invoiceData.ship.contact:''}}<br /> {{invoiceData?invoiceData.ship.address:''}}
+      </p>
+    </div>
+    <div class="col-sm-6 border-start border-dark text-end">
+      <p>
+        {{invoiceData?invoiceData.bill.contact:''}}<br />{{invoiceData?invoiceData.bill.address:''}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7 bg-dark text-white">Item</div>
+    <div class="col-sm-1 bg-dark text-white">Discount</div>
+    <div class="col-sm-1 bg-dark text-white">Quantity</div>
+    <div class="col-sm-1 bg-dark text-white">Tax</div>
+    <div class="col-sm-1 bg-dark text-white">Amount</div>
+    <div class="col-sm-1 bg-dark text-white">Currency</div>
+  </div>
+  <div class="row" *ngFor="let item of itemdetail">
+    <div class="col-sm-7 border border-start-0">
+      <strong>{{item.itemname}}</strong><br />
+
+      <div class="row">
+        <div class="col"><i>Cas#:</i></div>
+        <div class="col">{{item.itemdescription}}</div>
+        <div class="col"><i>Rate:</i></div>
+        <div class="col">{{item.itemprice}}</div>
+      </div>
+      <div class="row">
+        <div class="col"><i>Unit&nbsp;type:</i></div>
+        <div class="col">{{item.itemsellunit}}</div>
+        <div class="col"><i>Tax&nbsp;rate:</i></div>
+        <div class="col">
+          cgst:{{item.itemcgstrate}}&nbsp;sgst:{{item.itemsgstrate}}&nbsp;igst:{{item.itemigstrate}}&nbsp;tax(others):{{item.itemtaxrate}}
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-1 border">{{item.itemdiscount}}</div>
+    <div class="col-sm-1 border">{{item.itemqty}}</div>
+    <div class="col-sm-1 border">{{item.itemcgst + item.itemsgst + item.itemigst + item.itemtax}}</div>
+    <div class="col-sm-1 border border-end-0">{{item.itemamount}}</div>
+    <div class="col-sm-1 border border-end-0">{{invoiceData?invoiceData.currency:''}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">Extra detil</div>
+    <div class="col-sm-4">
+
+    </div>
+  </div>
+  <div class="row border-top border-dark">
+    <div class="col-sm-12">
+      Payble amount in words:&nbsp;<strong>Hundred</strong>
+    </div>
+  </div>
+  <div class="row border-top border-dark">
+    <div class="col-sm-6">Note: It is a computer generated invioce. Signature is not required.</div>
+    <div class="col-sm-6 text-end">Issued by<br />PRASI LABS</div>
+  </div>
+</div>

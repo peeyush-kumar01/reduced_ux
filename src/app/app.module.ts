@@ -66,6 +66,7 @@ import { RegisterComponent } from './register/register.component';
 import { AtomComponent } from './atom/atom.component';
 import { NgChartsModule } from 'ng2-charts';
 import { BillComponent } from './bill/bill.component';
+import { LedgerComponent } from './admin/ledger/ledger.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { BillComponent } from './bill/bill.component';
     RegisterComponent,
     AtomComponent,
     BillComponent,
+    LedgerComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, NgbModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule, NgChartsModule],
   providers: [AuthGuard, AppService],
@@ -211,7 +213,10 @@ export class AppModule {
   static readonly GET_ADMIN_SR = '/getSRListAdmin'
 
   static readonly GET_ADMIN_COM = '/getCommunicationListAdmin'
-
+  static readonly GET_ADMIN_INV = '/getInvoiceListAdmin'
+  static readonly GET_ADMIN_LEDGER = '/getLedgerListAdmin'
+  static readonly POST_ADMIN_LEDGER = '/ledger'
+  static readonly POST_ADMIN_UPLOAD = '/upload'
 
   static IS_LOGGED_IN: boolean;
   static LST_PTNR: Array<string> = [];
@@ -444,6 +449,12 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_GST, search, this.httpOptions)
 
+      case 'GET_ADMIN_INV':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_INV, search, this.httpOptions)
+
       case 'GET_ADMIN_LOV':
         this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
@@ -474,18 +485,30 @@ export class AppModule {
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COMP, search, this.httpOptions);
 
-        case 'GET_ADMIN_COM':
-          this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
-          this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
-          search['System'] = this.System;
-          return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COM, search, this.httpOptions);
+      case 'GET_ADMIN_COM':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_COM, search, this.httpOptions);
 
-          
+
       case 'GET_ADMIN_SR':
         this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_SR, search, this.httpOptions);
+
+      case 'GET_ADMIN_LEDGER':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.GET_ADMIN_LEDGER, search, this.httpOptions);
+
+      case 'POST_ADMIN_LEDGER':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        search['System'] = this.System;
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_LEDGER, search, this.httpOptions);
 
       case 'BG':
         this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
@@ -504,6 +527,14 @@ export class AppModule {
         this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
         search['System'] = this.System;
         return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_BI, search, this.httpOptions);
+
+      case 'UPLOAD':
+        this.httpOptions.headers = this.httpOptions.headers.delete('Authorization');
+        this.httpOptions.headers = this.httpOptions.headers.append('Authorization', this.System.apitoken);
+        this.httpOptions.headers = this.httpOptions.headers.delete('Content-Type');
+        
+       // (<FormData>search).append('System', JSON.stringify(this.System));
+        return this.appservice.postData(AppModule.URL + AppModule.POST_ADMIN_UPLOAD, search, this.httpOptions);
 
       default:
         return new Observable<any>()

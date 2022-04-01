@@ -44,8 +44,8 @@
                                     class="list-group-item list-group-item-action border border-dark  shadow-lg"
                                     aria-current="true">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <div data-bs-toggle="modal" data-bs-target="#customerinfo"
-                                            (click)="setContext=customer">
+                                        <div
+                                        (click)="setContext=customer" data-bs-target="#cusinfo" data-bs-toggle="modal">
                                             <h6 class="mb-1 h"><u>{{customer.fullname}}</u></h6>
                                         </div>
                                         <small>
@@ -124,8 +124,7 @@
                                     class="list-group-item list-group-item-action  border border-dark shadow-lg"
                                     aria-current="true">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <div data-bs-toggle="modal" data-bs-target="#customerinfo"
-                                            (click)="setContext=customer">
+                                        <div (click)="setContext=customer" data-bs-target="#cusinfo" data-bs-toggle="modal">
                                             <h6 class="mb-1 h"><u>{{customer.fullname}}</u></h6>
                                         </div>
                                         <small>
@@ -205,7 +204,7 @@
     </div>
 
 </div>
-<div class="modal fade" id="customerinfo" tabindex="-1" aria-labelledby="customerinfoLabel" aria-hidden="true">
+<div class="modal fade" id="cusinfo" tabindex="-1" aria-labelledby="customerinfoLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content modal-lg">
             <div class="modal-body">

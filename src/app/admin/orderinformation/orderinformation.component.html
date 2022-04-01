@@ -39,50 +39,68 @@
       <div id="flush-collapseOne{{ i }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
         data-bs-parent="#accordionFlush">
         <div class="accordion-body">
-            <div class="row">
-                <div class="col"><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#orderAdminEdit">Edit Order</button></div>
-                <div class="col"><button class="btn btn-sm btn-danger" >Cancel Order</button></div>
-                <div class="col"><button class="btn btn-sm btn-success" >Complete Order</button></div>
-                <div class="col"><button class="btn btn-sm btn-info" >Accept Order</button></div>                
-            </div>
-            <hr/>
           <div class="row">
-              
+            <div class="col"><button class="btn btn-sm btn-primary">Edit Order</button></div>
+            <div class="col"><button class="btn btn-sm btn-danger">Cancel Order</button></div>
+            <div class="col"><button class="btn btn-sm btn-success">Complete Order</button></div>
+            <div class="col"><button class="btn btn-sm btn-info">Accept Order</button></div>
+          </div>
+          <hr />
+          <div class="row">
+
             <div class="col-sm-4 mb-2" *ngFor="let item of order.items">
               <div class="card border-info shadow-sm">
                 <div class="card-header">
-                    
-                  <div class="row row-cols-4">
-                    <div class="col">
-                      <i class="fas fa-tag" title="Unit Price"></i>&nbsp;
+                  {{ item["itemname"] }}
+                  <button class="btn btn-sm btn-danger m-1 float-end">Cancel</button>
+                </div>
+                <div class="card-body">
+
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <i class="fas fa-tag" title="Unit Price"></i>
+                    </div>
+                    <div class="col-sm-4">
                       {{ item["itemprice"] }}
                     </div>
-                    <div class="col">
-                      <i class="fas fa-arrow-down" title="Discount"></i>&nbsp;
+                    <div class="col-sm-2">
+                      <i class="fas fa-arrow-down" title="Discount"></i>
+                    </div>
+                    <div class="col-sm-4">
                       {{ item["discount"] }}
                     </div>
-                    <div class="col">
-                      
-                      <i class="fas fa-coins" title="Tax Surcharge"></i>&nbsp;
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+
+                      <i class="fas fa-coins" title="Tax Surcharge"></i>
+                    </div>
+                    <div class="col-sm-4">
                       {{ item["itemGstRate"] }}
                     </div>
-                    <div class="col">
-                      <i class="fas fa-hashtag" title="Units Ordered"></i>&nbsp;
-                    {{  item["quantity"] }}
+                    <div class="col-sm-2">
+                      <i class="fas fa-hashtag" title="Units Ordered"></i>
+                    </div>
+                    <div class="col-sm-4">
+                      <input type="number" value="{{  item['quantity'] }}"
+                        class="form-control-plaintext form-control-sm" />
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  {{ item["itemname"] }}
-                </div>
+
                 <div class="card-footer">
                   <div class="row row-cols-3">
                     <div class="col">
                       <i class="fas {{ ret }}" title="Net Amount"></i>&nbsp;
-                      {{  item["itemamount"] }}
+                      {{ item["itemamount"] }}
                     </div>
-                    <div class="col">{{ item["itemStatus"] }}</div>
-                    <div class="col"></div>
+                    <div class="col">
+                      {{ item["itemStatus"] }}
+                    </div>
+                    <div class="col">
+                     
+                      <button class="btn btn-sm btn-success m-1">Complete</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -116,18 +134,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id="orderAdminEdit" tabindex="-1" aria-labelledby="orderAdminEditLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content modal-lg">
-            <div class="modal-body">
-                <app-cart></app-cart>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
-                    X
-                </button>
-            </div>
-        </div>
-    </div>
 </div>

@@ -27,6 +27,7 @@ export class InvoiceinfoComponent implements OnInit {
   currDate: number;
   deliveredAddress: string;
   list: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+  context!: InvoiceType
   constructor(private appmodule: AppModule) {
     this.ret = this.money[this.currentCurrency];
     this.currDate = Date.now();
@@ -35,10 +36,11 @@ export class InvoiceinfoComponent implements OnInit {
   }
 
   getInvoice(): void {
-    this.appmodule.runGetCall('GET_INVOICE', {}).subscribe(
+    this.appmodule.runGetCall('GET_ADMIN_INV', {}).subscribe(
       (value) => {
-        this.listInvoice = value;
-        console.log(value)
+        this.listInvoice = value['successMsg'];
+      
+        
       },
       (error) => { console.log(error) },
       () => { console.log("Done") }

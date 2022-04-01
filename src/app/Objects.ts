@@ -215,7 +215,7 @@ export interface OrderitemType {
     discount: number,
     itemprice: number,
     accntid: string,
-    itemdetail: string,
+    itemdetail: string,//to have casno of the product
     quantity: number,
     unit: string,
     itemname: string,
@@ -233,10 +233,10 @@ export interface InvoiceType {
     status: string,
     invid: string | undefined | null,
     type: string,
-    bill: string,
-    ship: string,
+    bill: any,
+    ship: any,
     waybillnum?: string | undefined | null,
-    item: {
+    item: [{
         itemname: string,
         itemqty: number,
         itemprice: number,
@@ -253,7 +253,7 @@ export interface InvoiceType {
         itemamount: number,
         itemdiscount: number,
         itemprodid: string
-    },
+    }],
     csgt: number,
     sgst: number,
     igst: number,
@@ -307,6 +307,19 @@ export interface UserType {
     accntid?: string | undefined | null,
     password: string | undefined | null,
     lastlogin?: string | undefined | null,
+    updatedby?: string | undefined | null,
+    createdby?: string | undefined | null,
+    created?: string | undefined | null,
+    updated?: string | undefined | null
+}
+
+export interface LedgerType {
+    id: string,
+    status: string,
+    type: string,
+    dsc: string,
+    amount: number,
+    currency: string,
     updatedby?: string | undefined | null,
     createdby?: string | undefined | null,
     created?: string | undefined | null,

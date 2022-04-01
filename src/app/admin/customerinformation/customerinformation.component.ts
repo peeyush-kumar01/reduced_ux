@@ -23,7 +23,7 @@ export class CustomerinformationComponent implements OnInit {
   ngOnInit(): void {
     this.appmodule.runGetCall('GET_ACCOUNT', { listaccount: 'ALL' }).subscribe(
       (data) => {
-        console.log(data['successMsg']);
+       // console.log(data['successMsg']);
         this.accntList = data['successMsg'];
       },
       (error) => {

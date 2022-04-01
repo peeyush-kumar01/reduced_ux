@@ -33,6 +33,7 @@ import { OrderinformationComponent } from './admin/orderinformation/orderinforma
 import { ProductinformationComponent } from './admin/productinformation/productinformation.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 import { RegisterComponent } from './register/register.component';
+import { LedgerComponent } from './admin/ledger/ledger.component';
 const routes: Routes = [
   { path: '', component: PrincipalComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -105,6 +106,11 @@ const routes: Routes = [
           {
             path: 'task',
             component: TasksComponent,
+            canActivate: [AdminAuthGuard],
+          },
+          {
+            path: 'ledger',
+            component: LedgerComponent,
             canActivate: [AdminAuthGuard],
           },
         ],
