@@ -15,75 +15,35 @@
       <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="filterTerm">
     </div>
   </div>
-  <div class="row">
-    <ng-container *ngFor="let i of products | searchFilter: filterTerm; let x=index">
-      <div class="col-sm-3">
-        <div class="card prod clearfix">
-          <div class="card-header ch" (click)="setCurObj(i)" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">
-            <img class="img" src="data:image/png;base64,{{i['image']}}" />
+  <div class="row" #top>
+    <ng-container
+      *ngFor="let i of products | searchFilter: filterTerm | paginate:{itemsPerPage: 6, currentPage: pages}; let x=index">
+      <div class="col-sm-4">
+        <div class="box-wrapper">
+          <div (click)="setCurObj(i)" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">
+            <img class="img" src="../../assets/happy-1637596172573-3301.jpg"/>
+            <!-- <img class="img" src="data:image/png;base64,{{i['image']}}" />-->
           </div>
-          <div class="card-body cb text-wrap text-break" (click)="setCurObj(i)" data-bs-toggle="modal"
-            data-bs-target="#exampleModalInfo">
-            <div class="row align-items-start">
-              <div class="col br">
-                {{ i["productname"] }}
-              </div>
-            </div>
-            <div class="row align-items-start">
-              <div class="col tl">
-                CAS#:
-              </div>
-              <div class="col tv">
-                {{i["casno"]}}
-              </div>
-            </div>
-            <div class="row align-items-start">
-              <div class="col tl">
-                Price/Unit:
-              </div>
-              <div class="col tv">
-                {{ i["priceperunit"]}}&nbsp;{{i["currency"]}}
-              </div>
-              </div>
-              <div class="row align-items-start">
-              <div class="col tl">
-                Unit:
-              </div>
-              <div class="col tv">
-                {{i["unitselltype"]}}
-              </div>
-              </div>
-              <div class="row align-items-start">
-              <div class="col tl">
-                Reactvity:
-              </div>
-              <div class="col tv">
-                {{i["reactivity"]}}
-              </div>
-            </div>
-          </div>
-          <div class="card-footer cf">
-            <div class="row align-items-start mb-2">
-              <div class="col">
-                <label class="label" for="quantity"><b>Quantity</b></label>
-              </div>
-              <div class="col">
-                <input class="form-control in" id="quantity_{{x}}" type="number"/>
-              </div>
-            </div>
-            <div class="row align-items-end">
-
-              <div class="col">
-                <a class="btn btn-sm btn-info bt" (click)="addToCart(i,x)">Add to cart</a>
-              </div>
-              <div class="col">
-                <a class="btn btn-sm btn-primary bt" (click)="moveToCart(i,x)">Order now</a>
-              </div>
+          <div class="box-content">
+            <div class="buy" data-bs-toggle="modal" data-bs-target="#exampleModalEqs"
+              (click)="sendEnquiry(i,x)"><span><i class="fa fa-envelope-open-text" title="Send enquiry"></i></span></div>
+            <div class="title"> {{ i["productname"] }}</div>
+            <div class="desc"><u>CAS NO</u> {{i["casno"]}}</div>
+            <span class="price">{{i["makecompany"]}}</span>
+            <div class="footer">
+              <ul>
+                <li> <button class="button-88" role="button" (click)="moveToCart(i,x)"><i class="fa fa-credit-card" title="Order now"></i></button></li>
+                <li> <button class="button-88" role="button" (click)="addToCart(i,x)"><i class="fa fa-cart-arrow-down" title="Add to cart"></i></button></li>
+                <li><div class="in">Select&nbsp;quantity({{ i["unitselltype"] }})&nbsp;<input class="form-control form-control-sm w-25" id="quantity_{{x}}" type="number" min="0"></div></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </ng-container>
+  </div>
+  <div class="text-center">
+    <pagination-controls (pageChange)="pages=$event"></pagination-controls>
   </div>
 </div>
 <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,13 +51,13 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
-          <div class="col-sm-8">
-            <table class="table table-striped table-responsive">
+          <div class="col-sm-11">
+            <table class="table table-sm table-responsive text-light text-justify text-small">
               <caption>Table: Product detail</caption>
               <thead></thead>
               <tbody>
                 <tr>
-                  <th scope="row">Product name</th>
+                  <th scope="row">Name</th>
                   <td>{{CardProdObj["productname"]}}</td>
                 </tr>
                 <tr>
@@ -105,7 +65,7 @@
                   <td>{{CardProdObj["casno"]}}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Quantity available in</th>
+                  <th scope="row">Unit</th>
                   <td>{{CardProdObj["unitselltype"]}}</td>
                 </tr>
                 <tr>
@@ -113,11 +73,11 @@
                   <td>{{CardProdObj["priceperunit"]}}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Product type</th>
+                  <th scope="row">Type</th>
                   <td>{{CardProdObj["type"]}}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Price mentioned in</th>
+                  <th scope="row">Currency</th>
                   <td>{{CardProdObj["currency"]}}</td>
                 </tr>
                 <tr>
@@ -133,7 +93,7 @@
                   <td>{{CardProdObj["reactivity"]}}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Storage requirement</th>
+                  <th scope="row">Storage</th>
                   <td>{{CardProdObj["storgetype"]}}</td>
                 </tr>
                 <tr>
@@ -147,38 +107,81 @@
               </tbody>
             </table>
           </div>
-          <div class="col-sm-4">
-            <img src="data:image/png;base64,{{CardProdObj['image']}}" />
+          <div class="col-sm-1">
+            <!--<img src="data:image/png;base64,{{CardProdObj['image']}}" />-->
             <br />
             {{CardProdObj["structure"]}}
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <div class="mb-2">
-          <label for="quantity">Choose desired quantity</label>
-          <input class="form-control" id="quantityi" type="number" />
-        </div>
-        <br />
-        <div>
-          <button type="button" class="btn btn-sm btn-primary bt" (click)="moveToCarti(CardProdObj)"
-            data-bs-dismiss="modal">
-            Order&nbsp;now
-          </button>
-          <button type="button" class="btn btn-sm btn-info bt" (click)="addToCarti(CardProdObj)">
-            Add&nbsp;to&nbsp;cart
-          </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
-            X
-          </button>
+        <div class="footer">
+          <ul>
+            <li> <button type="button" class="btn btn-sm btn-secondary m-1" data-bs-dismiss="modal">X</button></li>
+            <li> <button class="button-88" role="button" (click)="moveToCarti(CardProdObj)"><i class="fa fa-credit-card" title="Order now"></i></button></li>
+            <li> <button class="button-88" role="button" (click)="addToCarti(CardProdObj)"><i class="fa fa-cart-arrow-down" title="Add to cart"></i></button></li>
+            <li><div class="in">Select&nbsp;quantity({{ CardProdObj["unitselltype"] }})&nbsp;<input class="form-control form-control-sm w-25" id="quantityi" type="number" min="0"></div></li>
+          </ul>
         </div>
       </div>
     </div>
 
   </div>
 </div>
+<!--
 <div class="top">
   <div class="circle"><i class="fas fa-sort-alpha-up-alt fa-2x"></i></div>
   <div class="circle"><i class="fas fa-sort-alpha-down-alt fa-2x"></i></div>
-  <div class="circle" (click)="goBack();">TOP</div>
+  <div class="circle" (click)="top.scrollTop=0">TOP</div>
+</div>
+-->
+<div class="modal fade" id="exampleModalEqs" tabindex="-1" aria-labelledby="exampleModalEq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card sd m-5">
+          <form [formGroup]="enquiryEq" (ngSubmit)="submitEq($event)">
+            <div class="card-header">
+              <input type="text" class="form-control-plaintext" formControlName="products" readonly>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="email" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="email" class="form-control" formControlName="company">
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="email" class="form-control" formControlName="country">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="eM" placeholder="name@example.com" formControlName="email">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="eP" placeholder="(country code) - number"
+                  formControlName="phone">
+              </div>
+              <div class="form-group">
+                <label for="detail">Message</label>
+                <textarea class="form-control" id="eDetail" rows="3" formControlName="message"></textarea>
+              </div>
+              <div class="m-1">
+                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+
+                  X
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,239 +1,333 @@
-.offer1{
+.offer1 {
   background-image: linear-gradient(to right, #141e30, #243b55);
   -webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   box-shadow: rgb(0, 0, 0) 5px 10px 18px;
   min-height: 30em;
   border-radius: 9px;
-  padding:2em;
+  padding: 2em;
   margin-top: 3em;
-  }
-  .offer2{
-    background: url('../../assets/BGI.jpeg') no-repeat fixed center;
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-    background-size: cover;
-    box-shadow: rgb(0, 0, 0) 5px 10px 18px;
-    min-height: 30em;
-    border-radius: 9px;
-    padding:2em;
-    margin-top: 3em;
-    }
-  .dot{
-    display: flex;
-    flex: 2 1;
-    margin: 1rem 1rem;
-    border-radius: 5px;
-    padding: 2px 2px 2px;
-    min-height: 2.5em;
-    background-image: linear-gradient(to bottom,rgb(5, 23, 48),rgb(7, 95, 95));
-    cursor: pointer;
-    justify-content: center;
-    }
-    .dot1{
-      display: flex;
-      flex: 2 1;
-      margin: 1rem 1rem;
-      border-radius: 5px;
-      padding: 2px 2px 2px;
-      min-height: 2.5em;
-      
-      cursor: pointer;
-      justify-content: center;
-      }
-    .dot>a{
-      color: rgb(243, 236, 236);
-      text-transform: uppercase;
-      text-decoration: none;
-      font-size: small;
-      text-align: center;
-    }
-    .dot:hover{
-        background-image: linear-gradient(to top,rgb(4, 30, 54),white);
-        transform: scale(1.1);
-        transition: 0.8s;
-    }
-    .x{
-      padding: 2em;
-      background-color: transparent;
-      font-weight: 500;
-}
-.hcolor{
-  background-color: rgba(60,179,113,0.7);
-  color:whitesmoke
 }
 
-.principal{
-    transform: all 2s;
-    font-weight: 300;
-    display: flex;
-    padding: 3em;
-    justify-content: center;
-    transition-property: all;
-    transition-duration: 4s;
-    transition-delay: 2s;
-    position: relative;
-    width: 100%;
+.offer2 {
+  background: url('../../assets/BGI.jpeg') no-repeat fixed center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  box-shadow: rgb(0, 0, 0) 5px 10px 18px;
+  min-height: 30em;
+  border-radius: 9px;
+  padding: 2em;
+  margin-top: 3em;
 }
-.principal-left{
-    transform: all 0.4s;
-    font-weight: 500;
-    /*
+
+.dot {
+  display: flex;
+  flex: 2 1;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  padding: 2px 2px 2px;
+  min-height: 2.5em;
+  background-image: linear-gradient(to bottom, rgb(5, 23, 48), rgb(7, 95, 95));
+  cursor: pointer;
+  justify-content: center;
+}
+
+.dot1 {
+  display: flex;
+  flex: 2 1;
+  margin: 1rem 1rem;
+  border-radius: 5px;
+  padding: 2px 2px 2px;
+  min-height: 2.5em;
+
+  cursor: pointer;
+  justify-content: center;
+}
+
+.dot>a {
+  color: rgb(243, 236, 236);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: small;
+  text-align: center;
+}
+
+.dot:hover {
+  background-image: linear-gradient(to top, rgb(4, 30, 54), white);
+  transform: scale(1.1);
+  transition: 0.8s;
+}
+
+.x {
+  padding: 2em;
+  background-color: transparent;
+  font-weight: 500;
+}
+
+.hcolor {
+  background-color: rgba(20, 138, 73, 0.7);
+  color: whitesmoke
+}
+
+.principal {
+  transform: all 2s;
+  font-weight: 300;
+  display: flex;
+  padding: 3em;
+  justify-content: center;
+  transition-property: all;
+  transition-duration: 4s;
+  transition-delay: 2s;
+  position: relative;
+  width: 100%;
+}
+
+.principal-left {
+  transform: all 0.4s;
+  font-weight: 500;
+  /*
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;*/
 }
-.text{
+
+.text {
   transition: 0.8s;
 }
-.principal-right{
-    transform: all 0.4s;
-    background: transparent;
-   /* animation-name: floating;*/
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    
+
+.principal-right {
+  transform: all 0.4s;
+  background: transparent;
+  /* animation-name: floating;*/
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
 }
-.principal-right:hover{
-    animation-play-state: paused;
+
+.principal-right:hover {
+  animation-play-state: paused;
 }
 
 @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  50% {
+    transform: translate(0, 15px);
+  }
+
+  100% {
+    transform: translate(0, -0px);
+  }
 }
 
-.commitment{
-    padding: 1em;
-    color:  rgb(10, 105, 165);
-    animation-name: rotate; 
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    box-shadow:rgb(10, 105, 165) 0px 1px 3px;
-    cursor: pointer;
-
-}
-.consistency{
-    padding: 1em;
-    color: rgb(150, 13, 150);
+.commitment {
+  padding: 1em;
+  color: rgb(10, 105, 165);
   animation-name: rotate;
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    box-shadow: rgb(150, 13, 150) 0px 1px 3px;
-    cursor: pointer;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  box-shadow: rgb(10, 105, 165) 0px 1px 3px;
+  cursor: pointer;
+
 }
-.transparency{
-    padding: 1em;
-    color: rgb(34, 56, 34);
-    animation-name: rotate;
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    box-shadow: rgb(34, 56, 34) 0px 1px 3px;
-    cursor: pointer;
- 
+
+.consistency {
+  padding: 1em;
+  color: rgb(150, 13, 150);
+  animation-name: rotate;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  box-shadow: rgb(150, 13, 150) 0px 1px 3px;
+  cursor: pointer;
 }
-  
+
+.transparency {
+  padding: 1em;
+  color: rgb(34, 56, 34);
+  animation-name: rotate;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  box-shadow: rgb(34, 56, 34) 0px 1px 3px;
+  cursor: pointer;
+
+}
+
+/* CSS */
+.button-83 {
+  appearance: button;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, #fff, #f8eedb);
+  border: 0 solid #e5e7eb;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #482307;
+  column-gap: 1rem;
+  cursor: pointer;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 100%;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 4px;
+  outline: 2px solid transparent;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-transform: none;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: -6px 8px 10px rgba(245, 124, 32, 0.842), 0px 2px 2px rgba(183, 91, 21, 0.733);
+  width: 10vw;
+  height: 10vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-83:active {
+  background-color: #f3f4f6;
+  box-shadow: -1px 2px 5px rgba(243, 108, 205, 0.755), 0px 1px 1px rgba(226, 88, 239, 0.596);
+  transform: translateY(0.125rem);
+}
+
+.button-83:focus {
+  box-shadow: rgba(142, 206, 236, 0.934) 0 0 0 4px, -6px 8px 10px rgba(91, 130, 229, 0.736), 0px 2px 2px rgba(56, 103, 222, 0.686);
+}
+
+
 
 @keyframes rotate {
-    0% { transform: scale(0.95); }
-    50%  { transform: scale(1.0); }
-    100%   { transform: scale(0.95); } 
+  0% {
+    transform: scale(0.95);
+  }
+
+  50% {
+    transform: scale(1.0);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
 }
-.commitment:hover{
-    animation-play-state: paused;
-    background: transparent;
+
+.commitment:hover {
+  animation-play-state: paused;
+  background: transparent;
 }
-.consistency:hover{
-    animation-play-state: paused;
-    background: transparent;
+
+.consistency:hover {
+  animation-play-state: paused;
+  background: transparent;
 }
-.transparency:hover{
-    animation-play-state: paused;
-    background: transparent;
+
+.transparency:hover {
+  animation-play-state: paused;
+  background: transparent;
 }
-.testimonies{
-background:transparent;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-min-height: auto;
-background-blend-mode: hue;
-width: 100%;
-display: flex;
+
+.testimonies {
+  background: transparent;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  min-height: auto;
+  background-blend-mode: hue;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
-.z{
+
+.z {
   display: flex;
   justify-content: left;
   align-items: center;
 }
-.zr{
+
+.zr {
   display: flex;
   justify-content: right;
   align-items: center;
 }
-.y{
+
+.y {
   min-height: 100px;
 }
-.we{
+
+.we {
   background-blend-mode: hue;
-  }
-.testm{
-  background-color:transparent;
-  color: rgb(247, 245, 241);
-  min-height: 25vh;
 }
 
-.conBnd{
+.we>p {
+  font-size: 20px !important;
+  line-height: 24px !important;
+  margin: 0 0 24px !important;
+  text-align: justify !important;
+}
+
+.testm {
+  background-color: transparent;
+  color: rgb(247, 245, 241);
+
+}
+
+.conBnd {
   border-top-left-radius: 15% !important;
   border-top-right-radius: 15% !important;
-  background-color:blanchedalmond !important;
+  background-color: blanchedalmond !important;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
-.ctext{
+
+.ctext {
   font-size: large;
 }
-.cardMain{
+
+.cardMain {
   box-shadow: rgb(130, 195, 238) 2px 4px 6px;
   border-top-left-radius: 50rem !important;
   border-top-right-radius: 50rem !important;
 }
 
-.cardMain:hover{
+.cardMain:hover {
   transform: scale(0.9);
   transition: 1s;
   cursor: pointer;
-  
+
 }
-.c-h{
-  border-top-left-radius: 50rem !important;
-  border-top-right-radius: 50rem !important;
-  background-image: linear-gradient(25deg,#d64c7f,#ee4758 50%);
+
+.c-h {
+  border-top-left-radius: 10rem !important;
+  border-top-right-radius: 10rem !important;
+  background-image: linear-gradient(25deg, #ec93b4, #955e64 50%);
 }
-.c-b{
-  background-image: radial-gradient(circle farthest-side, #fceabb, #f8b500);
+
+.c-b {
+  background-image: radial-gradient(circle farthest-side, #fceabb, #f6d663);
 }
+
 .text3d {
   color: #70869d;
   letter-spacing: .15em;
-  text-shadow: 
-    -1px -1px 1px #efede3, 
-    0px 1px 0 #2e2e2e, 
-    0px 2px 0 #2c2c2c, 
-    0px 3px 0 #2a2a2a, 
-    0px 4px 0 #282828, 
-    0px 5px 0 #262626, 
-    0px 6px 0 #242424, 
-    0px 7px 0 #222, 
-   /* 0px 8px 0 #202020, 
+  text-shadow:
+    -1px -1px 1px #efede3,
+    0px 1px 0 #2e2e2e,
+    0px 2px 0 #2c2c2c,
+    0px 3px 0 #2a2a2a,
+    0px 4px 0 #282828,
+    0px 5px 0 #262626,
+    0px 6px 0 #242424,
+    0px 7px 0 #222,
+    /* 0px 8px 0 #202020, 
     0px 9px 0 #1e1e1e, 
     0px 10px 0 #1c1c1c, 
     0px 11px 0 #1a1a1a, 
@@ -247,59 +341,199 @@ display: flex;
     8px 28px 35px rgba(0, 0, 0, 0.9);
 }
 
-  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-  @media screen and (max-width: 650px) {
-    p {
-      font-size: 8px;
-    }
-    .principal-right{
-        height: max-content;
-        width: max-content;
-    }
-    .commitment{
-      width: 60%;
-      text-align: center;
+
+.infocardContainer * {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 300;
+}
+
+.infocardContainer {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  background: rgb(0,159,255);
+  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
+  transition: all 500ms ease-in;
+  transition-delay: 1s;
+  margin: 10%;
+}
+.infocardContainer:hover {
+  width: 400px;
+  border-radius: 80px 8px 80px 80px;
+  transition: all 1s ease-out;
+}
+
+.infocardContainer div {
+  text-color: white;
+  flex-shrink: 1;
+  width: 100%;
+  --background-color: green;
+}
+.infocardContainer div * {
+  display: flex;
+  --flex: inherit;
+  overflow: hidden;
+  text-overflow: hidden;
+  --background-color: yellow;
+  color: white;
+  white-space: nowrap;
+  width: 0;
+  height: auto;
+  transition: all 450ms ease-in;
+  transition-delay: 1s;
+}
+.infocardContainer:hover div *{
+  --background-color: purple;
+  display: flex;
+  visibility: visible;
+  transition: all 1s ease-out;
+  transition-delay: 500ms;
+  width: 100%;
+  height: auto;
+}
+
+.infocardContainer #main, .infocardContainer #main img{
+  --background-color: red;
+  height: 200px;
+  width: 200px;
+  padding-right: 10px;
+  border-radius: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.infocardContainer #main img{
+  height: 180px;
+  width: 180px;
+  transition: none;
+  display: float;
+  position: relative;
+  border: 10px solid white;
+  margin: 0 0 0 0; padding: 0 0 0 0;
+}
+.infocardContainer #textbois {
+  position: relative;
+}
+
+/*TODO: animate copy main transition style for info*/
+.infocardContainer #textbois #hotlinks *:hover {
+  
+  
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 650px) {
+  p {
+    font-size: 8px;
   }
-  .transparency{
-      width: 60%;
-      text-align: center;
+
+  .principal-right {
+    height: max-content;
+    width: max-content;
   }
-  .consistency{
-      width: 60%;
-      text-align: center;
+
+  .commitment {
+    width: 60%;
+    text-align: center;
   }
-    .ctext{
-      font-size: smaller;
-      display: none;
-    }
-    .offer1{
-      padding:1em;
-      font-size: small;
-    }
+
+  .transparency {
+    width: 60%;
+    text-align: center;
+  }
+
+  .consistency {
+    width: 60%;
+    text-align: center;
+  }
+
+  .ctext {
+    font-size: smaller;
+    display: none;
+  }
+
+  .offer1 {
+    padding: 1em;
+    font-size: small;
+  }
+
+  .button-83 {
+    width: 50vw;
+  }
+
+  .infocardContainer{
+    display: flex;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background: rgb(0,159,255);
+    background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
+    transition: all 500ms ease-in;
+    transition-delay: 1s;
+    margin: auto;
+    margin-top: 50px;
+    --margin-top: 50px;
+  }
+
+  .infocardContainer:hover {
+    width: 300px;
+    border-radius: 100px 10px 100px 100px;
+    transition: all 1s ease-out;
+  }
+   
+  
+  .infocardContainer #main, .infocardContainer #main img{
+    --background-color: red;
+    height: 100px;
+    width: 100px;
+    padding-right: 60px;
+    border-radius: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  .infocardContainer #main img{
+    height: 90px;
+    width: 90px;
+    transition: none;
+    display: float;
+    position: relative;
+    border: 6px solid white;
+    margin: 0 0 0 0; padding: 0 0 0 0;
+  }
+  .infocardContainer #textbois {
+    position: relative;
   }
   
-  @media screen and (max-width: 980px) {
-    p {
-      font-size: 12px;
-    }
-      .commitment{
-          width: 90%;
-      }
-      .transparency{
-          width: 90%;
-      }
-      .consistency{
-          width: 90%;
-      }
-      .ctext{
-        font-size: small;
-      }
-    .principal-right{
-        height: max-content;
-    }
-    .offer1{
-      padding:1em;
-      font-size: small;
-    }
-    
+}
+
+@media screen and (max-width: 980px) {
+  p {
+    font-size: 12px;
   }
+
+  .commitment {
+    width: 90%;
+  }
+
+  .transparency {
+    width: 90%;
+  }
+
+  .consistency {
+    width: 90%;
+  }
+
+  .ctext {
+    font-size: small;
+  }
+
+  .principal-right {
+    height: max-content;
+  }
+
+  .offer1 {
+    padding: 1em;
+    font-size: small;
+  }
+
+}

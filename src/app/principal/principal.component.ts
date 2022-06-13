@@ -20,16 +20,16 @@ export class PrincipalComponent implements OnInit {
   appriciation = [{
     who: 'Prasi labs',
     what: 'Wow you are great'
-  }, {
+  },{
     who: 'Prasi labs',
     what: 'Wow you are great'
-  }, {
+  },{
     who: 'Prasi labs',
     what: 'Wow you are great'
-  }, {
+  },{
     who: 'Prasi labs',
     what: 'Wow you are great'
-  }, {
+  },{
     who: 'Prasi labs',
     what: 'Wow you are great'
   }]
@@ -61,7 +61,7 @@ export class PrincipalComponent implements OnInit {
       this.isTransparent = false;
       this.isDefault = false;
       this.principle.header = "COMMITMENT";
-      this.principle.detail = "We are commited";
+      this.principle.detail = "We are commited to provide our customer best in class service, pricing and support while maintaing a very high standard in busness delivery.";
       this.isModelP = false;
     }
   }
@@ -80,7 +80,7 @@ export class PrincipalComponent implements OnInit {
       this.isTransparent = true;
       this.isDefault = false;
       this.principle.header = "TRANSPARENCY";
-      this.principle.detail = "We are transparent";
+      this.principle.detail = "Our process is transprent and open at each step to provide all required information as needed. Stakeholders are always aware of from where, how and when their products are delivered.";
       this.isModelP = false;
     }
   }
@@ -99,7 +99,7 @@ export class PrincipalComponent implements OnInit {
       this.isTransparent = false;
       this.isDefault = false;
       this.principle.header = "CONSISTENCY";
-      this.principle.detail = "We are consistent";
+      this.principle.detail = " We deliver quality products in time with each order following  best in class offerings. With consistent exellenace in our services and delivery we always endeavor customer satisfaction.";
       this.isModelP = false;
     }
   }

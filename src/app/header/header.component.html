@@ -1,16 +1,21 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg py-4">
     <div class="container">
+
       <a routerLink="/" class="navbar-brand text-uppercase font-weight-bold">
         <div class="d-flex">
           <img src="../../assets/Prasilabs.png" class="title" />
         </div>
       </a>
+      <button class="button-86" role="button" data-bs-toggle="modal" data-bs-target="#exampleModalEq">
+        Request a quote
+      </button>
       <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
         aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
       <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end" [ngbCollapse]="isCollapsed">
+
         <ul class="navbar-nav w-25 nav-pills float-end">
           <li class="nav-item">
             <a href="#collapseSec" (click)="isCollapsed = !isCollapsed;setAboutDetail()"
@@ -95,6 +100,57 @@
           </div>
           <button class="btn btn-sm btn-primary" type="submit">Submit</button>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalEq" tabindex="-1" aria-labelledby="exampleModalEq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card sd m-5">
+          <form [formGroup]="enquiryEq" (ngSubmit)="submitEq($event)">
+            <div class="card-body">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control form-control-sm" formControlName="name" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Company</label>
+                <input type="text" class="form-control form-control-sm" formControlName="company">
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control form-control-sm" formControlName="country" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control form-control-sm" placeholder="name@example.com" formControlName="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control form-control-sm" placeholder="(country code) - number" formControlName="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="detail">Products (CAS# or Name, each item in new line)</label>
+                <textarea class="form-control" rows="3" formControlName="products" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="detail">Message</label>
+                <textarea class="form-control" rows="3" formControlName="message" required></textarea>
+              </div>
+              <div class="m-1">
+                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+
+                  X
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

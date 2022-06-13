@@ -32,6 +32,33 @@ export class HeaderComponent implements OnInit {
     }
   )
 
+
+  enquiryEq = this.formbuilder.group(
+    {
+      name: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      message: ['', [Validators.required]],
+      products: ['', [Validators.required]],
+      company:['', [Validators.required]]
+    }
+  )
+
+  submitEq(event: Event) {
+    event.preventDefault();
+    console.log(this.enquiryEq.value)
+    this.appmodule.runGetCall('POST_DATA_EMAIL', { data: this.enquiryEq.value }).subscribe(
+      (data) => { alert(data['successMsg']) },
+      (error) => {
+        console.error(error);
+        alert(error)
+      },
+      () => { console.log('Done') }
+
+    )
+  }
+
   isLoggedIn(): boolean {
     return AppModule.IS_LOGGED_IN;
   }
@@ -81,8 +108,8 @@ export class HeaderComponent implements OnInit {
 
 
   }
-  submitFeedback(event:Event): void {
-event.preventDefault();
+  submitFeedback(event: Event): void {
+    event.preventDefault();
 
     let comm: CommunicationType = {
       id: '',
@@ -97,7 +124,7 @@ event.preventDefault();
     this.appmodule.runGetCall('COMM', { Communication: comm }).subscribe(
       (data) => { if (data['successMsg']) { alert('Feedback sent.') } },
       (error => { console.log(error); alert('Something wrong happened. Please try again.') }),
-      () => { console.log('Done');this.feedbackForm.reset() }
+      () => { console.log('Done'); this.feedbackForm.reset() }
     )
 
     this.isModel1 = true;
@@ -151,14 +178,17 @@ event.preventDefault();
   }
 
   setMapDetail(): void {
-    this.sectionDetail.header = 'Hyderabad India';
+    this.sectionDetail.header = 'Our Branches';
     let map = `
+    <div class='d-flex float-start'>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.3241258629155!2d78.3914563143355!3d17.539748303010825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910c675daef9%3A0x5afcb3e5f5e2c241!2sPrasi%20Labs%20Private%20Limited!5e0!3m2!1sen!2sin!4v1639756282576!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class='d-flex float-end'>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.254312864653!2d-74.04903168465717!3d40.75643097932707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c257719ca71d29%3A0x758053f9efdf544d!2s3687%20John%20F.%20Kennedy%20Blvd%2C%20Union%20City%2C%20NJ%2007087%2C%20USA!5e0!3m2!1sen!2sin!4v1652851594741!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   </div>   
     `;
     this.isModel = false
     this.isModel1 = true;
     this.sectionDetail.detail = this.sectionDetail.detail = this.sanitizer.bypassSecurityTrustHtml(map);
   }
-
-
 }

@@ -2,6 +2,7 @@
 import { Component, HostListener } from '@angular/core';
 import { AppModule } from './app.module';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +10,10 @@ import { AppModule } from './app.module';
 })
 export class AppComponent {
   constructor(private appmodule: AppModule) { }
+
   changeOfRoutes($event: Event) {
   }
+
   ngOnInit() {
     this.appmodule.runGetCall('PTNR', '').subscribe(
       data => { AppModule.LST_PTNR = data['successMsg'] },
@@ -43,4 +46,10 @@ export class AppComponent {
       () => { console.log('GST fetch completed') }
     );
   }
+
+  @HostListener('window:unload', ['$event'])
+  unloadHandler(event:Event) {
+    window.sessionStorage.clear();
+  }
+
 }

@@ -202,6 +202,7 @@ export interface OrderitemType {
     status: string,
     type: string,
     ordernum: string | number,
+    orderid?:string | null | undefined,
     itemamount: number,
     taxamount: number,
     taxrate: number,

@@ -27,44 +27,6 @@ export class AppService {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private router: Router) { }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (sessionStorage.getItem('currentUser')) {
-      return true;
-    }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-    return false;
-  }
-
-
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class AdminAuthGuard implements CanActivate {
-  constructor(private router: Router) { }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (sessionStorage.getItem('adminUser')) {
-      return true;
-    }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/administratorurlhidden'], { queryParams: { returnUrl: state.url } });
-    return false;
-  }
-
-
-}
-
-@Injectable({
-  providedIn: 'root',
-})
 export class AddToCart {
   private _cart = new Subject();
   cart$ = this._cart.asObservable();

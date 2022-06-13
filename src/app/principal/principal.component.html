@@ -5,37 +5,38 @@
                 <h4 class="text-light"><strong>Search any product</strong></h4>
             </div>
             <div class="col-sm-12">
-                <div class="dot1"><a id="searchAll" routerLink="main" class="btn btn-warning broder">Search</a>
+                <div class="dot1"><button id="searchAll" [routerLink]="['main','ANY']"
+                        class="btn btn-warning broder">Search</button>
                     <input class="form-control" type="text" />
                 </div>
             </div>
-            <div class="col-sm-12 text-center">
+            <div class="col-sm-12 text-center mt-3">
                 <h4 class="text-light"><strong>Explore our products</strong></h4>
             </div>
             <div class="col-sm-4">
-                <div class="dot"><a id="searchAPI" routerLink="main">API</a></div>
+
+                <button class="button-83" role="button" id="searchAPI" [routerLink]="['main','API']">
+                    CRO
+                </button>
+
             </div>
             <div class="col-sm-4">
-                <div class="dot"><a id="searchDP" routerLink="main">Degradation Products</a></div>
-            </div>
-            <div class="col-sm-4">
-                <div class="dot"><a id="searchDM" routerLink="main">Drug Metabolites</a></div>
+
+                <button class="button-83" role="button" id="searchDP" [routerLink]="['main','DP']">
+                    RLD
+                </button>
             </div>
 
             <div class="col-sm-4">
-                <div class="dot"><a id="searchCN" routerLink="main">Country</a></div>
-            </div>
-            <div class="col-sm-4">
-                <div class="dot"><a id="searchSP" routerLink="main">Speciality</a></div>
-            </div>
-            <div class="col-sm-4">
-                <div class="dot"><a id="searchAll" routerLink="main">All</a></div>
+                <button class="button-83" role="button" id="searchAll" [routerLink]="['main','ALL']">
+                    ALL
+                </button>
             </div>
         </div>
     </div>
     <div class="col-sm-5 offer2 d-flex align-items-center justify-content-evenly clearfix">
         <div>
-            
+
         </div>
     </div>
 </div>
@@ -49,7 +50,7 @@
     <hr class="w-50" />
 
     <div class="we y">
-        <p class="text-justify text-wrap text-dark p-1">
+        <p class="text-wrap text-dark p-1">
             We offer custom synthesis services of up to gram-quantities of materials for a wide range of
             industrial
             and academic customers.We listen to our customers and provide products that meet their
@@ -106,14 +107,14 @@
         <div class="col-sm-12 principal-right">
             <div class="collapse text" id="collapseSecP" [(ngbCollapse)]="isModelP" (click)="isModelP"
                 [animation]="true">
-                <div class="card ">
+                <div class="card">
                     <div class="card-header hcolor text-shadow">
                         {{principle.header}}
                     </div>
-                    <div class="card-body">
-                        <P class="text-break fw-normal text-justify lh-base">
+                    <div class="card-body we">
+                        <p class="text-wrap text-dark p-1">
                             {{principle.detail}}
-                        </P>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -139,18 +140,18 @@
         </div>
     </div>
     <hr class="w-50 float-end" />
+</div>
+<div class="container-flex">
     <div class="testimonies">
         <div class="row">
-            <div class="col-sm-4 testm" *ngFor="let ap of appriciation">
-                <div class="card cardMain">
-                    <div class="card-header c-h">
-                        <i class="fas fa-medal fa-2x"></i>
-                        {{ap.who}}
+            <div class="col-sm-4 text-center" *ngFor="let ap of appriciation">
+                <div class="infocardContainer">
+                    <div id="main">
+                        <img src="../../assets/Prasilabs.png" />
                     </div>
-                    <div class="card-body c-b">
-                        <p class="text-justify text-wrap text-secondary p-1">
-                            {{ap.what}}
-                        </p>
+                    <div id="textbois">
+                        <h3>{{ap.who}}</h3>
+                        <h5>{{ap.what}}</h5>
                     </div>
                 </div>
             </div>

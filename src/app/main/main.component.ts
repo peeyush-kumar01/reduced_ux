@@ -3,7 +3,8 @@ import { AppModule } from '../app.module';
 import { ProductType } from '../Objects';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AddToCart } from '../app.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -13,13 +14,40 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
   location: Location;
-  constructor(location: Location, private appmodule: AppModule, private cartservice: AddToCart, private router: Router) {
+  constructor(location: Location, private appmodule: AppModule, private cartservice: AddToCart, private router: Router, private _activatedroute: ActivatedRoute, private formbuilder: FormBuilder) {
     this.location = location;
+  }
+
+  enquiryEq = this.formbuilder.group(
+    {
+      products: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      message: ['', [Validators.required]],
+      name:['', [Validators.required]],
+      country:['', [Validators.required]],
+      company:['', [Validators.required]],
+    }
+  )
+pages:number=1;
+
+  submitEq(event: Event) {
+    event.preventDefault();
+    console.log(this.enquiryEq.value)
+    this.appmodule.runGetCall('POST_DATA_EMAIL', { data: this.enquiryEq.value }).subscribe(
+      (data) => { alert(data['successMsg']) },
+      (error) => {
+        console.error(error);
+        alert(error)
+      },
+      () => { console.log('Done') }
+
+    )
   }
 
   addToCart(obj: ProductType, x: number): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
-      alert('Please login.');
+      alert('Please login or send us enquiry by clicking on the envelope icon.');
       return false;
     }
 
@@ -31,7 +59,7 @@ export class MainComponent implements OnInit {
 
   addToCarti(obj: ProductType): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
-      alert('Please login.');
+      alert('Please login or send us enquiry by clicking on the envelope icon.');
       return false;
     }
 
@@ -43,7 +71,7 @@ export class MainComponent implements OnInit {
 
   moveToCart(obj: ProductType, x: number): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
-      alert('Please login.');
+      alert('Please login or send us enquiry by clicking on the envelope icon.');
       return false;
     }
 
@@ -55,7 +83,7 @@ export class MainComponent implements OnInit {
 
   moveToCarti(obj: ProductType): boolean | void {
     if (!sessionStorage.getItem('currentUser')) {
-      alert('Please login.');
+      alert('Please login or send us enquiry by clicking on the envelope icon.');
       return false;
     }
 
@@ -174,8 +202,22 @@ export class MainComponent implements OnInit {
     this.CardProdObj = obj;
   }
 
+  sendEnquiry(obj: ProductType, x: number) {
+    this.enquiryEq.patchValue({
+      products: obj.productname +' '+obj.casno,
+    })
+  }
+
   ngOnInit(): void {
-    this.getProduct();
+    this._activatedroute.paramMap.subscribe(param => {
+      if (param.get('id') == '') {
+        this.selectKey = 'CATEGORY'
+        this.selectVal = 'API'
+        this.getClickedProduct();
+      } else {
+        this.getProduct();
+      }
+    })
     this.getKey();
     this.getValues();
   }
